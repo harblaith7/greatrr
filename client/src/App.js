@@ -9,7 +9,7 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <Switch>
-            <Route path="/about">
+            <Route path="/">
               <LandingPage/>
             </Route>
           </Switch>
