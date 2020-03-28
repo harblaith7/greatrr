@@ -5,6 +5,7 @@ import About from '../../components/About/About'
 import Steps from '../../components/Steps/Steps'
 import Testimonial from "../../components/Testimonial/Testimonial"
 import JoinUs from "../../components/JoinUs/JoinUs"
+import Footer from "../../components/Footer/Footer"
 
 class LandingPage extends Component {
     render() {
@@ -15,6 +16,7 @@ class LandingPage extends Component {
                 <Steps/>
                 <Testimonial/>
                 <JoinUs/>
+                <Footer/>
             </div>
         );
     }
