@@ -1,0 +1,24 @@
+.Steps {
+    padding: 7.5rem 0;
+
+    &__container {
+        width: 87.5%;
+        margin: 0 auto
+    }
+
+    &__heading {
+        font-size: 3rem;
+    }
+
+    &__description-container {
+        text-align: center;
+    }
+
+    &__description {
+        width: 60%;
+        margin: 0 auto;
+        margin-top: 3rem;
+        font-size: 2rem;
+        line-height: 3rem;
+    }
+}
