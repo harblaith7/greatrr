@@ -21,7 +21,7 @@ class Steps extends Component {
                                 Our 7 Steps to Success
                             </h2>
                         </ScrollAnimation>
-                        <ScrollAnimation animateIn='fadeInDown' delay={200} animateOnce >
+                        <ScrollAnimation animateIn='fadeInDown' delay={100} animateOnce >
                             <p className="Steps__description">
                                 Lorem, ipsum dolor sit amet consectetur concurrently and abolamasment adipisicing elit. Atque, sunt praesentium. Totam repudiandae voluptate nihil facere, et esse ut, sed cupiditate minima, ad est ex qui quaerat amet. Aliquid explicabo nulla repellendus culpa minima saepe natus voluptatibus reiciendis nihil earum, laudantium iure odio labore suscipit nostrum tempore aspernatur mollitia at?
                             </p>
@@ -30,7 +30,7 @@ class Steps extends Component {
 
                     <div className="Steps__steps-container">
 
-                        <ScrollAnimation animateIn='slideInRight' animateOnce duration={1} delay={500}>
+                        <ScrollAnimation animateIn='slideInRight' animateOnce duration={1} >
                             <div className="Steps__step-one-container">
                                 <div className="Steps__steps-description-container">
                                     <h2 className="Steps__heading"> <span>Step 1:</span>  state your long-term goals</h2>
@@ -47,7 +47,7 @@ class Steps extends Component {
                             </div>
                         </ScrollAnimation>
 
-                        <ScrollAnimation animateIn='slideInLeft' animateOnce duration={1} delay={500}>
+                        <ScrollAnimation animateIn='slideInLeft' animateOnce duration={1} >
                         <div className="Steps__step-one-container">
                             <img src={breakDownGoals} alt="" className="Steps__steps-image Steps__steps-image--step-two"/>
                             <div className="Steps__steps-description-container Steps__steps-description-container--step-two">
@@ -62,7 +62,7 @@ class Steps extends Component {
                         </div>
                         </ScrollAnimation>
 
-                        <ScrollAnimation animateIn='fadeInUp' animateOnce duration={1} delay={500}>
+                        <ScrollAnimation animateIn='fadeInUp' animateOnce duration={1}>
                             <div className="Steps__step-one-container">
                                 <div className="Steps__steps-description-container">
                                     <h2 className="Steps__heading"> <span>Step 3:</span>  set daily goals</h2>
@@ -79,7 +79,7 @@ class Steps extends Component {
                             </div>
                         </ScrollAnimation>
 
-                        <ScrollAnimation animateIn='fadeInDown' animateOnce duration={1} delay={500}>
+                        <ScrollAnimation animateIn='fadeInDown' animateOnce duration={1} >
                             <div className="Steps__step-one-container">
                                 <div className="Steps__steps-description-container">
                                     <h2 className="Steps__heading"> <span>Step 4:</span>  track, track, track...</h2>
@@ -95,7 +95,7 @@ class Steps extends Component {
                             </div>
                         </ScrollAnimation>
 
-                        <ScrollAnimation animateIn='slideInRight' animateOnce duration={1} delay={500}>
+                        <ScrollAnimation animateIn='slideInRight' animateOnce duration={1}>
                             <div className="Steps__step-one-container">
                                 <img src={meditation} alt="" className="Steps__steps-image Steps__steps-image--step-five"/>
                                 <div className="Steps__steps-description-container Steps__steps-description-container--step-two">
@@ -110,7 +110,7 @@ class Steps extends Component {
                             </div>
                         </ScrollAnimation>
 
-                        <ScrollAnimation animateIn='slideInLeft' animateOnce duration={1} delay={500}>
+                        <ScrollAnimation animateIn='slideInLeft' animateOnce duration={1} >
                             <div className="Steps__step-one-container">
                                 <div className="Steps__steps-description-container">
                                     <h2 className="Steps__heading"> <span>Step 6:</span>  stay consistent</h2>
@@ -127,7 +127,7 @@ class Steps extends Component {
                             </div>
                         </ScrollAnimation>
 
-                        <ScrollAnimation animateIn='zoomIn' animateOnce duration={1} delay={500}>
+                        <ScrollAnimation animateIn='zoomIn' animateOnce duration={1} >
                             <div className="Steps__step-one-container Steps__step-one-container--last">
                                 <div className="Steps__steps-description-container">
                                     <h2 className="Steps__heading"> <span>Step 7:</span>  reward yourself</h2>
