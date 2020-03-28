@@ -1,4 +1,5 @@
 @import "../../sass/variables.scss";
+@import "../../sass/mixins.scss";
 
 .About {
     height: 95vh;
@@ -63,4 +64,66 @@
         line-height: 2rem;
     }
 
+}
+
+@include width-1150px {
+    .About {
+
+        height: auto;
+
+        &__card-container {
+            width: 90%
+        }
+
+        &__card {
+            width: 30%;
+        }
+    }
+}
+
+@include width-1000px {
+    .About {
+
+        &__card-container {
+            width: 90%;
+            flex-direction: column;
+        }
+
+        &__card {
+            width: 60%;
+            margin: 0 auto;
+            margin-top: 3rem;
+            height: auto;
+        }
+
+        &__card-heading {
+            font-size: 2.25rem;
+        }
+
+        &__card-description {
+            font-size: 2rem;
+            line-height: 3rem;
+        }
+    }
+}
+
+@include width-750px {
+    .About {
+        &__card {
+            width: 95%;
+        }
+
+    }
+}
+
+@include width-650px {
+    .About {
+        &__card-container {
+            width: 100%
+        }
+
+        &__description {
+            display: none
+        }
+    }
 }
