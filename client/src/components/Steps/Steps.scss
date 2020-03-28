@@ -7,7 +7,13 @@
     }
 
     &__heading {
-        font-size: 3rem;
+        font-size: 4rem;
+        margin-bottom: 3rem;
+
+        & span {
+            margin-right: 0.75rem;
+            
+        }
     }
 
     &__description-container {
@@ -17,8 +23,70 @@
     &__description {
         width: 60%;
         margin: 0 auto;
-        margin-top: 3rem;
+        margin-top: 1rem;
         font-size: 2rem;
         line-height: 3rem;
+
+        
+    }
+
+    &__steps-container {
+        padding: 2rem 0;
+        margin-top: 7.5rem;
+    }
+
+    &__step-one-container {
+        margin-bottom: 10rem;
+        display: flex;
+        justify-content: space-between;
+
+        &--last {
+            text-align: center;
+        }
+    }
+
+    &__steps-description-container {
+
+        &--step-two {
+            width: 70%;
+            margin-left: 7.5rem;
+            margin-top: 3rem;
+        }
+    }
+
+    &__steps-description {
+        width: 80%;
+        margin-top: 1rem;
+        font-size: 1.75rem;
+        line-height: 2.75rem;
+
+        &--first {
+            margin-top: 3rem
+        }
+
+        &--last {
+            width: 50%;
+            margin: 2rem auto
+        }
+
+        &--second {
+            margin-top: 3rem;
+            margin-left: 3rem;
+        }
+    }
+
+    &__steps-image {
+        width: 50rem;
+        margin-top: 3rem;
+        margin-right: 10rem;
+
+        &--step-four {
+            width: 45rem
+        }
+
+        &--step-five {
+            width: 45rem;
+            margin-top: -12.5rem;
+        }
     }
 }
