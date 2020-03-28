@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import "./Header.scss"
+import "./Header.scss";
+import goalBoard from "../../assets/svg/goal.svg"
 
 class Header extends Component {
     render() {
@@ -23,6 +24,9 @@ class Header extends Component {
                                 Sign in with Facebook
                             </button>
                         </div>
+                    </div>
+                    <div className="Header__img-container">
+                        <img src={goalBoard} alt="" className="Header__img"/>
                     </div>
                 </div>
             </div>

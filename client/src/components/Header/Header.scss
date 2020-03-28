@@ -13,7 +13,7 @@
     &__description-container {
         color: $primary-white;
         position: absolute;
-        top: 42.5%;
+        top: 45%;
         left: 7.5%;
         transform: translate(0%, -50%);
         width: 60rem;
@@ -39,7 +39,7 @@
         margin-right: 4rem;
         border: none;
         font-weight: 700;
-        border-radius: 0.2rem;
+        border-radius: 0.3rem;
         cursor: pointer;
         color: $primary-white;
 
@@ -51,5 +51,23 @@
         &--facebook {
             background-color: $facebook-blue;
         }
+    }
+
+    &__img-container {
+
+        position: absolute;
+        width: 60rem;
+        top: 42.5%;
+        left: 55%;
+        transform: translate(0%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        
+    }
+
+    &__img {
+        width: 50rem;
     }
 }

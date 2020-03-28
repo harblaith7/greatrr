@@ -1,0 +1,26 @@
+@import "../../sass/variables.scss";
+
+.About {
+    height: 75vh;
+    color: $black;
+
+    &__container {
+        background-color: $primary-white-light;
+        width: 85%;
+        margin: 0 auto;
+        padding: 7.5rem;
+        margin-top: -10rem;
+        height: 100%;
+        border-radius: 0.5rem;
+        box-shadow: 0.1rem 0.1rem 2rem rgba(0, 0, 0, 0.425);
+    }
+
+    &__description-container {
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 2rem;
+        line-height: 3rem;
+    }
+
+}
