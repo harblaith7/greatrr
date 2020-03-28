@@ -1,4 +1,5 @@
 @import "../../sass/variables.scss";
+@import "../../sass/mixins.scss";
 
 .Header {
     background: linear-gradient(to right bottom, $primary-color, 75%, $primary-color-light);
@@ -70,5 +71,87 @@
 
     &__img {
         width: 50rem;
+    }
+}
+
+
+@include width-1350px {
+    .Header {
+
+        &__img-container {
+            width: 50rem;
+        }
+
+        &__img {
+            width: 45rem;
+        }
+    }
+}
+
+@include width-1250px {
+    .Header {
+
+        &__img-container {
+            left: 60%;
+            width: 45rem;
+        }
+
+        &__img {
+            width: 40rem;
+        }
+    }
+}
+
+@include width-1150px {
+    .Header {
+
+        &__img-container {
+            left: 62.5%;
+            width: 38rem;
+        }
+
+        &__img {
+            width: 33rem;
+        }
+    }
+}
+
+@include width-1050px {
+    .Header {
+
+        &__img-container {
+            display: none;
+        }
+
+        &__description-container {
+            text-align: center;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+       
+    }
+}
+
+@include width-650px {
+    .Header {
+        &__description-container {
+            width: 80%;
+        }
+
+        &__heading {
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+    
+        &__description {
+            line-height: 2.75rem;
+            font-size: 1.5rem;
+        }
+
+        &__sign-in-btn {
+            margin: 0 auto;
+            margin-bottom: 1rem;
+        }
     }
 }

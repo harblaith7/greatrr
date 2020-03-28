@@ -1,3 +1,5 @@
+@import "../../sass/mixins.scss";
+
 .Steps {
     padding: 7.5rem 0 0 0;
 
@@ -87,6 +89,50 @@
         &--step-five {
             width: 45rem;
             margin-top: -12.5rem;
+        }
+    }
+}
+
+@include width-1150px {
+    .Steps {
+
+
+        &__steps-image {
+            width: 40rem;
+        }
+
+        &__steps-description {
+            width: 90%
+        }
+
+        &__steps-description-container {
+
+            &--step-two {
+                width: 80%;
+                margin-left: 0rem;
+            }
+        }
+        
+    }
+}
+
+@include width-1050px {
+    .Steps {
+        &__steps-image {
+            width: 35rem;
+        }
+    }
+}
+
+@include width-950px {
+    .Steps {
+        &__steps-image {
+            display: none;
+        }
+
+        &__steps-description-container {
+            text-align: center;
+            margin: 0 auto
         }
     }
 }
