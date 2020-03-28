@@ -11,6 +11,7 @@ class LandingPage extends Component {
                 <Header/>
                 <About/>
                 <Steps/>
+                <h1>Hello</h1>
             </div>
         );
     }
