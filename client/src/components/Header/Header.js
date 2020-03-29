@@ -17,9 +17,9 @@ class Header extends Component {
                             Sed ipsum vitae voluptatum repudiandae, sapiente dolores!
                         </p>
                         <div className="Header__btn-container">
-                            <button className="Header__sign-in-btn Header__sign-in-btn--google">
+                            <a href="/auth/google" className="Header__sign-in-btn Header__sign-in-btn--google">
                                 Sign in with Google
-                            </button>
+                            </a>
                             <button className="Header__sign-in-btn Header__sign-in-btn--facebook">
                                 Sign in with Facebook
                             </button>
