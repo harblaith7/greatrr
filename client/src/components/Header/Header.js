@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import "./Header.scss";
 import goalBoard from "../../assets/svg/goal.svg"
+import {connect} from "react-redux"
 
 class Header extends Component {
     render() {
+        console.log(this.props.auth)
         return (
             <div className="Header">
                 <div className="Header__container">
@@ -34,4 +36,10 @@ class Header extends Component {
     }
 }
 
-export default Header;
+function mapStateToProps({auth}){
+    return {
+        auth
+    }
+}
+
+export default connect(mapStateToProps)(Header);

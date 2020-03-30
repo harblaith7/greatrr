@@ -3,8 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import '../src/sass/variables.scss'
+import {createStore, applyMiddleware} from 'redux'
+import {Provider} from "react-redux";
+import reducers from "./reducers"
+import reduxThunk from "redux-thunk"
 
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk))
 
-
-ReactDOM.render(<App />,document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>
+,document.getElementById('root'));
 
