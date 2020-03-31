@@ -26,7 +26,7 @@ class UserPage extends Component {
 
     displayHabits = () => {
         return this.state.habits.map(habit => {
-            return <h5 key={uuidv4()}>{habit}</h5>
+            return <h5 key={uuidv4()}>{habit} adnd</h5>
         })
     }
 
