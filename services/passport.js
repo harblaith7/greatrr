@@ -32,7 +32,11 @@ passport.use(
                 done(null, exisitngUser)
             } else {
                 new User({
-                    googleId : profile.id
+                    googleId : profile.id,
+                    fullName: profile.displayName,
+                    givenName: profile.name.givenName,
+                    photo: profile.photos[0].value,
+                    email: profile.emails[0].value
                 })
                 .save()
                 .then(user => done(null, user))
