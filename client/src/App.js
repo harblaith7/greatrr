@@ -4,7 +4,8 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import LandingPage from './pages/LandingPage/LandingPage'
 import UserPage from "./pages/UserPage/UserPage"
 import {connect} from 'react-redux'
-import * as actions from "./actions"
+import * as actions from "./actions";
+import axios from "axios"
 
 class App extends Component {
 

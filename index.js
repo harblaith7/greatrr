@@ -5,6 +5,7 @@ const keys = require('./config/keys')
 const mongoose = require('mongoose')
 require("./model/User")
 require("./services/passport")
+const userRoutes = require('./routes/userRoute')
 
 mongoose.connect(keys.mongoURI, {
     useUnifiedTopology: true,
@@ -29,7 +30,11 @@ app.use(passport.session())
 // ROUTES 
 require("./routes/authRoute")(app)
 
+app.get("/trust/the/process", (req, res) => {
+    res.send('Bitchass')
+})
 
+app.use("/api", userRoutes)
 
 // RAN IF IN PRODUCTION     
 if (process.env.NODE_ENV === "production"){

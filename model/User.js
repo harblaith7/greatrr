@@ -7,7 +7,8 @@ const userSchema = new Schema({
     fullName: String,
     givenName: String,
     photo: String,
-    email: String
+    email: String,
+    habits: {type : [String], default: []}
 })
 
 
