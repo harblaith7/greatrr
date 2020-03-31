@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import {connect} from 'react-redux'
+import { v4 as uuidv4 } from 'uuid';
 
 class UserPage extends Component {
 
@@ -25,7 +26,7 @@ class UserPage extends Component {
 
     displayHabits = () => {
         return this.state.habits.map(habit => {
-            return <h5>{habit}</h5>
+            return <h5 key={uuidv4()}>{habit}</h5>
         })
     }
 
