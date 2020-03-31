@@ -3,6 +3,7 @@ const passport = require('passport');
 const cookieSession = require("cookie-session");
 const keys = require('./config/keys')
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 require("./model/User")
 require("./services/passport")
 const userRoutes = require('./routes/userRoute')
@@ -12,9 +13,19 @@ mongoose.connect(keys.mongoURI, {
     useNewUrlParser: true
  })
 
+ 
+
 
 const app = express()
 
+
+app.use( bodyParser.json() );       
+app.use(bodyParser.urlencoded({    
+  extended: true
+}));
+
+
+////////// Passport /////////////////
 
 app.use(
     cookieSession({
@@ -27,7 +38,8 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 
-// ROUTES 
+////////    ROUTES     /////////////
+
 require("./routes/authRoute")(app)
 
 app.get("/trust/the/process", (req, res) => {
@@ -36,7 +48,8 @@ app.get("/trust/the/process", (req, res) => {
 
 app.use("/api", userRoutes)
 
-// RAN IF IN PRODUCTION     
+////////////     RAN IF IN PRODUCTION   //////////////////
+
 if (process.env.NODE_ENV === "production"){
     // Express will seeve up produciton assets
     app.use(express.static('client/build'))
@@ -46,6 +59,9 @@ if (process.env.NODE_ENV === "production"){
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     })
 }
+
+
+
 
 const PORT = process.env.PORT || 8080 
 

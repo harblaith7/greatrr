@@ -8,7 +8,8 @@ class UserPage extends Component {
     constructor(props){
         super(props)
         this.state = {
-            habits : null
+            habits : null,
+            habitInput: ""
         }
     }
 
@@ -24,24 +25,32 @@ class UserPage extends Component {
         }
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault()
+        if(this.state.habitInput){
+            axios.patch('/api/addhabit', {habit : this.state.habitInput})
+        }
+        
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name] : e.target.value
+        })
+    }
+
     displayHabits = () => {
         return this.state.habits.map(habit => {
             return <h5 key={uuidv4()}>{habit} adnd</h5>
         })
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault()
-
-        
-    }
-
     render() {
         return (
             <div>
                 <h4>Add a habit</h4>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text"/>
+                <form onSubmit={this.handleSubmit} >
+                    <input type="text" name="habitInput" onChange={this.handleChange} value={this.state.habitInput}/>
                     <input type="submit"/>
                 </form>
                 Aye you logged in mate!

@@ -13,5 +13,9 @@ router.get('/userhabits/:id', (req, res) => {
     })
 })
 
+router.patch('/addhabit', (req, res) => {
+    console.log(req.body)
+})
+
 
 module.exports = router
