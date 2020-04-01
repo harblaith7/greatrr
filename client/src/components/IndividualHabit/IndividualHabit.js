@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import "./IndividualHabit.scss"
+import "./IndividualHabit.scss";
+import Modal from '../Modal/Modal'
 
 class IndividualHabit extends Component {
     render() {
@@ -17,9 +18,14 @@ class IndividualHabit extends Component {
                                 {this.props.habitInfo.description}
                             </p>
                         </div>
-                        <h2 className="IndividualHabit__count">
-                            {this.props.habitInfo.currentScore}
-                        </h2>
+                        <div className="IndividualHabit__count-container">
+                            <Modal/>
+                            <h2 className="IndividualHabit__count">
+                                {this.props.habitInfo.currentScore}
+                            </h2>
+                            
+                        </div>
+                        
                     </div>
                 </div>
             </div>

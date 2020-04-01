@@ -4,7 +4,6 @@
     background-color: rgb(255, 255, 255);
     width: 90%;
     padding: 1rem 3rem;
-    cursor: pointer;
     border-radius: 0.5rem;
     box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.281);
     margin: 0 auto;
@@ -20,6 +19,7 @@
        left: 0;
        top: 0;
        clip-path: polygon(0 0, 100% 0%, 85% 100%, 0% 100%);
+       transition: width 0.5s ease-in;
     }
 
     &__description-container {
@@ -27,8 +27,11 @@
         align-items: center;
         justify-content: space-between;
         font-family: 'Baloo Da 2';
-        
-        
+   
+    }
+
+    &__count-container {
+       position: relative; 
     }
 
     &__habit-title {
