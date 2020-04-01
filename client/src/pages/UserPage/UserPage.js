@@ -25,10 +25,16 @@ class UserPage extends Component {
         }
     }
 
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault()
         if(this.state.habitInput){
-            axios.patch('/api/addhabit', {habit : this.state.habitInput})
+            await axios.patch(`/api/addhabit/${this.props.auth._id}`, {habit : this.state.habitInput, habits: this.state.habits})
+            const res = await axios.get(`/api/userhabits/${this.props.auth && this.props.auth._id}`)
+            this.setState({
+                habits : res.data,
+                habitInput: ""
+            })
+
         }
         
     }

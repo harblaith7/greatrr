@@ -13,8 +13,16 @@ router.get('/userhabits/:id', (req, res) => {
     })
 })
 
-router.patch('/addhabit', (req, res) => {
+router.patch('/addhabit/:id', async (req, res) => {
     console.log(req.body)
+    console.log(req.params.id)
+    const response = await User.findByIdAndUpdate(req.params.id, {
+        habits : [...req.body.habits, req.body.habit]
+    })
+    console.log(response)
+    res.send(response)
+  
+
 })
 
 
