@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;600;800&display=swap');
 
 .IndividualHabit {
-    background-color: rgb(233, 221, 118);
+    background-color: rgb(255, 255, 255);
     width: 90%;
     padding: 1rem 3rem;
     cursor: pointer;
@@ -9,18 +9,35 @@
     box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.281);
     margin: 0 auto;
     margin-bottom: 2.5rem;
+    position: relative;
+    overflow: hidden;
 
+    &__color {
+       background-color: red; 
+       width: 25%;
+       height: 100%;
+       position: absolute;
+       left: 0;
+       top: 0;
+       clip-path: polygon(0 0, 100% 0%, 85% 100%, 0% 100%);
+    }
 
     &__description-container {
         display: flex;
         align-items: center;
         justify-content: space-between;
         font-family: 'Baloo Da 2';
+        
+        
     }
 
     &__habit-title {
         font-size: 2rem;
-        letter-spacing: 0.5rem;
+        letter-spacing: 0.5rem;      
+    }
+
+    &__heading-container {
+        z-index: 3;
     }
 
     &__habit-description {
@@ -30,5 +47,6 @@
 
     &__count {
         font-size: 3.5rem;
+        z-index: 5;
     }
 }
