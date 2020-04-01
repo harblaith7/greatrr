@@ -1,4 +1,30 @@
 .StatsHeader {
     height: 85vh;
     background-color: rgba(107, 177, 243, 0.178);
+
+    &__container {
+        height: 100%
+    }
+
+    &__individual-habits-container {
+        width: 40%;
+        height:  100%;
+
+        padding-top: 7.5rem;
+        padding-bottom: 7.5rem;
+
+    }
+
+    &__habits-container {
+        width: 85%;
+        padding: 5rem 0;
+        margin: 0 auto;
+        overflow-y: auto;
+        margin-top: -2rem;
+        height: 99%
+    }
 }
+
+::-webkit-scrollbar {
+    width: 0px;
+  }

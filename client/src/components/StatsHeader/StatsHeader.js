@@ -6,7 +6,21 @@ class StatsHeader extends Component {
     render() {
         return (
             <div className="StatsHeader">
-                <IndividualHabit/>
+                <div className="StatsHeader__container">
+                    <div className="StatsHeader__individual-habits-container">
+                        <div className="StatsHeader__habits-container">
+                            <IndividualHabit/>
+                            <IndividualHabit/>
+                            <IndividualHabit/>
+                            <IndividualHabit/>
+                            <IndividualHabit/>
+                            <IndividualHabit/>
+                        </div> 
+                    </div>
+                    <div className="StatsHeader__total-stats-container">
+                        hi
+                    </div>
+                </div>
             </div>
         );
     }
