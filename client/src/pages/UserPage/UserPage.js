@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import {connect} from 'react-redux'
 import { v4 as uuidv4 } from 'uuid';
+import StatsHeader from "../../components/StatsHeader/StatsHeader"
 
 class UserPage extends Component {
 
@@ -47,23 +48,14 @@ class UserPage extends Component {
 
     displayHabits = () => {
         return this.state.habits.map(habit => {
-            return <h5 key={uuidv4()}>{habit} adnd</h5>
+            return <h5 key={uuidv4()}>{habit}</h5>
         })
     }
 
     render() {
         return (
             <div>
-                <h4>Add a habit</h4>
-                <form onSubmit={this.handleSubmit} >
-                    <input type="text" name="habitInput" onChange={this.handleChange} value={this.state.habitInput}/>
-                    <input type="submit"/>
-                </form>
-                Aye you logged in mate!
-                <h2>Your habits</h2>
-                <div>
-                    {this.state.habits && this.displayHabits()}
-                </div>
+                <StatsHeader/>
             </div>
         );
     }
