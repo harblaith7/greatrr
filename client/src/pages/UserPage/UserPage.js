@@ -48,6 +48,7 @@ class UserPage extends Component {
     }
 
     render() {
+        console.log(this.props.userHabits)
         return (
             <div>
                 <StatsHeader/>

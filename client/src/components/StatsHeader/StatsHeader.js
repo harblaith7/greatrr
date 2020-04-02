@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./StatsHeader.scss"
 import IndividualHabit from "../IndividualHabit/IndividualHabit";
 import { v4 as uuidv4 } from 'uuid';
+import {connect} from 'react-redux'
 
 
 class StatsHeader extends Component {
@@ -15,6 +16,7 @@ class StatsHeader extends Component {
                     description: "Out of bed by 5AM",
                     duration: 5,
                     currentScore: 3,
+                    linkedTo: "",
                     color: "green"
                 },
                 {
@@ -22,6 +24,12 @@ class StatsHeader extends Component {
                     description: "1 hour of weight training",
                     duration: 6,
                     currentScore: 6,
+                    linkedTo: "Acheiving body that is 200lbs and 10% body fat",
+                    weeksPoints: 23,
+                    weeksHours: 5,
+                    totalPoints: 312,
+                    totalHours: 74,
+                    weekStatus : [false, false, false, false, false, false, false],
                     color: "pink"
                 },
                 {
@@ -51,18 +59,19 @@ class StatsHeader extends Component {
     }
 
     displayHabits = () => {
-        return this.state.habits.map(habit => {
+        return this.props.userHabits.map(habit => {
             return <IndividualHabit habitInfo = {habit} key={uuidv4()}/>
         })
     }
 
     render() {
+        console.log(this.props.userHabits)
         return (
             <div className="StatsHeader">
                 <div className="StatsHeader__container">
                     <div className="StatsHeader__individual-habits-container">
                         <div className="StatsHeader__habits-container">
-                            {this.displayHabits()}
+                            {this.props.userHabits.length && this.displayHabits()}
                         </div> 
                     </div>
                     <div className="StatsHeader__total-stats-container">
@@ -74,4 +83,8 @@ class StatsHeader extends Component {
     }
 }
 
-export default StatsHeader;
+const mapStateToProps = ({userHabits}) => ({
+    userHabits
+})
+
+export default connect(mapStateToProps)(StatsHeader);

@@ -1,10 +1,10 @@
 const router = require('express').Router()
 const mongoose = require("mongoose")
 const User = mongoose.model("users")
+const Habits = mongoose.model("habits")
 
 
 router.get('/userhabits/:id', (req, res) => {
-    
     User.findById({
         _id : req.params.id
     })
@@ -21,6 +21,26 @@ router.patch('/addhabit/:id', async (req, res) => {
     })
     console.log(response)
     res.send(response)
+})
+
+router.post('/addhabit/:id', async (req, res) => {
+    const {habit, description, duration, linkedTo, color} = req.body
+    console.log("I am running")
+    const response = await User.findByIdAndUpdate(req.params.id, {
+        habits : new Habits({
+            habit,
+            description,
+            duration,
+            linkedTo,
+            color
+        })
+        .save()
+        .then(() => {
+            res.send(response)
+        })
+    })
+    
+    console.log(response)
 })
 
 
