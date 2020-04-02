@@ -23,23 +23,23 @@ router.patch('/addhabit/:id', async (req, res) => {
     res.send(response)
 })
 
+// Flimsy code
 router.post('/addhabit/:id', async (req, res) => {
-    const {habit, description, duration, linkedTo, color} = req.body
+    const {habit, description, duration, linkedTo, color} = req.body;
+
+    const newHabit = new Habits({
+        habit,
+        description,
+        duration,
+        linkedTo,
+        color
+    })
+
     console.log("I am running")
     const response = await User.findByIdAndUpdate(req.params.id, {
-        habits : new Habits({
-            habit,
-            description,
-            duration,
-            linkedTo,
-            color
-        })
-        .save()
-        .then(() => {
-            res.send(response)
-        })
+        habits : newHabit    
     })
-    
+    res.send(response)
     console.log(response)
 })
 
