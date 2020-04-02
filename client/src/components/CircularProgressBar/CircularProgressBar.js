@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
 export default function CircularStatic() {
   const classes = useStyles();
   const [completed, setCompleted] = React.useState(0);
+  if(completed)console.log("completed")
 
   React.useEffect(() => {
     function progress() {

@@ -18,7 +18,6 @@ class UserPage extends Component {
     async componentDidUpdate(prevProps){
         if(prevProps.auth !== this.props.auth){
             await this.props.fetchUserHabits(this.props.auth._id)
-            console.log(this.props.userHabits)
         }
     }
 
@@ -49,7 +48,6 @@ class UserPage extends Component {
     }
 
     render() {
-        console.log('ehhhelo',this.props.fetchUserHabits)
         return (
             <div>
                 <StatsHeader/>

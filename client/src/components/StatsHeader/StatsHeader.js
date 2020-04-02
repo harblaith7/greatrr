@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./StatsHeader.scss"
 import IndividualHabit from "../IndividualHabit/IndividualHabit";
+import { v4 as uuidv4 } from 'uuid';
 
 
 class StatsHeader extends Component {
@@ -51,7 +52,7 @@ class StatsHeader extends Component {
 
     displayHabits = () => {
         return this.state.habits.map(habit => {
-            return <IndividualHabit habitInfo = {habit} />
+            return <IndividualHabit habitInfo = {habit} key={uuidv4()}/>
         })
     }
 

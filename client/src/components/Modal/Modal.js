@@ -69,7 +69,7 @@ export default function SpringModal(props) {
   return (
     <div className="ModalButton">
       
-      <img src={rightArrow} onClick={handleOpen} className="ModalButton__btn"/>
+      <img src={rightArrow} onClick={handleOpen} className="ModalButton__btn" alt="right arrow to trigger modal"/>
       <Modal
         aria-labelledby="spring-modal-title"
         aria-describedby="spring-modal-description"
@@ -83,7 +83,7 @@ export default function SpringModal(props) {
         }}
       >
         <Fade in={open}>
-          <div className={classes.paper} className="Modal">
+          <div className={"Modal"}>
             <ModalNav/>
             <div className="Modal__section-container">
             <div className="Modal__page-section-container">

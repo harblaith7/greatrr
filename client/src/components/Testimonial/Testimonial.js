@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
 import './Testimonial.scss';
 import aristotle from '../../assets/images/aristotle.jpg'
