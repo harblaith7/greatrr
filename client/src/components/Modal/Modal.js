@@ -5,7 +5,9 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import { useSpring, animated } from 'react-spring/web.cjs'; // web.cjs is required for IE 11 support
 import rightArrow from "../../assets/svg/next.svg";
-import "./Modal.scss"
+import "./Modal.scss";
+import ModalNav from "../ModalNav/ModalNav"
+import CircularProgressBar from "../CircularProgressBar/CircularProgressBar"
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -52,7 +54,7 @@ Fade.propTypes = {
   onExited: PropTypes.func,
 };
 
-export default function SpringModal() {
+export default function SpringModal(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -81,9 +83,20 @@ export default function SpringModal() {
         }}
       >
         <Fade in={open}>
-          <div className={classes.paper}>
-            <h2 id="spring-modal-title">Spring modal</h2>
-            <p id="spring-modal-description">react-spring animates me.</p>
+          <div className={classes.paper} className="Modal">
+            <ModalNav/>
+            <div className="Modal__section-container">
+            <div className="Modal__page-section-container">
+                <div className="Modal__progress-bar-container">
+                  <CircularProgressBar/>
+                </div>
+              </div>
+              <div className="Modal__heading-container">
+                <h3 className="Modal__habit-heading" >{props.habitInfo.habit}</h3>
+                <p className="Modal__habit-week"> Week 3</p>
+              </div>
+              
+            </div>
           </div>
         </Fade>
       </Modal>

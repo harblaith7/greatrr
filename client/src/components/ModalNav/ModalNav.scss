@@ -1,0 +1,35 @@
+@import "../../sass/variables.scss";
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;600;800&display=swap');
+
+.ModalNav {
+
+    height: 12.5%;
+
+    &__container {
+       height: 100%
+    }
+
+    &__list {
+        
+        height: 100%;
+        display: flex;
+        border-bottom: 0.2rem solid $light-grey;
+        font-family: "Baloo Da 2";
+    }
+
+    &__list-item {
+        list-style: none;
+        margin: 0 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 2rem;
+    }
+
+    &__link {
+        
+        color: black;
+        text-decoration: none;
+        font-size: 2rem;
+    }
+}

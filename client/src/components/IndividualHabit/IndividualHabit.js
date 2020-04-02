@@ -10,6 +10,7 @@ class IndividualHabit extends Component {
                 <div className="IndividualHabit__color" style={{backgroundColor: color, width : `${currentScore/duration * 117.5}%`}}/>
                 <div className="IndividualHabit__container">
                     <div className="IndividualHabit__description-container">
+
                         <div className="IndividualHabit__heading-container">
                             <h3 className="IndividualHabit__habit-title">
                                 {this.props.habitInfo.habit}
@@ -19,13 +20,12 @@ class IndividualHabit extends Component {
                             </p>
                         </div>
                         <div className="IndividualHabit__count-container">
-                            <Modal/>
+                            <Modal habitInfo={this.props.habitInfo}/>
                             <h2 className="IndividualHabit__count">
                                 {this.props.habitInfo.currentScore}
                             </h2>
-                            
                         </div>
-                        
+
                     </div>
                 </div>
             </div>

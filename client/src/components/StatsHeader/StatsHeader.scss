@@ -16,15 +16,34 @@
 
     &__habits-container {
         width: 85%;
-        padding: 5rem 0;
+        padding: 0rem 0;
         margin: 0 auto;
         overflow-y: auto;
-        margin-top: -2rem;
-        height: 90%;
-        
+        margin-top: 0rem;
+        height: 80%;
+        direction: rtl;
     }
 }
 
 ::-webkit-scrollbar {
-    width: 0px;
+    direction: rtl;
+    width: 5px
   }
+
+  /* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f14f;
+    border-radius: 1rem;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgba(136, 136, 136, 0.432);
+    border-radius: 1rem;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
