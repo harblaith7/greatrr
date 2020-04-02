@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from "axios";
 import {connect} from 'react-redux'
 import { v4 as uuidv4 } from 'uuid';
-import StatsHeader from "../../components/StatsHeader/StatsHeader"
+import StatsHeader from "../../components/StatsHeader/StatsHeader";
+import {fetchUserHabits} from "../../actions"
 
 class UserPage extends Component {
 
@@ -14,15 +15,10 @@ class UserPage extends Component {
         }
     }
 
-    componentDidUpdate(prevProps){
+    async componentDidUpdate(prevProps){
         if(prevProps.auth !== this.props.auth){
-            axios.get(`/api/userhabits/${this.props.auth && this.props.auth._id}`)
-            .then(response => {
-                this.setState({
-                    habits: response.data
-                })
-                
-            })
+            await this.props.fetchUserHabits(this.props.auth._id)
+            console.log(this.props.userHabits)
         }
     }
 
@@ -53,6 +49,7 @@ class UserPage extends Component {
     }
 
     render() {
+        console.log('ehhhelo',this.props.fetchUserHabits)
         return (
             <div>
                 <StatsHeader/>
@@ -61,10 +58,11 @@ class UserPage extends Component {
     }
 }
 
-function mapStateToProps({auth}){
+function mapStateToProps({auth, userHabits}){
     return {
-        auth
+        auth,
+        userHabits
     }
 }
 
-export default connect(mapStateToProps)(UserPage);
+export default connect(mapStateToProps, {fetchUserHabits})(UserPage);
