@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap');
 
 .ModalButton {
     cursor: pointer;
@@ -30,5 +31,35 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        position: relative;
+    }
+
+    &__progress-score-container {
+        font-family: "Monda";
+        position: absolute;
+        font-size: 3.5rem;
+        font-weight: 300;
+        color: rgba(0, 0, 0, 0.801)
+    }
+
+    &__week-tracker-container {
+        padding: 2rem 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__week-box {
+        background-color: rgba(51, 196, 201, 0.432);
+        width: 3.5rem;
+        height: 3.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.25rem;
+        font-size: 1.25rem;
+        cursor: pointer;
+        font-weight: 700;
+        font-family: "Monda";
+        color: rgba(0, 0, 0, 0.801)
     }
 }

@@ -89,13 +89,39 @@ export default function SpringModal(props) {
             <div className="Modal__page-section-container">
                 <div className="Modal__progress-bar-container">
                   <CircularProgressBar/>
+                  <div className="Modal__progress-score-container">
+                    <h2 className="Modal__progress-score">5/6</h2>
+                  </div>
                 </div>
               </div>
               <div className="Modal__heading-container">
                 <h3 className="Modal__habit-heading" >{props.habitInfo.habit}</h3>
                 <p className="Modal__habit-week"> Week 3</p>
               </div>
-              
+              <div className="Modal__week-tracker-container">
+                <div className="Modal__week-box">
+                  M
+                </div>
+                <div className="Modal__week-box">
+                  T
+                </div>
+                <div className="Modal__week-box">
+                  W
+                </div>
+                <div className="Modal__week-box">
+                  Th
+                </div>
+                <div className="Modal__week-box">
+                  F
+                </div>
+                <div className="Modal__week-box">
+                  S
+                </div>
+                <div className="Modal__week-box">
+                  S
+                </div>
+              </div>
+              Points Earned this Week: 50
             </div>
           </div>
         </Fade>
