@@ -7,7 +7,8 @@ import { useSpring, animated } from 'react-spring/web.cjs'; // web.cjs is requir
 import rightArrow from "../../assets/svg/next.svg";
 import "./Modal.scss";
 import ModalNav from "../ModalNav/ModalNav"
-import CircularProgressBar from "../CircularProgressBar/CircularProgressBar"
+import CircularProgressBar from "../CircularProgressBar/CircularProgressBar";
+import WeekBox from "../WeekBox/WeekBox"
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -66,6 +67,13 @@ export default function SpringModal(props) {
     setOpen(false);
   };
 
+  const displayWeekBoxes = () => {
+    const weeks = ["M", "T", "W", "Th", "F", "S", "S"]
+    return weeks.map(week => {
+      return <WeekBox week={week} />
+    })
+  }
+
   return (
     <div className="ModalButton">
       
@@ -88,38 +96,18 @@ export default function SpringModal(props) {
             <div className="Modal__section-container">
             <div className="Modal__page-section-container">
                 <div className="Modal__progress-bar-container">
-                  <CircularProgressBar/>
+                  <CircularProgressBar percentage={props.habitInfo.currentScore/props.habitInfo.duration * 100}/>
                   <div className="Modal__progress-score-container">
-                    <h2 className="Modal__progress-score">5/6</h2>
+                    <h2 className="Modal__progress-score">{props.habitInfo.currentScore}/{props.habitInfo.duration}</h2>
                   </div>
                 </div>
-              </div>
+            </div>
               <div className="Modal__heading-container">
                 <h3 className="Modal__habit-heading" >{props.habitInfo.habit}</h3>
                 <p className="Modal__habit-week"> Week 3</p>
               </div>
               <div className="Modal__week-tracker-container">
-                <div className="Modal__week-box">
-                  M
-                </div>
-                <div className="Modal__week-box">
-                  T
-                </div>
-                <div className="Modal__week-box">
-                  W
-                </div>
-                <div className="Modal__week-box">
-                  Th
-                </div>
-                <div className="Modal__week-box">
-                  F
-                </div>
-                <div className="Modal__week-box">
-                  S
-                </div>
-                <div className="Modal__week-box">
-                  S
-                </div>
+                {displayWeekBoxes()}
               </div>
               Points Earned this Week: 50
             </div>

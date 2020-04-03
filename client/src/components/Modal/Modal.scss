@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;600;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap');
+@import "../../sass/variables.scss";
 
 .ModalButton {
     cursor: pointer;
@@ -49,7 +50,7 @@
     }
 
     &__week-box {
-        background-color: rgba(51, 196, 201, 0.432);
+        background-color: $inactive-blue;
         width: 3.5rem;
         height: 3.5rem;
         display: flex;
@@ -60,6 +61,11 @@
         cursor: pointer;
         font-weight: 700;
         font-family: "Monda";
-        color: rgba(0, 0, 0, 0.801)
+        color: rgba(0, 0, 0, 0.801);
+        transition: 0.5s background-color;
+
+        &--active {
+            background-color: $active-green;
+        }
     }
 }

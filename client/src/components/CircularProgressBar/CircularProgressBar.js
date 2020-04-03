@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CircularStatic() {
+export default function CircularStatic(props) {
   const classes = useStyles();
   const [completed, setCompleted] = React.useState(0);
   if(completed)console.log("completed")
@@ -31,7 +31,7 @@ export default function CircularStatic() {
     <div className={classes.root} >
       <CircularProgress 
         variant="static" 
-        value={100} 
+        value={props.percentage} 
         size={225}
         thickness={1.5}
     />
