@@ -36,11 +36,12 @@ router.post('/addhabit/:id', async (req, res) => {
     })
 
     console.log("I am running")
-    const response = await User.findByIdAndUpdate(req.params.id, {
-        habits : newHabit    
-    })
-    res.send(response)
-    console.log(response)
+
+    const user = await User.findById(req.params.id)
+    user.habits.push(newHabit);
+    await user.save();
+    res.send(user)
+    
 })
 
 
