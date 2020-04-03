@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {connect} from "react-redux"
+import {updateUserHabits} from "../../actions/index"
 
 class WeekBox extends Component {
 
@@ -13,9 +15,11 @@ class WeekBox extends Component {
         this.setState({
             isCompleted : !this.state.isCompleted
         })
+        this.props.updateUserHabits(this.props.auth._id, this.props.habitId)
     }
 
     render() {
+        
         return (
             <div 
                 className={`Modal__week-box ${this.state.isCompleted && "Modal__week-box--active"}`} 
@@ -27,4 +31,8 @@ class WeekBox extends Component {
     }
 }
 
-export default WeekBox;
+const mapStateToProps = ({auth}) => ({
+    auth
+})
+
+export default connect(mapStateToProps, {updateUserHabits})(WeekBox);

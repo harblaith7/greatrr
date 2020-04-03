@@ -70,9 +70,10 @@ export default function SpringModal(props) {
   const displayWeekBoxes = () => {
     const weeks = ["M", "T", "W", "Th", "F", "S", "S"]
     return weeks.map(week => {
-      return <WeekBox week={week} />
+      return <WeekBox week={week} habitId={props.habitInfo._id}/>
     })
   }
+
 
   return (
     <div className="ModalButton">

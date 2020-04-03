@@ -25,7 +25,7 @@ router.patch('/updateScore/:userId/:habitId', async (req, res) => {
         console.log(req.params.habitId)
         if(habit._id == req.params.habitId){
             console.log('Running')
-            habit.currentScore = habit.currentScore + 5;
+            habit.currentScore = habit.currentScore + 1;
             return habit
         } else {
             console.log('am i running?')

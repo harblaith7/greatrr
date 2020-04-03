@@ -16,7 +16,7 @@ class StatsHeader extends Component {
 
     displayHabits = () => {
         return this.props.userHabits.map(habit => {
-            return <IndividualHabit habitInfo = {habit} key={uuidv4()}/>
+            return <IndividualHabit habitInfo={habit} key={uuidv4()}/>
         })
     }
 
