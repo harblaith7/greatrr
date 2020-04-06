@@ -3,6 +3,7 @@ import axios from "axios";
 import {connect} from 'react-redux'
 import { v4 as uuidv4 } from 'uuid';
 import StatsHeader from "../../components/StatsHeader/StatsHeader";
+import CreateHabitsForm from "../../components/CreateHabitsForm/CreateHabitsForm"
 import {fetchUserHabits} from "../../actions"
 
 class UserPage extends Component {
@@ -15,6 +16,7 @@ class UserPage extends Component {
         }
     }
 
+    // FETCHES ALL OF THE USERS HABITS //
     async componentDidUpdate(prevProps){
         if(prevProps.auth !== this.props.auth){
             await this.props.fetchUserHabits(this.props.auth._id)
@@ -47,11 +49,27 @@ class UserPage extends Component {
         })
     }
 
+    // CHECKS IF USER ALREADY HAS HABITS REGISTERED
+    // IF NOT WILL RENDER FORM PAGE 
+    // IF SO WILL RENDER USER HABIT INFO
     render() {
-        console.log(this.props.userHabits)
+        console.log(this.props.userHabits.length)
+        console.log(this.props.auth)
         return (
             <div>
-                <StatsHeader/>
+                {this.props.auth && (
+                    <div className="UserPage__page">
+                        {
+                            this.props.userHabits.length ? (
+                                <StatsHeader/>
+                            ) : (
+                                <CreateHabitsForm
+                                    userName = {this.props.auth.givenName}
+                                />
+                            )
+                        }
+                    </div>
+                )}
             </div>
         );
     }

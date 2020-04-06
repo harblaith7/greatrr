@@ -1,0 +1,49 @@
+@import "../../sass/variables.scss";
+
+.CreateHabitsForm {
+    height: 100vh;
+
+    &__container {
+        height: 100%;
+        display: flex;
+    }
+
+    &__greeting-container {
+        height: 100%;
+        width: 35%;
+        background-image: linear-gradient(to right, $secondary-color, $secondary-color-dark), url("../../assets/images/simple-background.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__form-container {
+        width: 65%;   
+    }
+
+    &__text-container {
+        width: 80%;
+        margin-top: -10rem;
+        text-align: center;
+        color: $primary-white;
+        text-shadow: 0.1rem 0.1rem 1rem $very-light-black;
+    }
+
+    &__heading {
+        font-size: 6.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    &__description {
+        font-size: 2rem;
+        line-height: 3rem;
+
+        & span {
+            color: $royal-red;
+           
+        }
+    }
+}

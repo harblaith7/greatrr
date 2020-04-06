@@ -21,18 +21,11 @@ class StatsHeader extends Component {
     }
 
     render() {
-        console.log(this.props.userHabits)
+        //console.log(this.props.userHabits)
         return (
             <div className="StatsHeader">
                 <div className="StatsHeader__container">
-                    <div className="StatsHeader__individual-habits-container">
-                        <div className="StatsHeader__habits-container">
-                            {this.props.userHabits.length && this.displayHabits()}
-                        </div> 
-                    </div>
-                    <div className="StatsHeader__total-stats-container">
-                        hi
-                    </div>
+                    
                 </div>
             </div>
         );
@@ -44,3 +37,21 @@ const mapStateToProps = ({userHabits}) => ({
 })
 
 export default connect(mapStateToProps)(StatsHeader);
+
+
+
+
+/* 
+
+<div className="StatsHeader__individual-habits-container">
+                        <div className="StatsHeader__habits-container">
+                            {this.props.userHabits.length ? this.displayHabits() : ""}
+                            hey Laith
+                        </div> 
+                    </div>
+                    <div className="StatsHeader__total-stats-container">
+                        hi
+                    </div>
+
+
+                    */
