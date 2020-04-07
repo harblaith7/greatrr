@@ -14,22 +14,32 @@ class CreateHabitsForm extends Component {
                    title : "Where do you want to be?" ,
                    description: "The first step is knowing what you want and where you eventually want to be. Name one long term goal that you want to ultimately achieve 5 to 10 years down the line.",
                    example: "I want to have the physique of Jason Momoa",
-                   inputContent: "Long-term goal"
+                   inputContent: "Long-term goal",
+                   name: "longTermGoal"
                 },
                 {
                     title : "Let's break it down." ,
                     description: "Now lets break down the goal into something you can accomplish in the next three months. Find a place that you want to be in after three months that will get you closer to your ultimate goal.",
                     example: "I will shead 10lbs of body fat",
-                    inputContent: "Three-month goal"
+                    inputContent: "Three-month goal",
+                    name: "threeMonthGoal"
                  },
                  {
                     title : "Break it down some more!" ,
                     description: "The only way to achieve your goal is to work towards it consistently. Thats where daily habits come into play! Break down your three-month goal into tiny a goal you can accomplish everyday. ",
                     example: "I will perform a 20 hour intermittent fast",
-                    inputContent: "Daily Habit"
+                    inputContent: "Daily Habit",
+                    name: "dailyHabit"
                  }
-            ]
+            ],
+            formInput : {
+                longTermGoal : "",
+                threeMonthGoal: "",
+                dailyHabit: ""
+            },
+            test: "asdas"
         }
+
     }
 
     // RENDERS THE WHOLE FORM PAGE //
@@ -40,7 +50,7 @@ class CreateHabitsForm extends Component {
                 initial={{x: "-100%"}}
                 animate={{x:0}}
                 exit={{x: "-100%", transition: {delay: 0.2, damping: 1000}}}
-                transition = {{damping: 1000, delay: 0.35}}
+                transition = {{damping: 1000, delay: 0.55, duration: 0.75}}
             >
                 <form action="" className="CreateHabitsForm__form">
                     {this.displayFormTitleAndInput()}
@@ -65,14 +75,18 @@ class CreateHabitsForm extends Component {
                             {info.example}
                         </span>
                     </p>
+                    
                     <div className="CreateHabitsForm__input-container">
                         <input 
                             type="text"
                             autoComplete="off"
-                            name="long-term-goal"
+                            name={info.name}
                             required
                             className="CreateHabitsForm__input"
+                            onChange={this.handleChange}
+                            value={this.state.formInput[info.name]}
                         />
+                        
                         <label htmlFor="long-term-goal" className="CreateHabitsForm__label">
                             <span className="CreateHabitsForm__label-name">
                                 {info.inputContent}
@@ -87,6 +101,12 @@ class CreateHabitsForm extends Component {
     toggleForm = () => {
         this.setState({
             isToggled : !this.state.isToggled
+        })
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            formInput : {...this.state.formInput, [e.target.name] : e.target.value}
         })
     }
 
@@ -125,7 +145,7 @@ class CreateHabitsForm extends Component {
                                 initial={{x : "-100%"}}
                                 animate={{x: "0"}}
                                 exit={{x: "-100%", transition: {
-                                    delay: 0, damping: 400
+                                    delay: 0.1, damping: 400
                                 }}}
                                 transition={{damping: 1000, delay: 0.75, duration: 0.5}}
                             >

@@ -169,7 +169,16 @@
         color: $grey;
         position: absolute;
         bottom: 0;
-        left: 5%
+        left: 5%;
+        transition: 0.3s all ease;
+
+        &:focus {
+            outline : none
+        }
+
+        &:hover {
+            transform: scale(1.025);
+        }
     }
 
 
