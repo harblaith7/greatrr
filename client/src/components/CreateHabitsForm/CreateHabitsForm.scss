@@ -55,11 +55,13 @@
         align-items: center; 
         overflow: hidden;
         flex-direction: column;
+        position: relative;
     }
 
     &__form-page-containter {
         height: 100%;
-        width: 100%
+        width: 100%;
+       
     }
 
     &__form {
@@ -164,9 +166,21 @@
         color: $off-black;
         background-color: white;
         font-weight: 700;
-        color: $grey
+        color: $grey;
+        position: absolute;
+        bottom: 0;
+        left: 5%
     }
 
 
 }
 
+
+
+.test {
+    float: left;
+    position: absolute;
+    width: 100%;
+    background-color: blue;
+    height: 100%
+}

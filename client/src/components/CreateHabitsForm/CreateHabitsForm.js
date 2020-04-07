@@ -36,21 +36,13 @@ class CreateHabitsForm extends Component {
         return (
             <motion.div 
                 className="CreateHabitsForm__form-page-containter"
-                initial={{y: "-100%"}}
-                animate={{y:0}}
-                exit={{y: "-100%"}}
-                transition = {{damping: 500}}
+                initial={{x: "-100%"}}
+                animate={{x:0}}
+                exit={{x: "-100%", transition: {delay: 0.2, damping: 1000}}}
+                transition = {{damping: 1000, delay: 0.35}}
             >
                 <form action="" className="CreateHabitsForm__form">
                     {this.displayFormTitleAndInput()}
-
-                    <button 
-                        type="submit" 
-                        className="CreateHabitsForm__continue-btn"
-                        onClick={this.toggleForm}
-                    >
-                        Continue
-                    </button>
                 </form>
                 
             </motion.div>
@@ -121,7 +113,29 @@ class CreateHabitsForm extends Component {
                        <AnimatePresence>
                             {this.state.isToggled && this.displayFormPage()}
                         </AnimatePresence>
-                        <button type="button" onClick={this.toggleForm}>Toggle</button>
+                        <AnimatePresence>
+                            {!this.state.isToggled && (
+                                <motion.div 
+                                className="test"
+                                initial={{x : "-100%"}}
+                                animate={{x: "0"}}
+                                exit={{x: "-100%", transition: {
+                                    delay: 0, damping: 400
+                                }}}
+                                transition={{damping: 1000, delay: 0.5, duration: 0.5}}
+                            >
+                                <h1>hello</h1>
+                            </motion.div>
+                            )}
+                            
+                        </AnimatePresence>
+                        <button 
+                            type="submit" 
+                            className="CreateHabitsForm__continue-btn"
+                            onClick={this.toggleForm}
+                        >
+                            Continue
+                        </button>
                     </div>
 
                 </div>
@@ -131,3 +145,18 @@ class CreateHabitsForm extends Component {
 }
 
 export default CreateHabitsForm;
+
+
+/*
+
+
+<button 
+                            type="submit" 
+                            className="CreateHabitsForm__continue-btn"
+                            onClick={this.toggleForm}
+                        >
+                            Continue
+                        </button>
+
+
+                        */
