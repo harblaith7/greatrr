@@ -200,7 +200,7 @@
 
     &__submit-btn {
         @extend .CreateHabitsForm__continue-btn;
-        border: 0.15rem solid $secondary-color;
+        border: 0.15rem solid $secondary-color-darker;
         left: 30%
     }
 

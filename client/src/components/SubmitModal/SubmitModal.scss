@@ -1,0 +1,42 @@
+@import "../../sass/variables.scss";
+
+.SubmitModal {
+    background-color: white;
+    width: 40rem;
+    height: auto;
+    font-family: "Lato";
+
+    &__container {
+        padding: 3rem
+    }
+
+    &__heading {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+        color: $secondary-color
+    }
+
+    &__user-input {
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+        color: $off-black;
+
+        &--number {
+            margin-top: 1.5rem;
+            margin-left: 1rem;
+            font-weight: 700;
+        }
+    }
+
+    &__number-inputs-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__number-input-container {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+}

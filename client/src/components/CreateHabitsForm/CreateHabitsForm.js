@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import "./CreateHabitsForm.scss"
 import {motion, AnimatePresence} from "framer-motion";
-import SecondForm from "../SecondForm/SecondForm"
+import SecondForm from "../SecondForm/SecondForm";
+import SubmitModal from "../SubmitModal/SubmitModal"
 
 class CreateHabitsForm extends Component {
 
@@ -174,25 +175,23 @@ class CreateHabitsForm extends Component {
                         </AnimatePresence>
 
                         {/* BUTTONS */}
-                        <button 
+                        <motion.button 
                             type="button" 
                             className="CreateHabitsForm__continue-btn"
                             onClick={this.toggleForm}
+                            initial={{x: "-150%"}}
+                            animate={{x: 0}}
+                            transition = {{damping: 1000, delay: 0.2, duration: 0.75}}
                         >
                             {this.state.isToggled ? "Continue" : "Go Back"}
-                        </button>
+                        </motion.button>
 
                         <AnimatePresence>
                             {
                                 this.validateForm() && (
-                                    <motion.button 
-                                        className="CreateHabitsForm__submit-btn"
-                                        initial={{opacity: 0}}
-                                        animate={{opacity: 1}}
-                                        exit={{opacity: 0, transition: {duration: 0.75}}}
-                                    >
-                                        Add Habit
-                                    </motion.button>
+                                    <SubmitModal 
+                                        formInput = {this.state.formInput}
+                                    />
                                 )
                             }
                         </AnimatePresence>
