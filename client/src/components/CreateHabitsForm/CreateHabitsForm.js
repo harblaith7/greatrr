@@ -35,9 +35,11 @@ class CreateHabitsForm extends Component {
             formInput : {
                 longTermGoal : "",
                 threeMonthGoal: "",
-                dailyHabit: ""
-            },
-            test: "asdas"
+                dailyHabit: "",
+                habitName : "",
+                habitDuration : 1,
+                habitPriority: 1
+            }
         }
 
     }
@@ -98,16 +100,30 @@ class CreateHabitsForm extends Component {
         })
     }
 
+    // TOGGLES THE TWO FORMS BACK AND FORTH //
     toggleForm = () => {
         this.setState({
             isToggled : !this.state.isToggled
         })
     }
 
+    // CHANGES THE INPUT VALUES OF THE FORM //
     handleChange = (e) => {
         this.setState({
             formInput : {...this.state.formInput, [e.target.name] : e.target.value}
         })
+    }
+
+    // VALIDATES IF ALL INFORMATION IS INPUT //
+    validateForm = () => {
+        for(let inputField in this.state.formInput){
+            
+            if(!this.state.formInput[inputField]){
+                return false
+            }
+        }
+
+        return true
     }
 
     render() {
@@ -149,7 +165,10 @@ class CreateHabitsForm extends Component {
                                 }}}
                                 transition={{damping: 1000, delay: 0.75, duration: 0.5}}
                             >
-                                <SecondForm/>
+                                <SecondForm
+                                    handleChange = {this.handleChange}
+                                    formInput = {this.state.formInput}
+                                />
                             </motion.div>
                             )}   
                         </AnimatePresence>
@@ -162,6 +181,23 @@ class CreateHabitsForm extends Component {
                         >
                             {this.state.isToggled ? "Continue" : "Go Back"}
                         </button>
+
+                        <AnimatePresence>
+                            {
+                                this.validateForm() && (
+                                    <motion.button 
+                                        className="CreateHabitsForm__submit-btn"
+                                        initial={{opacity: 0}}
+                                        animate={{opacity: 1}}
+                                        exit={{opacity: 0, transition: {duration: 0.75}}}
+                                    >
+                                        Add Habit
+                                    </motion.button>
+                                )
+                            }
+                        </AnimatePresence>
+                        
+
                     </div>
 
                 </div>

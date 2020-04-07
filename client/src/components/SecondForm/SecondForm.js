@@ -23,6 +23,9 @@ class SecondForm extends Component {
                             name="long-term-goal"
                             required
                             className="CreateHabitsForm__input"
+                            name="habitName"
+                            onChange={this.props.handleChange}
+                            value={this.props.formInput.habitName}
                         />
                         <label htmlFor="long-term-goal" className="CreateHabitsForm__label">
                             <span className="CreateHabitsForm__label-name">
@@ -55,6 +58,9 @@ class SecondForm extends Component {
                             max="5"
                             step="1"
                             className="CreateHabitsForm__range-input"
+                            value={this.props.formInput.habitPriority}
+                            name="habitPriority"
+                            onChange={this.props.handleChange}
                         />
                         
                     </div>
@@ -83,6 +89,9 @@ class SecondForm extends Component {
                             max="7"
                             step="1"
                             className="CreateHabitsForm__range-input"
+                            value={this.props.formInput.habitDuration}
+                            name="habitDuration"
+                            onChange={this.props.handleChange}
                         />
                         
                     </div>

@@ -192,16 +192,19 @@
     }
 
     &__range-input {
-        background-color: blue;
+        height: 2.5rem;
         width: 100%;
         cursor: pointer;
+        border-radius: 0.25rem;
+    }
+
+    &__submit-btn {
+        @extend .CreateHabitsForm__continue-btn;
+        border: 0.15rem solid $secondary-color;
+        left: 30%
     }
 
 
 }
 
 
-
-.test {
-    
-}
