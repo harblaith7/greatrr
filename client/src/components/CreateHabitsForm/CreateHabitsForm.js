@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./CreateHabitsForm.scss"
-import {motion, AnimatePresence} from "framer-motion"
+import {motion, AnimatePresence} from "framer-motion";
+import SecondForm from "../SecondForm/SecondForm"
 
 class CreateHabitsForm extends Component {
 
@@ -24,7 +25,7 @@ class CreateHabitsForm extends Component {
                  {
                     title : "Break it down some more!" ,
                     description: "The only way to achieve your goal is to work towards it consistently. Thats where daily habits come into play! Break down your three-month goal into tiny a goal you can accomplish everyday. ",
-                    example: "I will intermittent fast and go to the gym in the morning",
+                    example: "I will perform a 20 hour intermittent fast",
                     inputContent: "Daily Habit"
                  }
             ]
@@ -110,31 +111,36 @@ class CreateHabitsForm extends Component {
                     {/* FORM CONTAINER TO THE RIGHT */}
 
                     <div className="CreateHabitsForm__form-container">
+
+                       {/* FIRST FORM */}
                        <AnimatePresence>
                             {this.state.isToggled && this.displayFormPage()}
                         </AnimatePresence>
+
+                        {/* SECOND FORM */}
                         <AnimatePresence>
                             {!this.state.isToggled && (
                                 <motion.div 
-                                className="test"
+                                className="CreateHabitsForm__second-form"
                                 initial={{x : "-100%"}}
                                 animate={{x: "0"}}
                                 exit={{x: "-100%", transition: {
                                     delay: 0, damping: 400
                                 }}}
-                                transition={{damping: 1000, delay: 0.5, duration: 0.5}}
+                                transition={{damping: 1000, delay: 0.75, duration: 0.5}}
                             >
-                                <h1>hello</h1>
+                                <SecondForm/>
                             </motion.div>
-                            )}
-                            
+                            )}   
                         </AnimatePresence>
+
+                        {/* BUTTONS */}
                         <button 
-                            type="submit" 
+                            type="button" 
                             className="CreateHabitsForm__continue-btn"
                             onClick={this.toggleForm}
                         >
-                            Continue
+                            {this.state.isToggled ? "Continue" : "Go Back"}
                         </button>
                     </div>
 

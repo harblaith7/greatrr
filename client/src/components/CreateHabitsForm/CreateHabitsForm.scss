@@ -173,14 +173,26 @@
     }
 
 
+    // SECOND FORM //
+
+    &__second-form {
+        float: left;
+        position: absolute;
+        width: 100%;
+        height: 100%
+    }
+
+    &__range-input {
+        background-color: blue;
+        width: 100%;
+        cursor: pointer;
+    }
+
+
 }
 
 
 
 .test {
-    float: left;
-    position: absolute;
-    width: 100%;
-    background-color: blue;
-    height: 100%
+    
 }
