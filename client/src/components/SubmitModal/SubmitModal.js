@@ -5,7 +5,8 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import { useSpring, animated } from 'react-spring/web.cjs'; // web.cjs is required for IE 11 support
 import {motion} from 'framer-motion'
-import "./SubmitModal.scss"
+import "./SubmitModal.scss";
+import SubmitModalContent from "../SubmitModalContent/SubmitModalContent"
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -64,7 +65,7 @@ export default function SpringModal(props) {
     setOpen(false);
   };
 
-  const {longTermGoal, threeMonthGoal, dailyHabit, habitName, habitDuration, habitPriority} = props.formInput
+ 
 
   return (
     <div>
@@ -90,54 +91,7 @@ export default function SpringModal(props) {
         }}
       >
         <Fade in={open}>
-          <div className="SubmitModal">
-            <div className="SubmitModal__container">
-                <div className="SubmitModal__text-container">
-                    <h4 className="SubmitModal__heading">
-                        Long-term Goal
-                    </h4>
-                    <p className="SubmitModal__user-input">
-                        {longTermGoal}
-                    </p>
-                    <h4 className="SubmitModal__heading">
-                        Three-month Goal
-                    </h4>
-                    <p className="SubmitModal__user-input">
-                        {threeMonthGoal}
-                    </p>
-                    <h4 className="SubmitModal__heading">
-                        Daily Habit
-                    </h4>
-                    <p className="SubmitModal__user-input">
-                        {dailyHabit}
-                    </p>
-                    <h4 className="SubmitModal__heading">
-                        Habit Name
-                    </h4>
-                    <p className="SubmitModal__user-input">
-                        {habitName}
-                    </p>
-                    <div className="SubmitModal__number-inputs-container">
-                        <div className="SubmitModal__number-input-container">
-                            <h4 className="SubmitModal__heading">
-                                Priority: 
-                            </h4>
-                            <p className="SubmitModal__user-input SubmitModal__user-input--number">
-                                {habitPriority}
-                            </p>
-                        </div>
-                        <div className="SubmitModal__number-input-container">
-                            <h4 className="SubmitModal__heading">
-                                Duration: 
-                            </h4>
-                            <p className="SubmitModal__user-input SubmitModal__user-input--number">
-                                {habitDuration}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          </div>
+          <SubmitModalContent formInput={props.formInput}/>
         </Fade>
       </Modal>
     </div>
