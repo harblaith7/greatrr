@@ -170,6 +170,7 @@ class CreateHabitsForm extends Component {
     render() {
         return (
             <div className="CreateHabitsForm">
+               
                 <AnimatePresence>
                     {this.state.toggleAlert && (
                         <Alert/>

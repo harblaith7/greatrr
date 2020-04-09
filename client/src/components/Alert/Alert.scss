@@ -1,9 +1,35 @@
+@import "../../sass/variables.scss";
+
 .Alert {
     height: 7.5vh;
-    width: 30%;
-    background-color: blue;
+    width: 32.5%;
     position: absolute;
     top: 2.5%;
-    left: 67.5%;
-    z-index: 10
+    left: 65%;
+    z-index: 10;
+    padding: 0.5rem 2rem;
+    border: 0.15rem solid $less-transparent-green;
+    background-color: $transparent-green;
+    border-radius: 0.4rem;
+
+    &__container {
+        
+        height: 100%;
+        display: flex;
+        align-items: center;
+        
+    }
+
+    &__heading {
+        font-weight: 900;
+        font-size: 1.5rem;
+        color: $secondary-color-darker
+    }
+
+    &__message {
+        color: $secondary-color-dark;
+        margin-left: 1rem;
+        font-size: 1.4rem;
+        letter-spacing: .1rem;
+    }
 }
