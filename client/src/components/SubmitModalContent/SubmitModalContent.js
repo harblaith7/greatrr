@@ -87,7 +87,7 @@ class SubmitModalContent extends Component {
                                 onClick={this.handleClick}
                             >
                                 <span>
-                                    Save & Add Another Habit
+                                    Add Another Habit
                                 </span>
                                 
                             </button>
