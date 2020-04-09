@@ -39,4 +39,49 @@
         display: flex;
         align-items: center;
     }
+
+    &__btn-container {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        
+    }
+
+    &__btn {
+        padding: 0.5rem 1rem;
+        margin-top: 2rem;
+        cursor: pointer;
+        border: 0.15rem solid $secondary-color;
+        border-radius: 0.2rem;
+        color: $off-black;
+        background-color: transparent;
+        font-weight: 700;
+        position: relative;
+        z-index: 3;
+
+        &:hover::after {
+            width: 100%;
+            
+        }
+
+        & span {
+            z-index: 4;
+        }
+
+        &::after {
+            content: "";
+            width: 0%;
+            height: 100%;
+            background-color: $secondary-color;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: 0.3s all cubic-bezier(.53,-0.17,.83,.94);
+            z-index: 2;
+        }
+
+        
+    }
 }
+
+

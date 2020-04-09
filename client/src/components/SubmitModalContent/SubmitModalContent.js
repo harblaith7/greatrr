@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
 class SubmitModalContent extends Component {
+
+    handleClick = () => {
+        console.log("ran")
+    }
+
     render() {
         const {longTermGoal, threeMonthGoal, dailyHabit, habitName, habitDuration, habitPriority} = this.props.formInput
         return (
@@ -48,6 +53,27 @@ class SubmitModalContent extends Component {
                                     {habitDuration}
                                 </p>
                             </div>
+                        </div>
+                        <div className="SubmitModal__btn-container">
+                            <button 
+                                className="SubmitModal__btn" 
+                                id="saveAndAdd"
+                                data-testid="add-habit-btn"
+                                onClick={this.handleClick}
+                            >
+                                <span>
+                                    Save & Add Another Habit
+                                </span>
+                                
+                            </button>
+                            <button 
+                                className="SubmitModal__btn" 
+                                id="saveAndContinue"
+                                data-testid="add-habit-continue-btn"
+                                onClick={this.handleClick}
+                            >
+                                Save & Continue
+                            </button>
                         </div>
                     </div>
                 </div>

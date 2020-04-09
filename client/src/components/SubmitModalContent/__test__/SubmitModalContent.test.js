@@ -1,13 +1,14 @@
 import SubmitModalContent from "../SubmitModalContent"
-import {render} from "@testing-library/react"
+import {render, cleanup, fireEvent} from "@testing-library/react"
 import "@testing-library/jest-dom/extend-expect"
 import React from 'react';
 
 
+afterEach(cleanup)
 
+const handleClick = jest.fn()
 
-test("Testing modal after completion of form", () => {
-    expect(true).toBeTruthy()
+test("Modal renders data after completion of form", () => {
 
     const wrapper = render(
         <SubmitModalContent 
@@ -22,21 +23,20 @@ test("Testing modal after completion of form", () => {
         />
     )
 
-    expect(wrapper.getByTestId("long-term-goal").textContent).toBe("Build a multi million dollar business")
-    expect(wrapper.getByTestId("three-month-goal").textContent).toBe("Create website for my business idea that sells used notebooks to customers")
-    expect(wrapper.getByTestId("daily-habit").textContent).toBe("Code for one hour for a given day")
-    expect(wrapper.getByTestId("habit-name").textContent).toBe("Create Business")
-    expect(wrapper.getByTestId("habit-priority").textContent).toBe("3")
-    expect(wrapper.getByTestId("habit-duration").textContent).toBe("4")
+    const userInput = wrapper.getByTestId
+
+    expect(userInput("long-term-goal").textContent).toBe("Build a multi million dollar business")
+    expect(userInput("three-month-goal").textContent).toBe("Create website for my business idea that sells used notebooks to customers")
+    expect(userInput("daily-habit").textContent).toBe("Code for one hour for a given day")
+    expect(userInput("habit-name").textContent).toBe("Create Business")
+    expect(userInput("habit-priority").textContent).toBe("3")
+    expect(userInput("habit-duration").textContent).toBe("4")
 })
 
-//longTermGoal, threeMonthGoal, dailyHabit, habitName, habitDuration, habitPriority
 
-
-/*
-
-const {getByTestId} = render(
-        <SubmitModalContent 
+test("Modal button is called with correct state", () => {
+    const {getByTestId} = render(
+        <SubmitModalContent
             formInput={{
                 longTermGoal : "Build a multi million dollar business",
                 threeMonthGoal: "Create website for my business idea that sells used notebooks to customers",
@@ -47,6 +47,8 @@ const {getByTestId} = render(
             }}
         />
     )
-    expect(getByTestId("long-term-goal")).textContent.toBe("Build a multi million dollar business")
 
-    */
+    fireEvent.click(getByTestId("add-habit-btn"))
+
+    expect(handleClick).toHaveBeenCalledTimes(1)
+})
