@@ -3,10 +3,12 @@ const {Schema} = mongoose
 
 
 const habitsSchema = new Schema({
-    habit: String,
-    description: String,
-    duration: Number,
-    linkedTo: String,
+    longTermGoal: String,
+    threeMonthGoal: String,
+    habitName: String,
+    dailyHabit: String,
+    habitDuration: Number,
+    habitPriority: Number,
     color: String,
     currentScore: {type: Number, default: 0},
     weeksPoints: {type : Number, default : 0},

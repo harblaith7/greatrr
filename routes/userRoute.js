@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const mongoose = require("mongoose")
+const randomColor = require("randomcolor")
 const User = mongoose.model("users")
 const Habits = mongoose.model("habits")
 
@@ -15,25 +16,22 @@ router.get('/userhabits/:id', (req, res) => {
 
 router.patch('/updateScore/:userId/:habitId', async (req, res) => {
 
+    // FINDING THE APPROPRIATE USER AND SAVING THEIR HABITS IN A VARIABLE
     const user = await User.findById(req.params.userId)
     const habits = user.habits
     
-    
+    // FILTERING THROUGH ALL USER'S HABITS AND FINDING THE ONE THAT MATCHES THE ID 
+    // CHANGED THE COUNTER VALUE BY 1
     const updatedHabits = habits.map((habit) => {
-        console.log('running')
-        console.log(habit._id)
-        console.log(req.params.habitId)
         if(habit._id == req.params.habitId){
-            console.log('Running')
             habit.currentScore = habit.currentScore + 1;
             return habit
         } else {
-            console.log('am i running?')
             return habit
         }
     })
-    
 
+    // UPDATING THE ENTIRE HABIT ARRAY WITH UPDATED HABIT ARRAY
     const updatedSchema = await User.findByIdAndUpdate(
         {_id : req.params.userId},
         {habits : updatedHabits},
@@ -42,43 +40,34 @@ router.patch('/updateScore/:userId/:habitId', async (req, res) => {
         }
     )
 
+    // SAVING THE RESULTS
     const results = await updatedSchema.save()
 
     res.send(results)
-
-    /*
-    const {currentScore} = req.body
-    let habit;
-    const user = await User.findById(req.params.userId, (err, user) => {
-        let habit = user.habits.find(habit => habit.habit === req.params.habitTitle)
-        habit.currentScore = 5
-    })
-    await user.save()
-    res.send(user)
-    */
     
 })
-//5e8650488d3aa90a18549b89
-//5e8763cf8de899044ceadd4c
+
 
 // ADDING HABIT SUBDOCUMENT TO ARRAY //
 
 router.post('/addhabit/:id', async (req, res) => {
-    const {habit, description, duration, linkedTo, color} = req.body;
+    const {longTermGoal, threeMonthGoal, dailyHabit,  habitName, habitDuration, habitPriority} = req.body;
 
     const newHabit = new Habits({
-        habit,
-        description,
-        duration,
-        linkedTo,
-        color
+        longTermGoal,
+        threeMonthGoal,
+        dailyHabit,
+        habitName,
+        habitDuration,
+        habitPriority,
+        color: randomColor()
     })
 
     const user = await User.findById(req.params.id)
     user.habits.push(newHabit);
     await user.save();
 
-    res.send(user)
+    res.redirect("/")
     
 })
 

@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
+import {connect} from "react-redux"
+import {addUserHabit} from "../../actions"
+
 
 class SubmitModalContent extends Component {
 
-    handleClick = () => {
-        console.log("ran")
+    handleClick = (e) => {
+        if(e.target.id === "saveAndContinue"){
+            this.props.addUserHabit(this.props.auth._id, this.props.formInput)
+        }
     }
 
     render() {
+        console.log(this.props.auth._id)
         const {longTermGoal, threeMonthGoal, dailyHabit, habitName, habitDuration, habitPriority} = this.props.formInput
         return (
             <div className="SubmitModal">
@@ -82,4 +88,10 @@ class SubmitModalContent extends Component {
     }
 }
 
-export default SubmitModalContent;
+function mapStateToProps({auth}){
+    return {
+        auth
+    }
+}
+
+export default connect(mapStateToProps, {addUserHabit})(SubmitModalContent);
