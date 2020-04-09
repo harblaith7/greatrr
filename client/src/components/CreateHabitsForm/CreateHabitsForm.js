@@ -3,6 +3,7 @@ import "./CreateHabitsForm.scss"
 import {motion, AnimatePresence} from "framer-motion";
 import SecondForm from "../SecondForm/SecondForm";
 import SubmitModal from "../SubmitModal/SubmitModal"
+import Alert from "../Alert/Alert"
 
 class CreateHabitsForm extends Component {
 
@@ -43,7 +44,8 @@ class CreateHabitsForm extends Component {
             ],
             savedHabits : [
 
-            ]
+            ],
+            toggleAlert: false
         }
 
     }
@@ -151,12 +153,32 @@ class CreateHabitsForm extends Component {
         return true
     }
 
+    // TOGGLES THE ALERT // 
+
+    toggleAlert = () => {
+        this.setState({
+          toggleAlert : true
+        }, () => {
+          setTimeout(() => {
+            this.setState({
+              toggleAlert: false
+            })
+          }, 2000)
+        })
+      }
+
     render() {
         return (
             <div className="CreateHabitsForm">
+                <AnimatePresence>
+                    {this.state.toggleAlert && (
+                        <Alert/>
+                    )}
+                </AnimatePresence>
                 <div className="CreateHabitsForm__container">
 
                     {/* TEXT CONTAINER TO THE LEFT */}
+                   
                     <div className="CreateHabitsForm__greeting-container">
                         <div className="CreateHabitsForm__text-container">
                             <h2 className="CreateHabitsForm__heading">
@@ -218,6 +240,7 @@ class CreateHabitsForm extends Component {
                                         resetForm={this.resetForm}
                                         toggleForm={this.toggleForm}
                                         transferHabit={this.getAndSaveHabit}
+                                        toggleAlert={this.toggleAlert}
                                     />
                                 )
                             }

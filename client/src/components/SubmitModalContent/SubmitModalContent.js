@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
 import {addUserHabit} from "../../actions"
-import {Link} from "react-router-dom"
+
 
 
 class SubmitModalContent extends Component {
@@ -27,6 +27,7 @@ class SubmitModalContent extends Component {
                 this.props.resetForm()
                 this.props.toggleForm()
                 this.props.transferHabit(this.props.formInput)
+                this.props.toggleAlert()
         }
     }
 
