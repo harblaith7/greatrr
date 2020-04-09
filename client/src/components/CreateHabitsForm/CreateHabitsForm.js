@@ -10,6 +10,14 @@ class CreateHabitsForm extends Component {
         super(props)
         this.state = {
             isToggled : true,
+            formInput : {
+                longTermGoal : "",
+                threeMonthGoal: "",
+                dailyHabit: "",
+                habitName : "",
+                habitDuration : 1,
+                habitPriority: 1
+            },
             formInfo : [
                 {
                    title : "Where do you want to be?" ,
@@ -33,16 +41,18 @@ class CreateHabitsForm extends Component {
                     name: "dailyHabit"
                  }
             ],
-            formInput : {
-                longTermGoal : "",
-                threeMonthGoal: "",
-                dailyHabit: "",
-                habitName : "",
-                habitDuration : 1,
-                habitPriority: 1
-            }
+            savedHabits : [
+
+            ]
         }
 
+    }
+
+    // GET HABITS AND SAVES IT INTO STATE FROM MODAL //
+    getAndSaveHabit = (habit) => {
+        this.setState({
+            savedHabits : [...this.state.savedHabits, habit]
+        })
     }
 
     // RENDERS THE WHOLE FORM PAGE //
@@ -112,6 +122,20 @@ class CreateHabitsForm extends Component {
     handleChange = (e) => {
         this.setState({
             formInput : {...this.state.formInput, [e.target.name] : e.target.value}
+        })
+    }
+
+    // RESETS FORM STATE TO ORIGINAL VALUE 
+    resetForm = () => {
+        this.setState({
+            formInput : {
+                longTermGoal : "",
+                threeMonthGoal: "",
+                dailyHabit: "",
+                habitName : "",
+                habitDuration : 1,
+                habitPriority: 1
+            }
         })
     }
 
@@ -191,6 +215,9 @@ class CreateHabitsForm extends Component {
                                 this.validateForm() && (
                                     <SubmitModal 
                                         formInput = {this.state.formInput}
+                                        resetForm={this.resetForm}
+                                        toggleForm={this.toggleForm}
+                                        transferHabit={this.getAndSaveHabit}
                                     />
                                 )
                             }

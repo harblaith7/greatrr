@@ -9,17 +9,24 @@ class SubmitModalContent extends Component {
     constructor(props){
         super(props)
         this.state = {
-            update: false
+            habits : []
         }
     }
 
     handleClick = async (e) => {
         
+        // ADDS ONE HABIT TO DATABASE AND REFRESHES PAGE 
         if(e.target.id === "saveAndContinue"){
             window.location.reload(); 
             await this.props.addUserHabit(this.props.auth._id, this.props.formInput);
-            
-            
+        }
+        // CLOSES FORM, RESETS INPUTS AND TRANSFERS DATA TO SUBMITMODAL 
+        else if(e.target.id === "saveAndAdd"){
+           
+                this.props.closeModal()
+                this.props.resetForm()
+                this.props.toggleForm()
+                this.props.transferHabit(this.props.formInput)
         }
     }
 

@@ -65,7 +65,9 @@ export default function SpringModal(props) {
     setOpen(false);
   };
 
- 
+  const transferHabit = (newHabit) => {
+    props.transferHabit(newHabit)
+  }
 
   return (
     <div>
@@ -91,7 +93,13 @@ export default function SpringModal(props) {
         }}
       >
         <Fade in={open}>
-          <SubmitModalContent formInput={props.formInput}/>
+          <SubmitModalContent 
+            formInput={props.formInput}
+            closeModal={handleClose}
+            resetForm={props.resetForm}
+            toggleForm={props.toggleForm}
+            transferHabit={transferHabit}
+            />
         </Fade>
       </Modal>
     </div>
