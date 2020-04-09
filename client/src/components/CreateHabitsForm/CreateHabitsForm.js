@@ -4,6 +4,7 @@ import {motion, AnimatePresence} from "framer-motion";
 import SecondForm from "../SecondForm/SecondForm";
 import SubmitModal from "../SubmitModal/SubmitModal"
 import Alert from "../Alert/Alert"
+import list from "../../assets/svg/list.svg"
 
 class CreateHabitsForm extends Component {
 
@@ -176,6 +177,9 @@ class CreateHabitsForm extends Component {
                         <Alert/>
                     )}
                 </AnimatePresence>
+                <div className="CreateHabitsForm__list-container">
+                    <img src={list} alt="" className="CreateHabitsForm__icon"/>
+                </div>
                 <div className="CreateHabitsForm__container">
 
                     {/* TEXT CONTAINER TO THE LEFT */}
