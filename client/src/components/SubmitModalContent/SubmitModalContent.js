@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
 import {addUserHabit} from "../../actions"
+import {Link} from "react-router-dom"
 
 
 class SubmitModalContent extends Component {
 
-    handleClick = (e) => {
+    constructor(props){
+        super(props)
+        this.state = {
+            update: false
+        }
+    }
+
+    handleClick = async (e) => {
+        
         if(e.target.id === "saveAndContinue"){
-            this.props.addUserHabit(this.props.auth._id, this.props.formInput)
+            window.location.reload(); 
+            await this.props.addUserHabit(this.props.auth._id, this.props.formInput);
+            
+            
         }
     }
 
@@ -72,7 +84,7 @@ class SubmitModalContent extends Component {
                                 </span>
                                 
                             </button>
-                            <button 
+                            <button
                                 className="SubmitModal__btn" 
                                 id="saveAndContinue"
                                 data-testid="add-habit-continue-btn"

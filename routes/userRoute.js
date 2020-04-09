@@ -67,7 +67,7 @@ router.post('/addhabit/:id', async (req, res) => {
     user.habits.push(newHabit);
     await user.save();
 
-    res.redirect("/")
+    
     
 })
 

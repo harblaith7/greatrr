@@ -8,8 +8,7 @@ export const fetchUser = () => async dispatch => {
 
 export const addUserHabit = (userId, newHabit) => async dispatch => {
     const res = await axios.post(`/api/addhabit/${userId}`, newHabit)
-
-    console.log(res.data)
+    dispatch({type: FETCH_USER_HABITS, payload: res.data})
 }
     
 export const fetchUserHabits = (userId) => async dispatch => {
