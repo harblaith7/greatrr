@@ -6,9 +6,11 @@ import Backdrop from '@material-ui/core/Backdrop';
 import { useSpring, animated } from 'react-spring/web.cjs'; // web.cjs is required for IE 11 support
 import list from "../../assets/svg/list.svg"
 import "./ListModal.scss"
-
+import {connect} from "react-redux"
+import {addUserHabits} from "../../actions"
 import {motion} from "framer-motion"
 import HabitItem from "../HabitItem/HabitItem"
+import { Spring } from 'react-spring/renderprops';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -56,7 +58,7 @@ Fade.propTypes = {
   onExited: PropTypes.func,
 };
 
-export default function SpringModal(props) {
+function SpringModal(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -78,6 +80,12 @@ export default function SpringModal(props) {
             />
           )
       })
+  }
+
+  const handleClick = async () => {
+    
+    await props.addUserHabits(props.auth._id, props.habitsList)
+    window.location.reload(); 
   }
 
   return (
@@ -113,7 +121,7 @@ export default function SpringModal(props) {
                 <div className="ListModal__list-container">
                     {displayHabit()}
                 </div>
-                <button className="ListModal__add-all-btn">
+                <button className="ListModal__add-all-btn" onClick={handleClick}>
                   Add Habits
                 </button>
             </div>
@@ -123,3 +131,12 @@ export default function SpringModal(props) {
     </div>
   );
 }
+
+function mapStateToProps({auth}){
+  return {
+    auth
+  }
+}
+
+
+export default connect(mapStateToProps, {addUserHabits})(SpringModal)

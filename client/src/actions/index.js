@@ -10,6 +10,11 @@ export const addUserHabit = (userId, newHabit) => async dispatch => {
     const res = await axios.post(`/api/addhabit/${userId}`, newHabit)
     dispatch({type: FETCH_USER_HABITS, payload: res.data})
 }
+
+export const addUserHabits = (userId, newHabits) => async dispatch => {
+    const res = await axios.post(`/api/addhabits/${userId}`, newHabits)
+    dispatch({type: FETCH_USER_HABITS, payload: res.data})
+}
     
 export const fetchUserHabits = (userId) => async dispatch => {
     const res = await axios.get(`/api/userhabits/${userId}`)

@@ -48,7 +48,7 @@ router.patch('/updateScore/:userId/:habitId', async (req, res) => {
 })
 
 
-// ADDING HABIT SUBDOCUMENT TO ARRAY //
+// ADDING ONE HABIT SUBDOCUMENT TO ARRAY //
 
 router.post('/addhabit/:id', async (req, res) => {
     const {longTermGoal, threeMonthGoal, dailyHabit,  habitName, habitDuration, habitPriority} = req.body;
@@ -66,9 +66,50 @@ router.post('/addhabit/:id', async (req, res) => {
     const user = await User.findById(req.params.id)
     user.habits.push(newHabit);
     await user.save();
+   
+})
 
+/////////////////////////////////////////////////
+// ADDING MULTIPLE HABIT SUBDOCUMENTS TO ARRAY //
+////////////////////////////////////////////////
+
+router.post('/addhabits/:id', async (req, res) => {
     
+    // MAPPING THROUGH EACH HABIT OBJECT AND TURNING IT INTO A HABIT SUBDOCUMENT
+    const habitsToAdd = req.body.map(({longTermGoal, threeMonthGoal, dailyHabit,  habitName, habitDuration, habitPriority}) => {
+        return new Habits({
+            longTermGoal,
+            threeMonthGoal,
+            dailyHabit,
+            habitName,
+            habitDuration,
+            habitPriority,
+            color: randomColor()
+        })
+    })
+
+    // FINDING THE APPROPRIATE USER AND SAVING THEIR HABITS IN A VARIABLE
+    const user = await User.findById(req.params.id)
+    const habits = user.habits
+
+    // DEFINING THE NEW HABIT VARIABLE WHICH CONTAINS EVERYTHING INSIDE HABITSTOADD AND HABITS VARIABLE
+    const updatedHabits = [...habits, ...habitsToAdd]
+
+    // UPDATING THE ENTIRE HABIT ARRAY WITH UPDATED HABIT ARRAY
+    const updatedSchema = await User.findByIdAndUpdate(
+        {_id : req.params.id},
+        {habits : updatedHabits},
+        (err, result) => {
+            console.log(result)
+        }
+    )
+
+    // SAVING THE RESULTS
+    const results = await updatedSchema.save()
+
+    res.send(results)
     
+   
 })
 
 
