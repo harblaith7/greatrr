@@ -100,6 +100,7 @@ export default function SpringModal(props) {
             toggleForm={props.toggleForm}
             transferHabit={transferHabit}
             toggleAlert={props.toggleAlert}
+            habitList={props.habitList}
             />
         </Fade>
       </Modal>

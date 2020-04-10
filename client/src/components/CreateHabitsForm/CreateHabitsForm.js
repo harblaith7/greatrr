@@ -51,7 +51,7 @@ class CreateHabitsForm extends Component {
 
     }
 
-    // GET HABITS AND SAVES IT INTO STATE FROM MODAL //
+    // GET HABITS FROM MODAL AND SAVES IT INTO STATE  //
     getAndSaveHabit = (habit) => {
         this.setState({
             savedHabits : [...this.state.savedHabits, habit]
@@ -266,6 +266,7 @@ class CreateHabitsForm extends Component {
                                         toggleForm={this.toggleForm}
                                         transferHabit={this.getAndSaveHabit}
                                         toggleAlert={this.toggleAlert}
+                                        habitList={this.state.savedHabits}
                                     />
                                 )
                             }

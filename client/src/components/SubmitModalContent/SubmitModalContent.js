@@ -17,11 +17,16 @@ class SubmitModalContent extends Component {
         
         // ADDS ONE HABIT TO DATABASE AND REFRESHES PAGE 
         if(e.target.id === "saveAndContinue"){
-            window.location.reload(); 
-            await this.props.addUserHabit(this.props.auth._id, this.props.formInput);
+            if(this.props.habitList.length){
+                console.log("hello")
+            } else {
+                window.location.reload(); 
+                await this.props.addUserHabit(this.props.auth._id, this.props.formInput);
+            }
+            
         }
-        // CLOSES FORM, RESETS INPUTS AND TRANSFERS DATA TO SUBMITMODAL 
-        else if(e.target.id === "saveAndAdd"){
+        // CLOSES FORM, RESETS INPUTS AND TRANSFERS DATA TO SUBMIT MODAL 
+        else if(e.target.id === "addToEmptyList" || e.target.id === "addToList"){
            
                 this.props.closeModal()
                 this.props.resetForm()
@@ -81,25 +86,40 @@ class SubmitModalContent extends Component {
                             </div>
                         </div>
                         <div className="SubmitModal__btn-container">
-                            <button 
-                                className="SubmitModal__btn" 
-                                id="saveAndAdd"
-                                data-testid="add-habit-btn"
-                                onClick={this.handleClick}
-                            >
-                                <span>
-                                    Add Another Habit
-                                </span>
-                                
-                            </button>
-                            <button
-                                className="SubmitModal__btn" 
-                                id="saveAndContinue"
-                                data-testid="add-habit-continue-btn"
-                                onClick={this.handleClick}
-                            >
-                                Save & Continue
-                            </button>
+                            {this.props.habitList.length ? (
+                                 <button 
+                                    className="SubmitModal__btn" 
+                                    id="addToList" 
+                                    data-testid="add-habit-to-list-btn" 
+                                    onClick={this.handleClick}
+                                >
+                                    <span>
+                                        Add Habit to List
+                                    </span>
+                                </button>
+                            ) : (
+                            <>
+                                <button 
+                                    className="SubmitModal__btn" 
+                                    id="addToEmptyList" 
+                                    data-testid="add-habit-btn" 
+                                    onClick={this.handleClick}>
+                                    <span>
+                                        Add Habit to List
+                                    </span>
+                                    
+                                </button>
+                                <button
+                                    className="SubmitModal__btn" 
+                                    id="saveAndContinue"
+                                    data-testid="add-habit-continue-btn"
+                                    onClick={this.handleClick}
+                                >
+                                    Save & Continue
+                                </button>
+                            </>
+                            )}
+                            
                         </div>
                     </div>
                 </div>

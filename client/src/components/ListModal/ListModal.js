@@ -113,6 +113,9 @@ export default function SpringModal(props) {
                 <div className="ListModal__list-container">
                     {displayHabit()}
                 </div>
+                <button className="ListModal__add-all-btn">
+                  Add Habits
+                </button>
             </div>
           </div>
         </Fade>
