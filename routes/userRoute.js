@@ -51,7 +51,7 @@ router.patch('/updateScore/:userId/:habitId', async (req, res) => {
 // ADDING ONE HABIT SUBDOCUMENT TO ARRAY //
 
 router.post('/addhabit/:id', async (req, res) => {
-    const {longTermGoal, threeMonthGoal, dailyHabit,  habitName, habitDuration, habitPriority} = req.body;
+    const {longTermGoal, threeMonthGoal, dailyHabit,  habitName, habitDuration, habitPriority, habitImage} = req.body;
 
     const newHabit = new Habits({
         longTermGoal,
@@ -60,6 +60,7 @@ router.post('/addhabit/:id', async (req, res) => {
         habitName,
         habitDuration,
         habitPriority,
+        habitImage,
         color: randomColor()
     })
 
@@ -84,6 +85,7 @@ router.post('/addhabits/:id', async (req, res) => {
             habitName,
             habitDuration,
             habitPriority,
+            habitImage,
             color: randomColor()
         })
     })

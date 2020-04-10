@@ -76,8 +76,12 @@
         }
     }
 
-    &__title-input-container:not(first) {
+    &__title-input-container {
         margin-top: 4rem;
+
+        &--short {
+            width: 50%
+        }
     }
 
     &__form-container {
@@ -233,6 +237,10 @@
         @extend .CreateHabitsForm__continue-btn;
         border: 0.15rem solid $secondary-color-darker;
         left: 30%
+    }
+
+    &__short-inputs-container {
+        display: flex;
     }
 
 

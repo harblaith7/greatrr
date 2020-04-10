@@ -17,6 +17,7 @@ class CreateHabitsForm extends Component {
                 threeMonthGoal: "",
                 dailyHabit: "",
                 habitName : "",
+                habitImage: "",
                 habitDuration : 1,
                 habitPriority: 1
             },

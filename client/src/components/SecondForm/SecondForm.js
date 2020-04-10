@@ -5,36 +5,72 @@ class SecondForm extends Component {
         return (
             <form action="" className="CreateHabitsForm__form">
 
-                <div className="CreateHabitsForm__title-input-container">
-                    <h4 className="CreateHabitsForm__form-heading">
-                        Give it a name
-                    </h4>
-                    <p className="CreateHabitsForm__form-description">
-                        Give your habit a 5-15 character name.
-                        <br/>
-                        <span>
-                            Fasting
-                        </span>
-                    </p>
-                    <div className="CreateHabitsForm__input-container">
-                        <input 
-                            type="text"
-                            autoComplete="off"
-                            name="long-term-goal"
-                            required
-                            className="CreateHabitsForm__input"
-                            name="habitName"
-                            onChange={this.props.handleChange}
-                            value={this.props.formInput.habitName}
-                        />
-                        <label htmlFor="long-term-goal" className="CreateHabitsForm__label">
-                            <span className="CreateHabitsForm__label-name">
-                                Habit name
+                <div className="CreateHabitsForm__short-inputs-container">
+                    <div className="CreateHabitsForm__title-input-container CreateHabitsForm__title-input-container--short">
+                        <h4 className="CreateHabitsForm__form-heading">
+                            Give it a name
+                        </h4>
+                        <p className="CreateHabitsForm__form-description">
+                            Give your habit a concise name that represents it. The name should be 5-15 character long.
+                            <br/>
+                            <span>
+                                Fasting
                             </span>
-                        </label>
-                        
+                        </p>
+                        <div className="CreateHabitsForm__input-container">
+                            <input 
+                                type="text"
+                                autoComplete="off"
+                                name="long-term-goal"
+                                required
+                                className="CreateHabitsForm__input"
+                                name="habitName"
+                                onChange={this.props.handleChange}
+                                value={this.props.formInput.habitName}
+                            />
+                            <label htmlFor="long-term-goal" className="CreateHabitsForm__label">
+                                <span className="CreateHabitsForm__label-name">
+                                    Habit name
+                                </span>
+                            </label>
+                            
+                        </div>
+                    </div>
+
+                    <div className="CreateHabitsForm__title-input-container CreateHabitsForm__title-input-container--short">
+                        <h4 className="CreateHabitsForm__form-heading">
+                            Give it an image
+                        </h4>
+                        <p className="CreateHabitsForm__form-description">
+                            Give your habit an image that represents it. Paste an image URL onto the input field below.
+                            <br/>
+                            <span>
+                            https://img.example.com.jpg
+                            </span>
+                        </p>
+                        <div className="CreateHabitsForm__input-container">
+                            <input 
+                                type="text"
+                                autoComplete="off"
+                                name="long-term-goal"
+                                required
+                                className="CreateHabitsForm__input"
+                                name="habitImage"
+                                onChange={this.props.handleChange}
+                                value={this.props.formInput.habitImage}
+                            />
+                            <label htmlFor="long-term-goal" className="CreateHabitsForm__label">
+                                <span className="CreateHabitsForm__label-name">
+                                    Image URL
+                                </span>
+                            </label>
+                            
+                        </div>
                     </div>
                 </div>
+                
+
+                
 
                 <div className="CreateHabitsForm__title-input-container">
                     <h4 className="CreateHabitsForm__form-heading">

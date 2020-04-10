@@ -6,6 +6,7 @@ const habitsSchema = new Schema({
     longTermGoal: String,
     threeMonthGoal: String,
     habitName: String,
+    habitImage: String,
     dailyHabit: String,
     habitDuration: Number,
     habitPriority: Number,
