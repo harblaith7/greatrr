@@ -18,19 +18,19 @@ class StatsHeader extends Component {
 
     displayHabits = () => {
         return this.props.userHabits.map(habit => {
-            return <IndividualHabit habitInfo={habit} key={uuidv4()}/>
+            return <IndividualHabit userHabit={habit} key={uuidv4()}/>
         })
     }
 
     render() {
-        //console.log(this.props.userHabits)
+        console.log(this.props.userHabits)
         return (
             <div className="StatsHeader">
                 <img src={backgroundPath} alt="" className="StatsHeader__background"/>
                 <img src={statsVector} alt="" className="StatsHeader__vector"/>
                 <div className="StatsHeader__container">
                     <div className="StatsHeader__habits-container">
-                        <IndividualHabit/>
+                        {this.displayHabits()}
                     </div>
                 </div>
             </div>

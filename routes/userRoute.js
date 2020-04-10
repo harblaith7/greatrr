@@ -77,7 +77,7 @@ router.post('/addhabit/:id', async (req, res) => {
 router.post('/addhabits/:id', async (req, res) => {
     
     // MAPPING THROUGH EACH HABIT OBJECT AND TURNING IT INTO A HABIT SUBDOCUMENT
-    const habitsToAdd = req.body.map(({longTermGoal, threeMonthGoal, dailyHabit,  habitName, habitDuration, habitPriority}) => {
+    const habitsToAdd = req.body.map(({longTermGoal, threeMonthGoal, dailyHabit,  habitName, habitDuration, habitPriority, habitImage}) => {
         return new Habits({
             longTermGoal,
             threeMonthGoal,
