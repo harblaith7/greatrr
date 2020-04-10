@@ -4,7 +4,7 @@ import {motion, AnimatePresence} from "framer-motion";
 import SecondForm from "../SecondForm/SecondForm";
 import SubmitModal from "../SubmitModal/SubmitModal"
 import Alert from "../Alert/Alert"
-import list from "../../assets/svg/list.svg"
+import ListModal from "../ListModal/ListModal"
 
 class CreateHabitsForm extends Component {
 
@@ -164,9 +164,23 @@ class CreateHabitsForm extends Component {
             this.setState({
               toggleAlert: false
             })
-          }, 2000)
+          }, 5000)
         })
       }
+
+
+    // DELETES HABIT FROM HABITS LIST // 
+
+    deleteHabit = (habitName) => {
+        console.log("Running too")
+        
+        const updatedHabits = this.state.savedHabits.filter(habit => {
+            return habit.habitName !== habitName
+        })
+        this.setState({
+            savedHabits : updatedHabits
+        })
+    }
 
     render() {
         return (
@@ -177,9 +191,15 @@ class CreateHabitsForm extends Component {
                         <Alert/>
                     )}
                 </AnimatePresence>
-                <div className="CreateHabitsForm__list-container">
-                    <img src={list} alt="" className="CreateHabitsForm__icon"/>
-                </div>
+                <AnimatePresence>
+                    {this.state.savedHabits.length && (
+                        <ListModal 
+                            habitsList={this.state.savedHabits}
+                            deleteHabit={this.deleteHabit}
+                        />
+                    )}
+                </AnimatePresence>
+                
                 <div className="CreateHabitsForm__container">
 
                     {/* TEXT CONTAINER TO THE LEFT */}

@@ -14,7 +14,7 @@ class Alert extends Component {
             initial={{y : "-150%"}}
             animate={{y: 0}}
             exit = {{y: "-150%", transition: {damping: 500}}}
-            transition = {{delay: 0.5}}
+            transition = {{delay: 1.5}}
           >
             <div className="Alert__container">
                 <h3 className="Alert__heading">

@@ -1,0 +1,53 @@
+@import "../../sass/variables.scss";
+
+.ListModal {
+    background-color: $off-white;
+    padding: 2rem 1.5rem;
+    width: 35rem;
+    height: 50rem;
+    font-family: "Lato";
+
+    &__heading {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    &__list-container {
+        padding: 1.5rem 0;
+        
+    }
+
+    &__item-container {
+        padding: 1rem 0;
+        border-bottom: 0.1rem solid $very-light-black;
+        margin: 0 0.5rem;
+        transition: 0.5s all ease;
+        display: flex;
+        justify-content: space-between;
+
+        &:hover {
+            background-color: $less-transparent-green;
+        }
+    }
+
+    &__text-container {
+        padding-left: 1rem;
+    }
+
+    &__habit-title {
+        font-size: 1.5rem;
+        letter-spacing: 0.15rem;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+    }
+
+    &__habit-description {
+        color: $off-black
+    }
+
+    &__delete-btn {
+        width: 3rem;
+        cursor: pointer;
+        padding-right: 1rem;
+    }
+}
