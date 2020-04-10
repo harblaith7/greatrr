@@ -2,28 +2,34 @@
 
 .StatsHeader {
     height: 85vh;
-    background-color: $primary-color-dark;
+    background-image: linear-gradient(to right bottom, $primary-color-light, $primary-color);
+    position: relative;
+    overflow: hidden;
+
+    &__background {
+      position: absolute;
+      right: -10%;
+      width: 85rem
+    }
+
+    &__vector {
+      width: 50rem;
+      position: absolute;
+      right: 27.5%;
+      top: 12.5%
+    }
 
     &__container {
         height: 100%
     }
 
-    &__individual-habits-container {
-        width: 40%;
-        height:  100%;
-        padding-top: 7.5rem;
-        padding-bottom: 7.5rem;
-
-    }
-
     &__habits-container {
-        width: 85%;
-        padding: 0rem 0;
-        margin: 0 auto;
-        overflow-y: auto;
-        margin-top: 0rem;
-        height: 80%;
-        direction: rtl;
+      
+      width: 35%;
+      position: absolute;
+      left: 2.5%;
+      top: 10%;
+      height: 75%;
     }
 }
 

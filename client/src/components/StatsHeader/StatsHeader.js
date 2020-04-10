@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import "./StatsHeader.scss"
-import IndividualHabit from "../IndividualHabit/IndividualHabit";
 import { v4 as uuidv4 } from 'uuid';
 import {connect} from 'react-redux'
+import backgroundPath from "../../assets/svg/orangepath.svg"
+import statsVector from "../../assets/svg/stats-diagram.svg"
+import IndividualHabit from "../IndividualHabit/IndividualHabit"
 
 
 class StatsHeader extends Component {
@@ -24,8 +26,12 @@ class StatsHeader extends Component {
         //console.log(this.props.userHabits)
         return (
             <div className="StatsHeader">
+                <img src={backgroundPath} alt="" className="StatsHeader__background"/>
+                <img src={statsVector} alt="" className="StatsHeader__vector"/>
                 <div className="StatsHeader__container">
-                    
+                    <div className="StatsHeader__habits-container">
+                        <IndividualHabit/>
+                    </div>
                 </div>
             </div>
         );
@@ -40,18 +46,3 @@ export default connect(mapStateToProps)(StatsHeader);
 
 
 
-
-/* 
-
-<div className="StatsHeader__individual-habits-container">
-                        <div className="StatsHeader__habits-container">
-                            {this.props.userHabits.length ? this.displayHabits() : ""}
-                            hey Laith
-                        </div> 
-                    </div>
-                    <div className="StatsHeader__total-stats-container">
-                        hi
-                    </div>
-
-
-                    */

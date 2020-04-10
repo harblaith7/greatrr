@@ -1,56 +1,76 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gotu&display=swap');
+@import "../../sass/variables.scss";
 
 .IndividualHabit {
-    background-color: rgb(255, 255, 255);
-    width: 90%;
-    padding: 1rem 3rem;
+    background-color: $white;
+    width: 85%;
+    height: 10rem;
+    margin: 2rem auto;
     border-radius: 0.5rem;
-    box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.281);
-    margin: 0 auto;
-    margin-bottom: 2.5rem;
-    position: relative;
-    overflow: hidden;
-    direction: ltr;
+    box-shadow: 0.1rem 0.1rem 1rem $very-light-black;
+    font-family: "Gotu";
+    cursor: pointer;
+    
 
-    &__color {
-       background-color: red; 
-       width: 25%;
-       height: 100%;
-       position: absolute;
-       left: 0;
-       top: 0;
-       clip-path: polygon(0 0, 100% 0%, 85% 100%, 0% 100%);
-       transition: width 0.5s ease-in;
+
+    &__container {
+        height: 100%;
     }
 
-    &__description-container {
+    &__content-container {
+        height: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        font-family: 'Baloo Da 2';
-   
     }
 
-    &__count-container {
-       position: relative; 
+    &__habit-img {
+        width: 8rem;
+        height: 8rem;
+        border-radius: 100%;
+        opacity: 0.8;
+        margin-left: 1rem;
+        box-shadow: 0.1rem 0.1rem 1rem $very-light-black;
+    }
+
+    &__text-container {
+        height: 100%;
+        width: 72.5%
     }
 
     &__habit-title {
-        font-size: 2rem;
-        letter-spacing: 0.5rem;      
-    }
-
-    &__heading-container {
-        z-index: 3;
+        margin-top: 0.5rem;
+        font-size: 1.75rem;
+        letter-spacing: 0.2rem;
     }
 
     &__habit-description {
-        font-size: 1.5rem;
-        letter-spacing: 0.25rem;
+        width: 95%
     }
 
-    &__count {
-        font-size: 3.5rem;
-        z-index: 5;
+    &__bar-container {
+        width: 70%;
+        padding-top: 1rem;
+    }
+
+    &__points-container {
+        display: flex;
+    }
+
+    &__point-container {
+        display: flex;
+        margin-left: 3rem;
+        align-items: center;
+        margin-bottom: -0.5rem;
+    }
+
+    &__point {
+        font-size: 1.25rem;
+        font-family: "Lato";
+    }
+
+    &__img {
+        width: 1rem;
+        margin-left: 0.5rem;
     }
 }
