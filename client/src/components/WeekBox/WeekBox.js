@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import "./WeekBox.scss"
 
+
+
 class WeekBox extends Component {
     render() {
+        const {weekAbbreviation, id, weekStatus} = this.props
         return (
-            <div className="WeekBox">
-                {this.props.weekAbbreviation}
-            </div>
+            <>
+                {weekStatus && (
+                    <div className={`WeekBox ${weekStatus[id] && "WeekBox--active"}`}>
+                        {weekAbbreviation}
+                    </div>
+                )}
+            </>
         );
     }
 }

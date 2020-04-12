@@ -46,12 +46,17 @@ class HabitStats extends Component {
     }
 
     componentDidUpdate(prevProps){
-        console.log(prevProps.selectedHabit)
         if(prevProps.selectedHabit !== this.props.selectedHabit){
             this.setState({
                 selectedHabit : this.props.selectedHabit
             })
         }
+    }
+
+    componentDidMount(){
+        this.setState({
+            selectedHabit : this.props.userHabits[0]
+        })
     }
 
     displayWeekBox = () => {
@@ -80,7 +85,7 @@ class HabitStats extends Component {
                             <span>Level {this.state.selectedHabit.level}</span> - {this.state.selectedHabit.dailyHabit}
                         </p>
                         <div className="HabitStats__week-container">
-                            {this.displayWeekBox()}
+                            {this.state.selectedHabit && this.displayWeekBox()}
                         </div>
                         <p className="HabitStats__sub-title">
                             You have perform this habit {this.state.selectedHabit.currentScore} times this week
@@ -124,8 +129,9 @@ class HabitStats extends Component {
     }
 }
 
-const mapStateToProps = ({selectedHabit}) => ({
-    selectedHabit
+const mapStateToProps = ({selectedHabit, userHabits}) => ({
+    selectedHabit,
+    userHabits
 })
 
 export default connect(mapStateToProps)(HabitStats);
