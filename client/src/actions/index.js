@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {FETCH_USER, FETCH_USER_HABITS} from "./types"
+import {FETCH_USER, FETCH_USER_HABITS, SAVE_SELECTED_HABIT} from "./types"
 
 export const fetchUser = () => async dispatch => {
     const res = await axios.get('/api/current_user')
@@ -24,4 +24,8 @@ export const fetchUserHabits = (userId) => async dispatch => {
 export const updateUserHabits = (userId, habitId) => async dispatch => {
     const res = await axios.patch(`/api/updateScore/${userId}/${habitId}`)
     dispatch({type: FETCH_USER_HABITS, payload: res.data.habits})  
+}
+
+export const saveSelectedHabit = (selectedHabit) => async dispatch => {
+    dispatch({type: SAVE_SELECTED_HABIT, payload: selectedHabit})
 }

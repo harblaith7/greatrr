@@ -2,12 +2,19 @@ import React, { Component } from 'react';
 import "./IndividualHabit.scss"
 import ProgressBar from "../ProgressBar/ProgressBar"
 import diamond from "../../assets/svg/diamond.svg"
+import {connect} from "react-redux"
+import {saveSelectedHabit} from "../../actions"
 
 class IndividualHabit extends Component {
+
+    handleClick = () => {
+        this.props.saveSelectedHabit(this.props.userHabit)
+    }
+
     render() {
         const {habitName, weeksPoints, habitImage, dailyHabit, currentScore, habitDuration} = this.props.userHabit
         return (
-            <div className="IndividualHabit">
+            <div className="IndividualHabit" onClick={this.handleClick}>
                 <div className="IndividualHabit__container">
                     <div className="IndividualHabit__content-container">
                         <img src={habitImage} alt="" className="IndividualHabit__habit-img"/>
@@ -40,4 +47,4 @@ class IndividualHabit extends Component {
     }
 }
 
-export default IndividualHabit;
+export default connect(null, {saveSelectedHabit})(IndividualHabit);

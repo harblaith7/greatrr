@@ -4,6 +4,7 @@ import ModalNav from "../ModalNav/ModalNav"
 import WeekBox from "../WeekBox/WeekBox"
 import LinearProgressBar from "../ProgressBar/ProgressBar"
 import CircularProgessBar from "../CircularProgressBar/CircularProgressBar"
+import {connect} from "react-redux"
 
 class HabitStats extends Component {
     render() {
@@ -13,10 +14,10 @@ class HabitStats extends Component {
                 <div className="HabitStats__container">
                     <div className="HabitStats__first-container">
                         <h2 className="HabitStats__heading">
-                            Basketball Training
+                            {this.props.selectedHabit.habitName}
                         </h2>
                         <p className="HabitStats__habit-description">
-                            <span>Week 4</span> - hard training for 3 hours
+                            <span>Level 4</span> - hard training for 3 hours
                         </p>
                         <div className="HabitStats__week-container">
                             <WeekBox weekDev = "M" />
@@ -64,4 +65,10 @@ class HabitStats extends Component {
     }
 }
 
-export default HabitStats;
+const mapStateToProps = ({selectedHabit}) => ({
+    selectedHabit
+})
+
+export default connect(mapStateToProps)(HabitStats);
+
+

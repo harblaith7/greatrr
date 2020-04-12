@@ -16,6 +16,7 @@ const habitsSchema = new Schema({
     weeksHours: {type : Number, default : 0},
     totalPoints: {type : Number, default : 0},
     totalHours: {type : Number, default : 0},
+    level: {type : Number, default : 1},
     weekStatus: {type: [Boolean], default : [false, false, false, false, false, false, false]},
 })
 
