@@ -12,5 +12,9 @@
     box-shadow: 0.1rem 0.1rem 1rem $very-light-black;
     font-size: 1.75rem;
     font-weight: 700;
-    color: rgba(56, 55, 55, 0.795)
+    color: rgba(56, 55, 55, 0.795);
+
+    &--active {
+        background-color: $active-green;
+    }
 }

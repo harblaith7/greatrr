@@ -67,8 +67,17 @@ class HabitStats extends Component {
                     id = {week.weekId}
                     weekAbbreviation = {week.weekAbbreviation}
                     weekStatus = {this.state.selectedHabit.weekStatus}
+                    updateWeekStatus={this.updateWeekStatus}
                 />
             )
+        })
+    }
+
+    updateWeekStatus = (newWeekStatus) => {
+        this.setState({
+            selectedHabit : {
+                ...this.state.selectedHabit, weekStatus : newWeekStatus
+            }
         })
     }
 
