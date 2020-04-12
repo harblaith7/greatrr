@@ -24,7 +24,7 @@
     }
 
     &__habits-container {
-      
+      direction: rtl;
       width: 35%;
       position: absolute;
       left: 2.5%;
@@ -36,7 +36,8 @@
 
 ::-webkit-scrollbar {
     direction: rtl;
-    width: 5px
+    width: 5px;
+    
   }
 
   /* Track */
@@ -47,7 +48,7 @@
   
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: rgba(136, 136, 136, 0.432);
+    background: rgba(4, 22, 122, 0.432);
     border-radius: 1rem;
   }
   

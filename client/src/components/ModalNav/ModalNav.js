@@ -9,12 +9,12 @@ class ModalNav extends Component {
                     <ul className="ModalNav__list">
                         <li className="ModalNav__list-item">
                             <a href="/" className="ModalNav__link">
-                                Points
+                                Habit Progression & Statistics
                             </a>
                         </li>
                         <li className="ModalNav__list-item">
                             <a href="/" className="ModalNav__link">
-                                Stats
+                                Total Progression & Statistics
                             </a>
                         </li>
                         <li className="ModalNav__list-item">

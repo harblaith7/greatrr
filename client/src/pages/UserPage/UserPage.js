@@ -3,7 +3,8 @@ import axios from "axios";
 import {connect} from 'react-redux'
 import { v4 as uuidv4 } from 'uuid';
 import StatsHeader from "../../components/StatsHeader/StatsHeader";
-import CreateHabitsForm from "../../components/CreateHabitsForm/CreateHabitsForm"
+import CreateHabitsForm from "../../components/CreateHabitsForm/CreateHabitsForm";
+import HabitStats from "../../components/HabitStats/HabitStats"
 import {fetchUserHabits} from "../../actions"
 
 class UserPage extends Component {
@@ -61,7 +62,10 @@ class UserPage extends Component {
                     <div className="UserPage__page">
                         {
                             this.props.userHabits.length ? (
-                                <StatsHeader/>
+                                <>
+                                    <StatsHeader/>
+                                    <HabitStats/>
+                                </>
                             ) : (
                                 <CreateHabitsForm
                                     userName = {this.props.auth.givenName}

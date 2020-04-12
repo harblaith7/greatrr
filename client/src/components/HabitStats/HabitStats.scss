@@ -1,0 +1,49 @@
+@import "../../sass/variables.scss";
+
+.HabitStats {
+    height: 75vh;
+
+    &__container {
+        width: 85%;
+        margin: 0 auto;
+        display: flex;
+    }
+
+    &__first-container {
+        width: 70%
+    }
+
+    &__heading {
+        padding: 4rem 0 1rem 0;
+        font-size: 3.5rem;
+        font-weight: 400;
+    }
+
+    &__habit-description {
+        font-size: 1.5rem;
+        color: $transparent-black;
+
+        & span {
+            font-weight: 700;
+        }
+    }
+
+    &__week-container {
+   
+        width: 65%;
+        margin-top: 3.5rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__sub-title {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    &__progress-bar-container {
+        background-color: blue;
+        margin-top: 5rem;
+        width: 85%
+    }
+}
