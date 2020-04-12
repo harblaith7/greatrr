@@ -3,6 +3,7 @@ import "./HabitStats.scss"
 import ModalNav from "../ModalNav/ModalNav"
 import WeekBox from "../WeekBox/WeekBox"
 import LinearProgressBar from "../ProgressBar/ProgressBar"
+import CircularProgessBar from "../CircularProgressBar/CircularProgressBar"
 
 class HabitStats extends Component {
     render() {
@@ -42,8 +43,21 @@ class HabitStats extends Component {
                         </div>
                     </div>
                     <div className="HabitStats__second-container">
-                        
+                        <div className="HabitStats__circular-container">
+                            <CircularProgessBar/>
+                            <div className="HabitStats__circle-stats">
+                                3314/5355
+                            </div>
+                        </div>
+                        <div className="HabitStats__minus-plus-container">
+                            <button class="HabitStats__btn">-</button>
+                            <input type="text" value="1" className="HabitStats__input"/>
+                            <button class="HabitStats__btn">+</button>
+                        </div>
                     </div>
+                    <button className="HabitStats__save-btn">
+                        Save Changes
+                    </button>
                 </div>
             </div>
         );

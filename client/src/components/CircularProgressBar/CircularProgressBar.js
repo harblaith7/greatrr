@@ -31,7 +31,7 @@ export default function CircularStatic(props) {
     <div className={classes.root} >
       <CircularProgress 
         variant="static" 
-        value={props.percentage} 
+        value={88} 
         size={225}
         thickness={1.5}
     />
