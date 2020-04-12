@@ -45,12 +45,13 @@ class HabitStats extends Component {
         }
     }
 
-    componentDidUpdate(prevProps){
+    componentDidUpdate(prevProps, prevState){
         if(prevProps.selectedHabit !== this.props.selectedHabit){
             this.setState({
                 selectedHabit : this.props.selectedHabit
             })
         }
+        
     }
 
     componentDidMount(){
@@ -73,39 +74,51 @@ class HabitStats extends Component {
         })
     }
 
-    updateWeekStatus = (newWeekStatus) => {
-        this.setState({
-            selectedHabit : {
-                ...this.state.selectedHabit, weekStatus : newWeekStatus
+    updateWeekStatus = async (newWeekStatus) => {
+        let counter = 0
+        newWeekStatus.map(status => {
+            if(status){
+                counter ++
             }
         })
+        await this.setState({
+            selectedHabit : {
+                ...this.state.selectedHabit, 
+                weekStatus : newWeekStatus,
+                currentScore : counter
+            }
+        })
+        
+        
     }
 
     render() {
+        const {dailyHabit, level, habitName, currentScore, totalHours, habitDuration, totalPoints} = this.state.selectedHabit
         return (
             <div className="HabitStats">
                 <ModalNav/>
                 <div className="HabitStats__container">
                     <div className="HabitStats__first-container">
                         <h2 className="HabitStats__heading">
-                            {this.state.selectedHabit.habitName}
+                            {habitName}
                         </h2>
                         <p className="HabitStats__habit-description">
-                            <span>Level {this.state.selectedHabit.level}</span> - {this.state.selectedHabit.dailyHabit}
+                            <span>Level {level}</span> - {dailyHabit}
                         </p>
                         <div className="HabitStats__week-container">
                             {this.state.selectedHabit && this.displayWeekBox()}
                         </div>
                         <p className="HabitStats__sub-title">
-                            You have perform this habit {this.state.selectedHabit.currentScore} times this week
+                            You have completed this habit {currentScore} out of {habitDuration} times this week. <br/>
+                            
                         </p>
                         <div className="HabitStats__progress-bar-container">
                             <div className="HabitStats__habit-count">
-                                {this.state.selectedHabit.totalHours}/{this.state.selectedHabit.habitDuration * 12}
+                                {totalHours}/{habitDuration * 12}
                             </div>
                             <LinearProgressBar
-                                currentScore={this.state.selectedHabit.totalHours}
-                                habitDuration={this.state.selectedHabit.habitDuration * 12}
+                                currentScore={totalHours}
+                                habitDuration={habitDuration * 12}
                             />
                             <div className="HabitStats__minus-plus-container">
                                 <button class="HabitStats__btn">-</button>
@@ -117,10 +130,10 @@ class HabitStats extends Component {
                     <div className="HabitStats__second-container">
                         <div className="HabitStats__circular-container">
                             <CircularProgessBar
-                                totalPoints = {this.state.selectedHabit.totalPoints}
+                                totalPoints = {totalPoints}
                             />
                             <div className="HabitStats__circle-stats">
-                                {this.state.selectedHabit.totalPoints}/400
+                                {totalPoints}/400
                             </div>
                         </div>
                         <div className="HabitStats__minus-plus-container">
