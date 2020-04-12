@@ -7,6 +7,66 @@ import CircularProgessBar from "../CircularProgressBar/CircularProgressBar"
 import {connect} from "react-redux"
 
 class HabitStats extends Component {
+
+    constructor(props){
+        super(props)
+        this.state = {
+            selectedHabit : {},
+            weekBoxInfo : [
+                {
+                    weekAbbreviation : "M",
+                    weekId: 0
+                },
+                {
+                    weekAbbreviation : "T",
+                    weekId: 1
+                },
+                {
+                    weekAbbreviation : "W",
+                    weekId: 2
+                },
+                {
+                    weekAbbreviation : "Th",
+                    weekId: 3
+                },
+                {
+                    weekAbbreviation : "F",
+                    weekId: 4
+                },
+                {
+                    weekAbbreviation : "S",
+                    weekId: 5
+                },
+                {
+                    weekAbbreviation : "S",
+                    weekId: 6
+                },
+            ]
+        }
+    }
+
+    componentDidUpdate(prevProps){
+        console.log(prevProps.selectedHabit)
+        if(prevProps.selectedHabit !== this.props.selectedHabit){
+            this.setState({
+                selectedHabit : this.props.selectedHabit
+            })
+        }
+    }
+
+    displayWeekBox = () => {
+        return this.state.weekBoxInfo.map(week => {
+            return (
+                <WeekBox 
+                    key = {week.weekId}
+                    id = {week.weekId}
+                    weekAbbreviation = {week.weekAbbreviation}
+                    weekStatus = {this.state.selectedHabit.weekStatus}
+                />
+            )
+        })
+    }
+
     render() {
         return (
             <div className="HabitStats">
@@ -14,28 +74,25 @@ class HabitStats extends Component {
                 <div className="HabitStats__container">
                     <div className="HabitStats__first-container">
                         <h2 className="HabitStats__heading">
-                            {this.props.selectedHabit.habitName}
+                            {this.state.selectedHabit.habitName}
                         </h2>
                         <p className="HabitStats__habit-description">
-                            <span>Level 4</span> - hard training for 3 hours
+                            <span>Level {this.state.selectedHabit.level}</span> - {this.state.selectedHabit.dailyHabit}
                         </p>
                         <div className="HabitStats__week-container">
-                            <WeekBox weekDev = "M" />
-                            <WeekBox weekDev = "T" />
-                            <WeekBox weekDev = "W" />
-                            <WeekBox weekDev = "Th" />
-                            <WeekBox weekDev = "F" />
-                            <WeekBox weekDev = "S" />
-                            <WeekBox weekDev = "S" />
+                            {this.displayWeekBox()}
                         </div>
                         <p className="HabitStats__sub-title">
-                            You have perform this habit 4 times this week
+                            You have perform this habit {this.state.selectedHabit.currentScore} times this week
                         </p>
                         <div className="HabitStats__progress-bar-container">
                             <div className="HabitStats__habit-count">
-                                4/53
+                                {this.state.selectedHabit.totalHours}/{this.state.selectedHabit.habitDuration * 12}
                             </div>
-                            <LinearProgressBar/>
+                            <LinearProgressBar
+                                currentScore={this.state.selectedHabit.totalHours}
+                                habitDuration={this.state.selectedHabit.habitDuration * 12}
+                            />
                             <div className="HabitStats__minus-plus-container">
                                 <button class="HabitStats__btn">-</button>
                                 <input type="text" value="1" className="HabitStats__input"/>
@@ -45,9 +102,11 @@ class HabitStats extends Component {
                     </div>
                     <div className="HabitStats__second-container">
                         <div className="HabitStats__circular-container">
-                            <CircularProgessBar/>
+                            <CircularProgessBar
+                                totalPoints = {this.state.selectedHabit.totalPoints}
+                            />
                             <div className="HabitStats__circle-stats">
-                                3314/5355
+                                {this.state.selectedHabit.totalPoints}/400
                             </div>
                         </div>
                         <div className="HabitStats__minus-plus-container">

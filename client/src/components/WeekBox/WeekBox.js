@@ -5,7 +5,7 @@ class WeekBox extends Component {
     render() {
         return (
             <div className="WeekBox">
-                {this.props.weekDev}
+                {this.props.weekAbbreviation}
             </div>
         );
     }
