@@ -30,7 +30,15 @@ class HabitStats extends Component {
                             You have perform this habit 4 times this week
                         </p>
                         <div className="HabitStats__progress-bar-container">
+                            <div className="HabitStats__habit-count">
+                                4/53
+                            </div>
                             <LinearProgressBar/>
+                            <div className="HabitStats__minus-plus-container">
+                                <button class="HabitStats__btn">-</button>
+                                <input type="text" value="1" className="HabitStats__input"/>
+                                <button class="HabitStats__btn">+</button>
+                            </div>
                         </div>
                     </div>
                     <div className="HabitStats__second-container">

@@ -42,8 +42,41 @@
     }
 
     &__progress-bar-container {
-        background-color: blue;
         margin-top: 5rem;
         width: 85%
+    }
+
+    &__habit-count {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    &__minus-plus-container {
+        margin-top: 2rem;
+        display: flex;
+    }
+
+    &__btn {
+        width:3.5rem;
+        height:3.5rem;
+        cursor: pointer;
+        margin: 0 0.3rem;
+        border: none;
+        border-radius: 0.4rem;
+        background-color: $off-white;
+        border: 0.1rem solid $very-light-black;
+        font-weight: 400;
+        font-size: 2rem;
+    }
+
+    &__input {
+        height:3.5rem;
+        width: 10rem;
+        text-align: center;
+        font-size: 2rem;
+		border:0.1rem solid #ddd;
+		border-radius:0.4rem;
+        display: inline-block;
+        vertical-align: middle;
     }
 }
