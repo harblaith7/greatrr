@@ -6,6 +6,7 @@ import LinearProgressBar from "../ProgressBar/ProgressBar"
 import CircularProgessBar from "../CircularProgressBar/CircularProgressBar"
 import {connect} from "react-redux"
 import {updateUserHabits} from "../../actions"
+import nextArrow from "../../assets/svg/arrow.svg"
 
 class HabitStats extends Component {
 
@@ -120,6 +121,25 @@ class HabitStats extends Component {
     saveChanges = () => {
         this.props.updateUserHabits(this.props.auth._id, this.state.selectedHabit._id, this.state.selectedHabit)
     }
+
+    nextLevel = () => {
+        const {currentScore, habitDuration} = this.state.selectedHabit
+        // CHECK IF WE INCREMENT LEVEL 
+        if(currentScore >= habitDuration){
+            this.setState({
+                selectedHabit : {
+                    ...this.state.selectedHabit,
+                    weekStatus: [false, false, false, false, false, false, false],
+                    currentScore: 0,
+                    level: this.state.selectedHabit.level + 1,
+                    pointsAssigned : false
+                }
+            })
+        }
+        // LET CURRENT SCORE TO ZERO 
+        // SET WEEKSTATUS TO ALL FALSE
+        // SAVE THE DATA 
+    }
   
 
     render() {
@@ -137,7 +157,12 @@ class HabitStats extends Component {
                         </p>
                         <div className="HabitStats__week-container">
                             {this.state.selectedHabit && this.displayWeekBox()}
-                            <button className="HabitStats__next-week-btn">Next week</button> 
+                            <button 
+                                className="HabitStats__next-week-btn"
+                                onClick={this.nextLevel}
+                            >
+                                <img src={nextArrow} alt="" className="HabitStats__arrow-icon"/>
+                            </button> 
                         </div>
                         <p className="HabitStats__sub-title">
                             Habit performed: {currentScore} <br/> 
@@ -169,7 +194,7 @@ class HabitStats extends Component {
                         className="HabitStats__save-btn"  
                         onClick={this.saveChanges}
                     >
-                        Save Changes
+                        save
                     </button>
                 </div>
             </div>
