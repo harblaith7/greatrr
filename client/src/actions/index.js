@@ -21,8 +21,8 @@ export const fetchUserHabits = (userId) => async dispatch => {
     dispatch({type: FETCH_USER_HABITS, payload: res.data})
 }
 
-export const updateUserHabits = (userId, habitId) => async dispatch => {
-    const res = await axios.patch(`/api/updateScore/${userId}/${habitId}`)
+export const updateUserHabits = (userId, habitId, habit) => async dispatch => {
+    const res = await axios.patch(`/api/updateHabit/${userId}/${habitId}`, {updatedHabit : habit})
     dispatch({type: FETCH_USER_HABITS, payload: res.data.habits})  
 }
 

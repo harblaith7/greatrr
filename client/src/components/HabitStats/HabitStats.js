@@ -5,6 +5,7 @@ import WeekBox from "../WeekBox/WeekBox"
 import LinearProgressBar from "../ProgressBar/ProgressBar"
 import CircularProgessBar from "../CircularProgressBar/CircularProgressBar"
 import {connect} from "react-redux"
+import {updateUserHabits} from "../../actions"
 
 class HabitStats extends Component {
 
@@ -116,6 +117,11 @@ class HabitStats extends Component {
         })  
     }
 
+    saveChanges = () => {
+        this.props.updateUserHabits(this.props.auth._id, this.state.selectedHabit._id, this.state.selectedHabit)
+    }
+  
+
     render() {
         const {dailyHabit, level, habitName, currentScore, totalHours, habitDuration, totalPoints} = this.state.selectedHabit
         return (
@@ -131,6 +137,7 @@ class HabitStats extends Component {
                         </p>
                         <div className="HabitStats__week-container">
                             {this.state.selectedHabit && this.displayWeekBox()}
+                            <button className="HabitStats__next-week-btn">Next week</button> 
                         </div>
                         <p className="HabitStats__sub-title">
                             Habit performed: {currentScore} <br/> 
@@ -158,7 +165,10 @@ class HabitStats extends Component {
                             </div>
                         </div>
                     </div>
-                    <button className="HabitStats__save-btn">
+                    <button 
+                        className="HabitStats__save-btn"  
+                        onClick={this.saveChanges}
+                    >
                         Save Changes
                     </button>
                 </div>
@@ -167,11 +177,12 @@ class HabitStats extends Component {
     }
 }
 
-const mapStateToProps = ({selectedHabit, userHabits}) => ({
+const mapStateToProps = ({selectedHabit, userHabits, auth}) => ({
     selectedHabit,
-    userHabits
+    userHabits,
+    auth
 })
 
-export default connect(mapStateToProps)(HabitStats);
+export default connect(mapStateToProps, {updateUserHabits})(HabitStats);
 
 

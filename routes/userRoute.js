@@ -110,9 +110,47 @@ router.post('/addhabits/:id', async (req, res) => {
     const results = await updatedSchema.save()
 
     res.send(results)
-    
-   
+      
 })
 
+
+//////////////////////////////////////////////////////
+////////// UPDATING ONE HABIT UPON SAVE /////////////
+/////////////////////////////////////////////////////
+
+router.patch("/updateHabit/:userId/:habitId", async (req, res) => {
+
+     // FINDING THE APPROPRIATE USER AND SAVING THEIR HABITS IN A VARIABLE
+     const user = await User.findById(req.params.userId)
+     const habits = user.habits
+     
+     // FILTERING THROUGH ALL USER'S HABITS AND FINDING THE ONE THAT MATCHES THE ID 
+     // CHANGE THAT HABIT INTO THE ONE PASSED IN MY REQ.BODY
+     const updatedHabits = habits.map((habit) => {
+         if(habit._id == req.params.habitId){
+             habit = req.body.updatedHabit;
+             return habit
+         } else {
+             return habit
+         }
+     })
+
+     
+    // UPDATING THE ENTIRE HABIT ARRAY WITH UPDATED HABIT ARRAY
+    const updatedSchema = await User.findByIdAndUpdate(
+        {_id : req.params.userId},
+        {habits : updatedHabits},
+        (err, result) => {
+            console.log(result)
+        }
+    )
+
+    // SAVING THE RESULTS
+    const results = await updatedSchema.save()
+
+    res.send(results)
+
+
+})
 
 module.exports = router

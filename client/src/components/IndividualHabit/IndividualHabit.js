@@ -12,7 +12,7 @@ class IndividualHabit extends Component {
     }
 
     render() {
-        const {habitName, weeksPoints, habitImage, dailyHabit, currentScore, habitDuration} = this.props.userHabit
+        const {habitName, totalPoints, habitImage, dailyHabit, currentScore, habitDuration} = this.props.userHabit
         return (
             <div className="IndividualHabit" onClick={this.handleClick}>
                 <div className="IndividualHabit__container">
@@ -33,7 +33,7 @@ class IndividualHabit extends Component {
                                     />
                                 </div>
                                 <div className="IndividualHabit__point-container">
-                                    <h4 className="IndividualHabit__point">{weeksPoints}</h4>
+                                    <h4 className="IndividualHabit__point">{totalPoints}</h4>
                                     <img src={diamond} alt="" className="IndividualHabit__img"/>
                                 </div>
                             </div>
