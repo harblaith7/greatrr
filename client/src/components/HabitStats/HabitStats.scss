@@ -14,8 +14,22 @@
 
     &__save-btn {
         position: absolute;
-        right: 0;
-        bottom: 0;
+        right: 7.5%;
+        bottom: 7.5%;
+        cursor: pointer;
+        padding: 1.5rem 2.5rem;
+        font-weight: 700;
+        letter-spacing: 0.2rem;
+        border-radius: 0.3rem;
+        border: none;
+        outline: none;
+        box-shadow: 0.1rem 0.1rem 1rem $very-light-black;
+        background-color: rgba(255, 255, 0, 0.479);
+        transition: 1.5s all ease;
+
+        &:hover {
+            transform: scale(1.05);
+        }
     }
 
     &__first-container {
@@ -53,12 +67,22 @@
 
     &__progress-bar-container {
         margin-top: 5rem;
-        width: 85%
+        width: 85%;
+
+        & p {
+            font-size: 1.25rem;
+            margin-top: 0.5rem;
+
+            & span {
+                font-weight: 900;
+            }
+        }
     }
 
     &__habit-count {
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
+        letter-spacing: 0.2rem;
     }
 
     &__minus-plus-container {

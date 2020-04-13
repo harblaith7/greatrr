@@ -7,6 +7,7 @@ import CircularProgessBar from "../CircularProgressBar/CircularProgressBar"
 import {connect} from "react-redux"
 import {updateUserHabits} from "../../actions"
 import nextArrow from "../../assets/svg/arrow.svg"
+import Alert from "../Alert/Alert"
 
 class HabitStats extends Component {
 
@@ -43,7 +44,21 @@ class HabitStats extends Component {
                     weekAbbreviation : "S",
                     weekId: 6
                 },
-            ]
+            ],
+            pointsPerLevel : {
+                1 : 5,
+                2: 10,
+                3: 15,
+                4: 20,
+                5: 25, 
+                6: 30,
+                7: 35,
+                8: 40,
+                9: 45,
+                10: 50,
+                11: 55,
+                12: 60
+            }
         }
     }
 
@@ -54,22 +69,23 @@ class HabitStats extends Component {
             })
         }
 
-        const {currentScore, habitDuration, pointsAssigned} = this.state.selectedHabit
-
+        const {currentScore, habitDuration, pointsAssigned, level} = this.state.selectedHabit
+        const points = this.state.pointsPerLevel[`${level}`]
         if(prevState.selectedHabit.currentScore !== currentScore){
             if(currentScore === habitDuration && !pointsAssigned){
+                
                 this.setState({
                     selectedHabit : {
                         ...this.state.selectedHabit,
-                        totalPoints: this.state.selectedHabit.totalPoints + 5,
+                        totalPoints: this.state.selectedHabit.totalPoints + points,
                         pointsAssigned: true
                     }
                 })
-            } else if (prevState.selectedHabit.currentScore === habitDuration && currentScore < habitDuration){
+            } else if (prevState.selectedHabit.currentScore === habitDuration && currentScore < habitDuration && prevState.selectedHabit.level === level){
                 this.setState({
                     selectedHabit : {
                         ...this.state.selectedHabit,
-                        totalPoints: this.state.selectedHabit.totalPoints - 5,
+                        totalPoints: this.state.selectedHabit.totalPoints - points,
                         pointsAssigned: false
                     }
                 })
@@ -122,11 +138,11 @@ class HabitStats extends Component {
         this.props.updateUserHabits(this.props.auth._id, this.state.selectedHabit._id, this.state.selectedHabit)
     }
 
-    nextLevel = () => {
+    nextLevel = async () => {
         const {currentScore, habitDuration} = this.state.selectedHabit
         // CHECK IF WE INCREMENT LEVEL 
         if(currentScore >= habitDuration){
-            this.setState({
+            await this.setState({
                 selectedHabit : {
                     ...this.state.selectedHabit,
                     weekStatus: [false, false, false, false, false, false, false],
@@ -135,6 +151,17 @@ class HabitStats extends Component {
                     pointsAssigned : false
                 }
             })
+            this.props.updateUserHabits(this.props.auth._id, this.state.selectedHabit._id, this.state.selectedHabit)
+        } else {
+            await this.setState({
+                selectedHabit : {
+                    ...this.state.selectedHabit,
+                    weekStatus: [false, false, false, false, false, false, false],
+                    currentScore: 0,    
+                    pointsAssigned : false
+                }
+            })
+            this.props.updateUserHabits(this.props.auth._id, this.state.selectedHabit._id, this.state.selectedHabit)
         }
         // LET CURRENT SCORE TO ZERO 
         // SET WEEKSTATUS TO ALL FALSE
@@ -165,7 +192,7 @@ class HabitStats extends Component {
                             </button> 
                         </div>
                         <p className="HabitStats__sub-title">
-                            Habit performed: {currentScore} <br/> 
+                            Performed: {currentScore} <br/> 
                             Target: {habitDuration} 
                             
                         </p>
@@ -177,7 +204,7 @@ class HabitStats extends Component {
                                 currentScore={totalHours}
                                 habitDuration={habitDuration * 12}
                             />
-
+                            <p>You have completed this habit a total of <span>{totalHours}</span>  times</p>
                         </div>
                     </div>
                     <div className="HabitStats__second-container">
@@ -194,7 +221,7 @@ class HabitStats extends Component {
                         className="HabitStats__save-btn"  
                         onClick={this.saveChanges}
                     >
-                        save
+                        Save Changes
                     </button>
                 </div>
             </div>
