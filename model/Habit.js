@@ -11,6 +11,7 @@ const habitsSchema = new Schema({
     habitDuration: Number,
     habitPriority: Number,
     color: String,
+    pointsAssigned: {type: Boolean, default: false},
     currentScore: {type: Number, default: 0},
     weeksPoints: {type : Number, default : 0},
     weeksHours: {type : Number, default : 0},

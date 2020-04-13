@@ -52,13 +52,23 @@ class HabitStats extends Component {
             })
         }
 
-        if(prevState.selectedHabit.currentScore !== this.state.selectedHabit.currentScore){
-            const {currentScore, habitDuration} = this.state.selectedHabit
-            if(currentScore === habitDuration){
+        const {currentScore, habitDuration, pointsAssigned} = this.state.selectedHabit
+
+        if(prevState.selectedHabit.currentScore !== currentScore){
+            if(currentScore === habitDuration && !pointsAssigned){
                 this.setState({
                     selectedHabit : {
                         ...this.state.selectedHabit,
-                        totalPoints: this.state.selectedHabit.totalPoints + 5
+                        totalPoints: this.state.selectedHabit.totalPoints + 5,
+                        pointsAssigned: true
+                    }
+                })
+            } else if (prevState.selectedHabit.currentScore === habitDuration && currentScore < habitDuration){
+                this.setState({
+                    selectedHabit : {
+                        ...this.state.selectedHabit,
+                        totalPoints: this.state.selectedHabit.totalPoints - 5,
+                        pointsAssigned: false
                     }
                 })
             }
