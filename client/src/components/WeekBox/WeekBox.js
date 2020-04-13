@@ -6,10 +6,14 @@ import "./WeekBox.scss"
 class WeekBox extends Component {
 
     handleClick = () => {
+
+        // SENDING UPDATED WEEK STATUS TO HABITSTATS COMPONENT //
         const {weekAbbreviation, id, weekStatus} = this.props
         let newWeekStatus = weekStatus
         newWeekStatus[id] = !newWeekStatus[id]
-        this.props.updateWeekStatus(newWeekStatus)
+        this.props.updateWeekStatus(newWeekStatus, newWeekStatus[id])
+
+        //
     }
 
     render() {

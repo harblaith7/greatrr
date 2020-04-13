@@ -13,6 +13,7 @@
     font-size: 1.75rem;
     font-weight: 700;
     color: rgba(56, 55, 55, 0.795);
+    transition: 0.75s all ease;
 
     &--active {
         background-color: $active-green;

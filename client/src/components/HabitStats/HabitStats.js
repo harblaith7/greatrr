@@ -51,6 +51,18 @@ class HabitStats extends Component {
                 selectedHabit : this.props.selectedHabit
             })
         }
+
+        if(prevState.selectedHabit.currentScore !== this.state.selectedHabit.currentScore){
+            const {currentScore, habitDuration} = this.state.selectedHabit
+            if(currentScore === habitDuration){
+                this.setState({
+                    selectedHabit : {
+                        ...this.state.selectedHabit,
+                        totalPoints: this.state.selectedHabit.totalPoints + 5
+                    }
+                })
+            }
+        }
         
     }
 
@@ -74,22 +86,24 @@ class HabitStats extends Component {
         })
     }
 
-    updateWeekStatus = async (newWeekStatus) => {
-        let counter = 0
+    updateWeekStatus = async (newWeekStatus, isOn) => {
+        let counter = 0;
+        let changeBy;
+        isOn ? changeBy = 1 : changeBy = -1
         newWeekStatus.map(status => {
             if(status){
                 counter ++
             }
         })
+        console.log(isOn)
         await this.setState({
             selectedHabit : {
                 ...this.state.selectedHabit, 
                 weekStatus : newWeekStatus,
-                currentScore : counter
+                currentScore : counter,
+                totalHours: this.state.selectedHabit.totalHours + changeBy
             }
-        })
-        
-        
+        })  
     }
 
     render() {
@@ -109,7 +123,8 @@ class HabitStats extends Component {
                             {this.state.selectedHabit && this.displayWeekBox()}
                         </div>
                         <p className="HabitStats__sub-title">
-                            You have completed this habit {currentScore} out of {habitDuration} times this week. <br/>
+                            Habit performed: {currentScore} <br/> 
+                            Target: {habitDuration} 
                             
                         </p>
                         <div className="HabitStats__progress-bar-container">
@@ -120,11 +135,7 @@ class HabitStats extends Component {
                                 currentScore={totalHours}
                                 habitDuration={habitDuration * 12}
                             />
-                            <div className="HabitStats__minus-plus-container">
-                                <button class="HabitStats__btn">-</button>
-                                <input type="text" value="1" className="HabitStats__input"/>
-                                <button class="HabitStats__btn">+</button>
-                            </div>
+
                         </div>
                     </div>
                     <div className="HabitStats__second-container">
@@ -135,11 +146,6 @@ class HabitStats extends Component {
                             <div className="HabitStats__circle-stats">
                                 {totalPoints}/400
                             </div>
-                        </div>
-                        <div className="HabitStats__minus-plus-container">
-                            <button class="HabitStats__btn">-</button>
-                            <input type="text" value="1" className="HabitStats__input"/>
-                            <button class="HabitStats__btn">+</button>
                         </div>
                     </div>
                     <button className="HabitStats__save-btn">
