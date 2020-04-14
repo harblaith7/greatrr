@@ -109,6 +109,7 @@ class HabitStats extends Component {
                     weekAbbreviation = {week.weekAbbreviation}
                     weekStatus = {this.state.selectedHabit.weekStatus}
                     updateWeekStatus={this.updateWeekStatus}
+                    
                 />
             )
         })

@@ -22,8 +22,9 @@ class WeekBox extends Component {
             <>
                 {weekStatus && (
                     <div 
-                        className={`WeekBox ${weekStatus[id] && "WeekBox--active"}`}
+                        className={`WeekBox ${weekStatus[id] ? " WeekBox--active" : ""}`}
                         onClick={this.handleClick}
+                        data-testid="week-box"
                     >
                         {weekAbbreviation}
                     </div>
