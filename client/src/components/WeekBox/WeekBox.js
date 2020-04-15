@@ -17,14 +17,14 @@ class WeekBox extends Component {
     }
 
     render() {
-        const {weekAbbreviation, id, weekStatus} = this.props
+        const {weekAbbreviation, id, weekStatus, testId} = this.props
         return (
             <>
                 {weekStatus && (
                     <div 
-                        className={`WeekBox ${weekStatus[id] ? " WeekBox--active" : ""}`}
+                        className={`WeekBox ${weekStatus[id] ? "WeekBox--active" : ""}`}
                         onClick={this.handleClick}
-                        data-testid="week-box"
+                        data-testid={testId}
                     >
                         {weekAbbreviation}
                     </div>

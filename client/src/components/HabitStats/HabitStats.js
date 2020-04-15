@@ -95,9 +95,12 @@ class HabitStats extends Component {
     }
 
     componentDidMount(){
-        this.setState({
-            selectedHabit : this.props.userHabits[0]
-        })
+        setTimeout(() => {
+            this.setState({
+                selectedHabit : this.props.userHabits[0]
+            })
+        }, 1)
+        
     }
 
     displayWeekBox = () => {
@@ -109,7 +112,7 @@ class HabitStats extends Component {
                     weekAbbreviation = {week.weekAbbreviation}
                     weekStatus = {this.state.selectedHabit.weekStatus}
                     updateWeekStatus={this.updateWeekStatus}
-                    
+                    testId={`${week.weekAbbreviation}-${week.weekId}`}
                 />
             )
         })
@@ -193,7 +196,7 @@ class HabitStats extends Component {
                             </button> 
                         </div>
                         <p className="HabitStats__sub-title">
-                            Performed: {currentScore} <br/> 
+                            Performed: <span data-testid="current-score">{currentScore}</span>  <br/> 
                             Target: {habitDuration} 
                             
                         </p>
