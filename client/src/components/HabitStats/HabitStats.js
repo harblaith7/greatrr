@@ -6,8 +6,8 @@ import LinearProgressBar from "../ProgressBar/ProgressBar"
 import CircularProgessBar from "../CircularProgressBar/CircularProgressBar"
 import {connect} from "react-redux"
 import {updateUserHabits} from "../../actions"
-import nextArrow from "../../assets/svg/arrow.svg"
-import Alert from "../Alert/Alert"
+import trophy from "../../assets/svg/award.svg"
+import notes from "../../assets/svg/notepad.svg"
 
 class HabitStats extends Component {
 
@@ -17,31 +17,31 @@ class HabitStats extends Component {
             selectedHabit : {},
             weekBoxInfo : [
                 {
-                    weekAbbreviation : "M",
+                    weekAbbreviation : "1",
                     weekId: 0
                 },
                 {
-                    weekAbbreviation : "T",
+                    weekAbbreviation : "2",
                     weekId: 1
                 },
                 {
-                    weekAbbreviation : "W",
+                    weekAbbreviation : "3",
                     weekId: 2
                 },
                 {
-                    weekAbbreviation : "Th",
+                    weekAbbreviation : "4",
                     weekId: 3
                 },
                 {
-                    weekAbbreviation : "F",
+                    weekAbbreviation : "5",
                     weekId: 4
                 },
                 {
-                    weekAbbreviation : "S",
+                    weekAbbreviation : "6",
                     weekId: 5
                 },
                 {
-                    weekAbbreviation : "S",
+                    weekAbbreviation : "7",
                     weekId: 6
                 },
             ],
@@ -58,7 +58,8 @@ class HabitStats extends Component {
                 10: 50,
                 11: 55,
                 12: 60
-            }
+            },
+            saveAnimation: false
         }
     }
 
@@ -140,6 +141,14 @@ class HabitStats extends Component {
 
     saveChanges = () => {
         this.props.updateUserHabits(this.props.auth._id, this.state.selectedHabit._id, this.state.selectedHabit)
+        this.setState({
+            saveAnimation: true
+        })
+        setTimeout(() => {
+            this.setState({
+                saveAnimation: false
+            })
+        }, 4000)
     }
 
     nextLevel = async () => {
@@ -164,8 +173,10 @@ class HabitStats extends Component {
                     currentScore: 0,    
                     pointsAssigned : false
                 }
+            }, () => {
+                this.props.updateUserHabits(this.props.auth._id, this.state.selectedHabit._id, this.state.selectedHabit)
             })
-            this.props.updateUserHabits(this.props.auth._id, this.state.selectedHabit._id, this.state.selectedHabit)
+            
         }
         // LET CURRENT SCORE TO ZERO 
         // SET WEEKSTATUS TO ALL FALSE
@@ -188,12 +199,7 @@ class HabitStats extends Component {
                         </p>
                         <div className="HabitStats__week-container">
                             {this.state.selectedHabit && this.displayWeekBox()}
-                            <button 
-                                className="HabitStats__next-week-btn"
-                                onClick={this.nextLevel}
-                            >
-                                <img src={nextArrow} alt="" className="HabitStats__arrow-icon"/>
-                            </button> 
+                           
                         </div>
                         <p className="HabitStats__sub-title">
                             Performed: <span data-testid="current-score">{currentScore}</span>  <br/> 
@@ -227,25 +233,36 @@ class HabitStats extends Component {
                         className="HabitStats__save-btn"  
                         onClick={this.saveChanges}
                     >
-                        Save Changes
+                        {this.state.saveAnimation ? (
+                            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+                        ) : "Save Changes"}
                     </button>
                     {
                         currentScore >= habitDuration ? (
                             <button 
                                  className="HabitStats__save-btn HabitStats__proceed-btn--proceed"  
                                  onClick={this.saveChanges}
+                                 onClick={this.nextLevel}
                             >
                                 Proceed to Next Level
                             </button>
                         ) : (
                             <button 
                                  className="HabitStats__proceed-btn "  
-                                 onClick={this.saveChanges}
+                                 onClick={this.nextLevel}
                             >
                                 Reset Level
                             </button>
                         )
                     }
+                </div>
+                <div className="HabitStats__small-btns-container">
+                    <div className="HabitStats__small-btn-container">
+                        <img src={notes} alt="" className="HabitStats__small-icon"/>
+                    </div>
+                    <div className="HabitStats__small-btn-container">
+                        <img src={trophy} alt="" className="HabitStats__small-icon HabitStats__small-icon--larger"/>
+                    </div>
                 </div>
             </div>
         );

@@ -3,13 +3,14 @@
 .HabitStats {
     height: 75vh;
     position: relative;
+    
 
     &__container {
         width: 85%;
         margin: 0 auto;
         display: flex;
         
-        height: 75%
+        height: 80%
     }
 
     &__first-container {
@@ -33,7 +34,7 @@
 
     &__week-container {
    
-        width: 75%;
+        width: 70%;
         margin-top: 3.5rem;
         display: flex;
         justify-content: space-between;
@@ -109,7 +110,7 @@
         align-items: center;
         justify-content: center;
         position: relative;
-        margin-bottom: -2.5rem;
+        margin-bottom: 7.5rem;
     }
 
     &__circle-stats {
@@ -146,7 +147,7 @@
 
     &__btn-container {
         position: relative;
-        width: 50rem;
+        width: 60rem;
         position: absolute;
         right: 7.5%;
         bottom: 7.5%;
@@ -157,7 +158,7 @@
     &__save-btn {
         
         cursor: pointer;
-        padding: 1.5rem 2.5rem;
+        padding: 0rem 2.5rem;
         font-weight: 700;
         letter-spacing: 0.2rem;
         border-radius: 0.3rem;
@@ -167,21 +168,112 @@
         background-color: rgba(255, 255, 0, 0.479);
         transition: 1.5s all ease;
         margin-right: 4rem;
-
-        &:hover {
-            transform: scale(1.05);
-        }
+        width: 32.5rem;
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
     }
 
     &__proceed-btn {
         @extend .HabitStats__save-btn;
         background-color: rgba(231, 99, 99, 0.747);
-        width: 25rem;
+        width: 32.5rem;
 
 
         &--proceed {
             background-color: rgba(110, 223, 110, 0.747);
-            width: 25rem;
+            width: 32.5rem;
+        }
+    }
+
+    &__small-btns-container {
+        position: absolute;
+        left: 7.5%;
+        bottom: 7.5%;
+        height: 5rem;
+        display: flex;
+        align-items: center;
+    }
+
+    &__small-btn-container {
+        width: 3.5rem;
+        height: 3.5rem;
+      
+        border-radius: 100%;
+        margin-right: 2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.2rem;
+        border: 0.15rem solid rgba(0, 0, 0, 0.24);
+        background-color: rgba(212, 209, 209, 0.26);
+    }
+
+    &__small-icon {
+        width: 2rem;
+
+        &--larger {
+            width: 2.25rem
         }
     }
 }
+
+
+
+
+
+
+
+
+.checkmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 5;
+    stroke-miterlimit: 10;
+    stroke: green;
+    fill: none;
+    animation: stroke 2s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    
+  }
+  
+  .checkmark {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 4;
+    stroke: green;
+    stroke-miterlimit: 10;
+    margin: 0 auto;
+    box-shadow: inset 0px 0px 0px #7ac142;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+  }
+  
+  .checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.75s cubic-bezier(0.65, 0, 0.45, 1) 2s forwards;
+  }
+  
+  @keyframes stroke {
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes scale {
+    0%, 100% {
+      transform: none;
+    }
+    50% {
+      transform: scale3d(1.1, 1.1, 1);
+    }
+  }
+  @keyframes fill {
+    100% {
+      box-shadow: inset 0px 0px 0px 30px transparent;
+    }
+  }
