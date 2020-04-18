@@ -27,6 +27,9 @@ class HabitAccomplisments extends Component {
                 <div className="HabitAccomplishments__items-container">
                     <div className="HabitAccomplishments__item-container">
                         Spent 402 hours to practicing
+                        <div className="HabitAccomplishments__icon-container">
+                            hi
+                        </div>
                     </div>
                     <div className="HabitAccomplishments__item-container">
                         Hello

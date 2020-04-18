@@ -56,10 +56,18 @@
     }
 
     &__item-container {
-        width: 100%;
+        width: 95%;
         height: 5rem;
         border-bottom: 0.15rem solid $light-grey;
         display: flex;
         align-items: center;
+        font-size: 1.5rem;
+        color: rgb(41, 41, 41);
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__icon-container {
+        background-color: blue;
     }
 }
