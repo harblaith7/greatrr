@@ -68,6 +68,14 @@
     }
 
     &__icon-container {
-        background-color: blue;
+     
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 5rem
+    }
+
+    &__icon {
+        cursor: pointer;
     }
 }

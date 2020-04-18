@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import "./HabitAccomplishments.scss"
-import {motion} from "framer-motion"
+import {motion} from "framer-motion";
+import deleteIcon from "../../assets/svg/delete.svg"
+import editIcon from "../../assets/svg/edit.svg"
 
 class HabitAccomplisments extends Component {
     render() {
@@ -28,7 +30,8 @@ class HabitAccomplisments extends Component {
                     <div className="HabitAccomplishments__item-container">
                         Spent 402 hours to practicing
                         <div className="HabitAccomplishments__icon-container">
-                            hi
+                            <img src={editIcon} alt="" className="HabitAccomplishments__icon"/>
+                            <img src={deleteIcon} alt="" className="HabitAccomplishments__icon"/>
                         </div>
                     </div>
                     <div className="HabitAccomplishments__item-container">
