@@ -1,7 +1,8 @@
 @import "../../sass/variables.scss";
 
+
 .HabitStats {
-    height: 75vh;
+    height: 80vh;
     position: relative;
     
 
@@ -9,8 +10,11 @@
         width: 85%;
         margin: 0 auto;
         display: flex;
-        
-        height: 80%
+        position: relative;
+        height: 80%;
+        overflow: hidden;
+        padding: 0 0.25rem;
+        border-bottom: 0.2rem solid $very-light-black;
     }
 
     &__first-container {
@@ -150,7 +154,7 @@
         width: 60rem;
         position: absolute;
         right: 7.5%;
-        bottom: 7.5%;
+        bottom: 12.5%;
         display: flex;
         justify-content: center;
     }
@@ -183,7 +187,7 @@
 
 
         &--proceed {
-            background-color: rgba(110, 223, 110, 0.747);
+            background-color: $light-green;
             width: 32.5rem;
         }
     }
@@ -191,7 +195,7 @@
     &__small-btns-container {
         position: absolute;
         left: 7.5%;
-        bottom: 7.5%;
+        bottom: 12.5%;
         height: 5rem;
         display: flex;
         align-items: center;

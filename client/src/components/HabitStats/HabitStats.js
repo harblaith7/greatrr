@@ -8,6 +8,8 @@ import {connect} from "react-redux"
 import {updateUserHabits} from "../../actions"
 import trophy from "../../assets/svg/award.svg"
 import notes from "../../assets/svg/notepad.svg"
+import HabitAccomplisments from "../HabitAccomplishments/HabitAccomplisments"
+import { AnimatePresence } from 'framer-motion';
 
 class HabitStats extends Component {
 
@@ -59,7 +61,9 @@ class HabitStats extends Component {
                 11: 55,
                 12: 60
             },
-            saveAnimation: false
+            saveAnimation: false,
+            isAccomplishmentsToggled: false,
+            isNotesToggled: false,
         }
     }
 
@@ -151,6 +155,12 @@ class HabitStats extends Component {
         }, 4000)
     }
 
+    toggleAccomplishments = () => {
+        this.setState({
+            isAccomplishmentsToggled : !this.state.isAccomplishmentsToggled
+        })
+    }
+
     nextLevel = async () => {
         const {currentScore, habitDuration} = this.state.selectedHabit
         // CHECK IF WE INCREMENT LEVEL 
@@ -190,6 +200,10 @@ class HabitStats extends Component {
             <div className="HabitStats">
                 <ModalNav/>
                 <div className="HabitStats__container">
+                    <AnimatePresence>
+                        {this.state.isAccomplishmentsToggled &&  <HabitAccomplisments/>}
+                    </AnimatePresence>
+                    
                     <div className="HabitStats__first-container">
                         <h2 className="HabitStats__heading">
                             {habitName}
@@ -260,7 +274,7 @@ class HabitStats extends Component {
                     <div className="HabitStats__small-btn-container">
                         <img src={notes} alt="" className="HabitStats__small-icon"/>
                     </div>
-                    <div className="HabitStats__small-btn-container">
+                    <div className="HabitStats__small-btn-container" onClick={this.toggleAccomplishments}>
                         <img src={trophy} alt="" className="HabitStats__small-icon HabitStats__small-icon--larger"/>
                     </div>
                 </div>
