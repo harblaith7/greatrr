@@ -112,7 +112,7 @@ class HabitStats extends Component {
                     weekAbbreviation = {week.weekAbbreviation}
                     weekStatus = {this.state.selectedHabit.weekStatus}
                     updateWeekStatus={this.updateWeekStatus}
-                    testId={`${week.weekAbbreviation}-${week.weekId}`}
+                    
                 />
             )
         })
@@ -220,13 +220,32 @@ class HabitStats extends Component {
                                 {totalPoints}/400
                             </div>
                         </div>
-                    </div>
+                    </div>  
+                </div>
+                <div className="HabitStats__btn-container">
                     <button 
                         className="HabitStats__save-btn"  
                         onClick={this.saveChanges}
                     >
                         Save Changes
                     </button>
+                    {
+                        currentScore >= habitDuration ? (
+                            <button 
+                                 className="HabitStats__save-btn HabitStats__proceed-btn--proceed"  
+                                 onClick={this.saveChanges}
+                            >
+                                Proceed to Next Level
+                            </button>
+                        ) : (
+                            <button 
+                                 className="HabitStats__proceed-btn "  
+                                 onClick={this.saveChanges}
+                            >
+                                Reset Level
+                            </button>
+                        )
+                    }
                 </div>
             </div>
         );
