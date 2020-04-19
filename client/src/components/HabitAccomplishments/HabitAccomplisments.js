@@ -18,6 +18,14 @@ class HabitAccomplisments extends Component {
         this.accomplishmentRef = React.createRef()
     }
 
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name] : e.target.value
+        })
+    }
+
+    // READING ACCOMPLISHMENTS //
+
     displayItems = () => {
         if(this.props.habitAccomplishments.length){
             return this.props.habitAccomplishments.map(accomplishment => {
@@ -25,6 +33,7 @@ class HabitAccomplisments extends Component {
                     <AccomplishmentItem 
                         accomplishment = {accomplishment}
                         transferId = {this.updateAccomplishment}
+                        deleteAccomplishment = {this.deleteAccomplishment}
                     />
                 )
             })
@@ -33,11 +42,7 @@ class HabitAccomplisments extends Component {
         }  
     }
 
-    handleChange = (e) => {
-        this.setState({
-            [e.target.name] : e.target.value
-        })
-    }
+    // UPDATING ACCOMPLISHMENT //
 
     updateAccomplishment = (textContent) => {
         this.setState({
@@ -64,6 +69,8 @@ class HabitAccomplisments extends Component {
         }) 
     }
 
+    // ADDING ACCOMPLISHMENT // 
+
     handleSubmit = (e) => {
         e.preventDefault()
 
@@ -75,6 +82,19 @@ class HabitAccomplisments extends Component {
         if(this.state.accomplishmentInput){
             this.props.changeHabitAccomplishments(updatedHabitList)
         } 
+    }
+
+    // DELETING ACCOMPLISHMENTS //
+
+    deleteAccomplishment = (textContent) => {
+        const index = this.props.habitAccomplishments.findIndex(accomplishment => {
+            return accomplishment === textContent
+        })
+
+        const updatedAccomplishmentArray = this.props.habitAccomplishments
+        updatedAccomplishmentArray.splice(index, 1)
+
+        this.props.changeHabitAccomplishments(updatedAccomplishmentArray)
     }
 
     render() {

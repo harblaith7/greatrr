@@ -15,6 +15,10 @@ class AccomplishmentItem extends Component {
         this.props.transferId(this.accomplishmentRef.current.textContent)
     }
 
+    transferTextContent = () => {
+        this.props.deleteAccomplishment(this.accomplishmentRef.current.textContent)
+    }
+
 
     render() {
         return (
@@ -27,7 +31,7 @@ class AccomplishmentItem extends Component {
                 {this.props.accomplishment}
                 <div className="HabitAccomplishments__icon-container">
                     <img src={editIcon} alt="" className="HabitAccomplishments__icon" onClick={this.transferId}/>
-                    <img src={deleteIcon} alt="" className="HabitAccomplishments__icon"/>
+                    <img src={deleteIcon} alt="" className="HabitAccomplishments__icon" onClick={this.transferTextContent}/>
                 </div>
             </div>
         );
