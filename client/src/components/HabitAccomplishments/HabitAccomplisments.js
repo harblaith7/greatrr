@@ -3,15 +3,23 @@ import "./HabitAccomplishments.scss"
 import {motion} from "framer-motion";
 import deleteIcon from "../../assets/svg/delete.svg"
 import editIcon from "../../assets/svg/edit.svg"
+import uuid from "uuid/v4"
 
 class HabitAccomplisments extends Component {
+
+    constructor(props){
+        super(props)
+        this.state = {
+            accomplishmentInput : ""
+        }
+    }
 
     displayItems = () => {
         console.log(this.props.habitAccomplishments.length)
         if(this.props.habitAccomplishments.length){
             return this.props.habitAccomplishments.map(accomplishment => {
                 return (
-                    <div className="HabitAccomplishments__item-container">
+                    <div className="HabitAccomplishments__item-container" id={uuid()} key={uuid()}>
                         {accomplishment}
                         <div className="HabitAccomplishments__icon-container">
                             <img src={editIcon} alt="" className="HabitAccomplishments__icon"/>
@@ -22,9 +30,21 @@ class HabitAccomplisments extends Component {
             })
         } else {
             return ""
-        }
-           
-        
+        }  
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name] : e.target.value
+        })
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+
+        if(this.state.accomplishmentInput){
+            this.props.addHabitAccomplishments(this.state.accomplishmentInput)
+        } 
     }
 
     render() {
@@ -44,8 +64,14 @@ class HabitAccomplisments extends Component {
                 <p className="HabitAccomplishments__description">
                     Note down any notable accomplishments and records you've achieved regarding this habit.
                 </p>
-                <form action="" className="HabitAccomplishments__form">
-                    <input type="text" className="HabitAccomplishments__input"/>
+                <form action="" className="HabitAccomplishments__form" onSubmit={this.handleSubmit}>
+                    <input 
+                        type="text" 
+                        className="HabitAccomplishments__input"
+                        onChange={this.handleChange}
+                        name="accomplishmentInput"
+                        value={this.state.accomplishmentInput}
+                    />
                     <button className="HabitAccomplishments__button">Add</button>
                 </form>
                 <div className="HabitAccomplishments__items-container">

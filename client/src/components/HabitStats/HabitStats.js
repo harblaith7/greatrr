@@ -192,6 +192,29 @@ class HabitStats extends Component {
         // SET WEEKSTATUS TO ALL FALSE
         // SAVE THE DATA 
     }
+
+    addHabitAccomplishments = (accomplishment) => {
+
+
+        const updatedHabitList = [
+            ...this.state.selectedHabit.habitAccomplishments,
+            accomplishment
+        ]
+       
+        console.log(updatedHabitList)
+
+        const updatedHabit = {
+            ...this.state.selectedHabit,
+            habitAccomplishments : updatedHabitList
+        }
+
+        this.setState({
+            selectedHabit : updatedHabit
+        }, () => {
+            this.props.updateUserHabits(this.props.auth._id, this.state.selectedHabit._id, this.state.selectedHabit)
+        })
+
+    }
   
 
     render() {
@@ -215,6 +238,7 @@ class HabitStats extends Component {
                         {this.state.isAccomplishmentsToggled &&  (
                             <HabitAccomplisments
                                 habitAccomplishments={habitAccomplishments}
+                                addHabitAccomplishments={this.addHabitAccomplishments}
                             />
                             )
                         }
