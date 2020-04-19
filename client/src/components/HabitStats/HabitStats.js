@@ -193,13 +193,9 @@ class HabitStats extends Component {
         // SAVE THE DATA 
     }
 
-    addHabitAccomplishments = (accomplishment) => {
+    changeHabitAccomplishments = (updatedHabitList) => {
 
-
-        const updatedHabitList = [
-            ...this.state.selectedHabit.habitAccomplishments,
-            accomplishment
-        ]
+        
 
         const updatedHabit = {
             ...this.state.selectedHabit,
@@ -213,6 +209,8 @@ class HabitStats extends Component {
         })
 
     }
+
+    
   
 
     render() {
@@ -236,7 +234,7 @@ class HabitStats extends Component {
                         {this.state.isAccomplishmentsToggled &&  (
                             <HabitAccomplisments
                                 habitAccomplishments={habitAccomplishments}
-                                addHabitAccomplishments={this.addHabitAccomplishments}
+                                changeHabitAccomplishments={this.changeHabitAccomplishments}
                             />
                             )
                         }

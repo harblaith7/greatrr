@@ -3,28 +3,29 @@ import "./HabitAccomplishments.scss"
 import {motion} from "framer-motion";
 import deleteIcon from "../../assets/svg/delete.svg"
 import editIcon from "../../assets/svg/edit.svg"
-import uuid from "uuid/v4"
+import uuid from "uuid/v4";
+import AccomplishmentItem from "../AccomplishmentItem/AccomplishmentItem"
 
 class HabitAccomplisments extends Component {
 
     constructor(props){
         super(props)
         this.state = {
-            accomplishmentInput : ""
+            accomplishmentInput : "",
+            toggleUpdate: false,
+            previousAccomplishment: ""
         }
+        this.accomplishmentRef = React.createRef()
     }
 
     displayItems = () => {
         if(this.props.habitAccomplishments.length){
             return this.props.habitAccomplishments.map(accomplishment => {
                 return (
-                    <div className="HabitAccomplishments__item-container" id={uuid()} key={uuid()}>
-                        {accomplishment}
-                        <div className="HabitAccomplishments__icon-container">
-                            <img src={editIcon} alt="" className="HabitAccomplishments__icon"/>
-                            <img src={deleteIcon} alt="" className="HabitAccomplishments__icon"/>
-                        </div>
-                    </div>
+                    <AccomplishmentItem 
+                        accomplishment = {accomplishment}
+                        transferId = {this.updateAccomplishment}
+                    />
                 )
             })
         } else {
@@ -38,15 +39,46 @@ class HabitAccomplisments extends Component {
         })
     }
 
+    updateAccomplishment = (textContent) => {
+        this.setState({
+            accomplishmentInput: textContent,
+            toggleUpdate : true,
+            previousAccomplishment : textContent
+        }) 
+    }
+
+    saveAccomplishment = () => {
+        const index = this.props.habitAccomplishments.findIndex(accomplishment => {
+            return accomplishment === this.state.previousAccomplishment
+        })
+
+        const updatedAccomplishmentArray = this.props.habitAccomplishments
+        updatedAccomplishmentArray[index] = this.state.accomplishmentInput
+
+        this.props.changeHabitAccomplishments(updatedAccomplishmentArray)
+
+        this.setState({
+            accomplishmentInput: "",
+            toggleUpdate : false,
+            previousAccomplishment : ""
+        }) 
+    }
+
     handleSubmit = (e) => {
         e.preventDefault()
 
+        const updatedHabitList = [
+            ...this.props.habitAccomplishments,
+            this.state.accomplishmentInput
+        ]
+
         if(this.state.accomplishmentInput){
-            this.props.addHabitAccomplishments(this.state.accomplishmentInput)
+            this.props.changeHabitAccomplishments(updatedHabitList)
         } 
     }
 
     render() {
+        const {toggleUpdate} = this.state
         return (
             <motion.div 
                 className="HabitAccomplishments"
@@ -71,7 +103,16 @@ class HabitAccomplisments extends Component {
                         name="accomplishmentInput"
                         value={this.state.accomplishmentInput}
                     />
-                    <button className="HabitAccomplishments__button">Add</button>
+                    {toggleUpdate ? (
+                        <button 
+                            className="HabitAccomplishments__button HabitAccomplishments__button--yellow"
+                            onClick = {this.saveAccomplishment}
+                            >
+                                Update
+                            </button>
+                    ) : (
+                        <button className="HabitAccomplishments__button">Add</button>
+                    )}
                 </form>
                 <div className="HabitAccomplishments__items-container">
                     {this.displayItems()}
