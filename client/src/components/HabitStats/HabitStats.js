@@ -195,13 +195,29 @@ class HabitStats extends Component {
   
 
     render() {
-        const {dailyHabit, level, habitName, currentScore, totalHours, habitDuration, totalPoints} = this.state.selectedHabit
+        const {
+            dailyHabit, 
+            level, 
+            habitName, 
+            currentScore, 
+            totalHours, 
+            habitDuration, 
+            totalPoints,
+            habitAccomplishments
+        } = this.state.selectedHabit
+
+        
         return (
             <div className="HabitStats">
                 <ModalNav/>
                 <div className="HabitStats__container">
                     <AnimatePresence>
-                        {this.state.isAccomplishmentsToggled &&  <HabitAccomplisments/>}
+                        {this.state.isAccomplishmentsToggled &&  (
+                            <HabitAccomplisments
+                                habitAccomplishments={habitAccomplishments}
+                            />
+                            )
+                        }
                     </AnimatePresence>
                     
                     <div className="HabitStats__first-container">

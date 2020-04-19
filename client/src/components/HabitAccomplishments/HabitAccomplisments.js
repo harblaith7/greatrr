@@ -5,6 +5,28 @@ import deleteIcon from "../../assets/svg/delete.svg"
 import editIcon from "../../assets/svg/edit.svg"
 
 class HabitAccomplisments extends Component {
+
+    displayItems = () => {
+        console.log(this.props.habitAccomplishments.length)
+        if(this.props.habitAccomplishments.length){
+            return this.props.habitAccomplishments.map(accomplishment => {
+                return (
+                    <div className="HabitAccomplishments__item-container">
+                        {accomplishment}
+                        <div className="HabitAccomplishments__icon-container">
+                            <img src={editIcon} alt="" className="HabitAccomplishments__icon"/>
+                            <img src={deleteIcon} alt="" className="HabitAccomplishments__icon"/>
+                        </div>
+                    </div>
+                )
+            })
+        } else {
+            return ""
+        }
+           
+        
+    }
+
     render() {
         return (
             <motion.div 
@@ -27,34 +49,7 @@ class HabitAccomplisments extends Component {
                     <button className="HabitAccomplishments__button">Add</button>
                 </form>
                 <div className="HabitAccomplishments__items-container">
-                    <div className="HabitAccomplishments__item-container">
-                        Spent 402 hours to practicing
-                        <div className="HabitAccomplishments__icon-container">
-                            <img src={editIcon} alt="" className="HabitAccomplishments__icon"/>
-                            <img src={deleteIcon} alt="" className="HabitAccomplishments__icon"/>
-                        </div>
-                    </div>
-                    <div className="HabitAccomplishments__item-container">
-                        Hello
-                    </div>
-                    <div className="HabitAccomplishments__item-container">
-                        Hello
-                    </div>
-                    <div className="HabitAccomplishments__item-container">
-                        Hello
-                    </div>
-                    <div className="HabitAccomplishments__item-container">
-                        Hello
-                    </div>
-                    <div className="HabitAccomplishments__item-container">
-                        Hello
-                    </div>
-                    <div className="HabitAccomplishments__item-container">
-                        Hello
-                    </div>
-                    <div className="HabitAccomplishments__item-container">
-                        Hello
-                    </div>
+                    {this.displayItems()}
                 </div>
             </motion.div>
         );
