@@ -15,7 +15,6 @@ class HabitAccomplisments extends Component {
     }
 
     displayItems = () => {
-        console.log(this.props.habitAccomplishments.length)
         if(this.props.habitAccomplishments.length){
             return this.props.habitAccomplishments.map(accomplishment => {
                 return (

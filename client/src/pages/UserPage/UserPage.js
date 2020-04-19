@@ -54,8 +54,7 @@ class UserPage extends Component {
     // IF NOT WILL RENDER FORM PAGE 
     // IF SO WILL RENDER USER HABIT INFO
     render() {
-        console.log(this.props.userHabits.length)
-        console.log(this.props.auth)
+
         return (
             <div>
                 {this.props.auth && (

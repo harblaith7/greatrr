@@ -6,7 +6,6 @@ import {motion, AnimatePresence} from "framer-motion"
 class HabitItem extends Component {
 
     handleClick = () => {
-        console.log("running")
         this.props.deleteHabit(this.props.habitName)
     }
 

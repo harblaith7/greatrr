@@ -18,7 +18,7 @@ class SubmitModalContent extends Component {
         // ADDS ONE HABIT TO DATABASE AND REFRESHES PAGE 
         if(e.target.id === "saveAndContinue"){
             if(this.props.habitList.length){
-                console.log("hello")
+
             } else {
                 window.location.reload(); 
                 await this.props.addUserHabit(this.props.auth._id, this.props.formInput);
@@ -37,7 +37,6 @@ class SubmitModalContent extends Component {
     }
 
     render() {
-        console.log(this.props.auth._id)
         const {longTermGoal, threeMonthGoal, dailyHabit, habitName, habitDuration, habitPriority} = this.props.formInput
         return (
             <div className="SubmitModal">

@@ -36,7 +36,7 @@ router.patch('/updateScore/:userId/:habitId', async (req, res) => {
         {_id : req.params.userId},
         {habits : updatedHabits},
         (err, result) => {
-            console.log(result)
+         
         }
     )
 

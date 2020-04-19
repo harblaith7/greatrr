@@ -10,7 +10,6 @@ import {connect} from "react-redux"
 import {addUserHabits} from "../../actions"
 import {motion} from "framer-motion"
 import HabitItem from "../HabitItem/HabitItem"
-import { Spring } from 'react-spring/renderprops';
 
 
 const useStyles = makeStyles((theme) => ({

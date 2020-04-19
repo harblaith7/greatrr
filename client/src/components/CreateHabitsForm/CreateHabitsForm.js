@@ -173,7 +173,6 @@ class CreateHabitsForm extends Component {
     // DELETES HABIT FROM HABITS LIST // 
 
     deleteHabit = (habitName) => {
-        console.log("Running too")
         
         const updatedHabits = this.state.savedHabits.filter(habit => {
             return habit.habitName !== habitName

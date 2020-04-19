@@ -23,7 +23,6 @@ class StatsHeader extends Component {
     }
 
     render() {
-        console.log(this.props.userHabits)
         return (
             <div className="StatsHeader">
                 <img src={backgroundPath} alt="" className="StatsHeader__background"/>

@@ -132,7 +132,7 @@ class HabitStats extends Component {
                 counter ++
             }
         })
-        console.log(isOn)
+
         await this.setState({
             selectedHabit : {
                 ...this.state.selectedHabit, 
@@ -200,8 +200,6 @@ class HabitStats extends Component {
             ...this.state.selectedHabit.habitAccomplishments,
             accomplishment
         ]
-       
-        console.log(updatedHabitList)
 
         const updatedHabit = {
             ...this.state.selectedHabit,
