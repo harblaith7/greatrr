@@ -1,0 +1,26 @@
+@import "../../sass/variables.scss";
+
+.HabitNotes {
+    position: absolute;
+    background-color: rgb(253, 253, 253);
+    height: 100%;
+    right: 0%;
+    width: 47.5%;
+    z-index: 10;
+    padding: 3rem;
+    border-left: 0.2rem solid rgba(37, 36, 36, 0.178);
+
+    &__heading {
+        font-size: 2.5rem;
+        font-weight: 400;
+    }
+
+    &__description {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        color: rgba(0, 0, 0, 0.788);
+        line-height: 2rem;
+    }
+
+
+}

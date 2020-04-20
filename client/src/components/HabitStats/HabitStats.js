@@ -9,6 +9,7 @@ import {updateUserHabits} from "../../actions"
 import trophy from "../../assets/svg/award.svg"
 import notes from "../../assets/svg/notepad.svg"
 import HabitAccomplisments from "../HabitAccomplishments/HabitAccomplisments"
+import HabitNotes from "../HabitNotes/HabitNotes"
 import { AnimatePresence } from 'framer-motion';
 
 class HabitStats extends Component {
@@ -157,7 +158,15 @@ class HabitStats extends Component {
 
     toggleAccomplishments = () => {
         this.setState({
-            isAccomplishmentsToggled : !this.state.isAccomplishmentsToggled
+            isAccomplishmentsToggled : !this.state.isAccomplishmentsToggled,
+            isNotesToggled: false
+        })
+    }
+
+    toggleNotes = () => {
+        this.setState({
+            isNotesToggled : !this.state.isNotesToggled,
+            isAccomplishmentsToggled: false
         })
     }
 
@@ -231,10 +240,18 @@ class HabitStats extends Component {
                 <ModalNav/>
                 <div className="HabitStats__container">
                     <AnimatePresence>
-                        {this.state.isAccomplishmentsToggled &&  (
+                        {this.state.isAccomplishmentsToggled && (
                             <HabitAccomplisments
                                 habitAccomplishments={habitAccomplishments}
                                 changeHabitAccomplishments={this.changeHabitAccomplishments}
+                            />
+                            )
+                        }
+                    </AnimatePresence>
+                    <AnimatePresence>
+                        {this.state.isNotesToggled && (
+                            <HabitNotes
+                            
                             />
                             )
                         }
@@ -307,7 +324,7 @@ class HabitStats extends Component {
                     }
                 </div>
                 <div className="HabitStats__small-btns-container">
-                    <div className="HabitStats__small-btn-container">
+                    <div className="HabitStats__small-btn-container" onClick={this.toggleNotes}>
                         <img src={notes} alt="" className="HabitStats__small-icon"/>
                     </div>
                     <div className="HabitStats__small-btn-container" onClick={this.toggleAccomplishments}>
