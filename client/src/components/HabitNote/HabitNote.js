@@ -13,6 +13,10 @@ class HabitNote extends Component {
         this.props.transferTextContent(this.entryRef.current.textContent)
     }
 
+    triggerUpdate = () => {
+        this.props.triggerUpdate(this.entryRef.current.textContent)
+    }
+
     render() {
         return (
             <div className="HabitNotes__note-container">
@@ -21,7 +25,7 @@ class HabitNote extends Component {
                 </p>
                 <div className="HabitNotes__icon-container">
                     <img src={deleteIcon} alt="" className="HabitNotes__img" onClick={this.handleClick}/>
-                    <img src={editIcon} alt="" className="HabitNotes__img"/>
+                    <img src={editIcon} alt="" className="HabitNotes__img" onClick={this.triggerUpdate}/>
                 </div>
             </div>
         );

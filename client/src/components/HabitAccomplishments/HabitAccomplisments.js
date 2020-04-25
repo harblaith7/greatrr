@@ -81,6 +81,10 @@ class HabitAccomplisments extends Component {
 
         if(this.state.accomplishmentInput){
             this.props.changeHabitAccomplishments(updatedHabitList)
+
+            this.setState({
+                accomplishmentInput: ""
+            })
         } 
     }
 

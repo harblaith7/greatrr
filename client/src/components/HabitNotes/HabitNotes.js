@@ -8,7 +8,9 @@ class HabitNotes extends Component {
     constructor(props){
         super(props)
         this.state = {
-            journalInput : ""
+            journalInput : "",
+            isUpdateToggled: false,
+            previousInput: ""
         }
     }
 
@@ -20,6 +22,7 @@ class HabitNotes extends Component {
                 <HabitNote 
                     entry={entry}
                     transferTextContent = {this.deleteEntry}
+                    triggerUpdate = {this.triggerUpdate}
                 />
             )
         })
@@ -53,6 +56,30 @@ class HabitNotes extends Component {
         this.props.changeHabitEntries(updatedEntries)
     }
 
+    // UPDATE ENTRIES // 
+    triggerUpdate = (input) => {
+        this.setState({
+            isUpdateToggled: !this.state.isUpdateToggled,
+            journalInput: input,
+            previousInput: input
+        })
+    }
+
+    updateEntry = () => {
+        const index = this.props.habitJournalEntries.findIndex(entry => entry === this.state.previousInput)
+        
+        const updatedEntries = this.props.habitJournalEntries
+        updatedEntries[index] = this.state.journalInput
+
+        this.props.changeHabitEntries(updatedEntries)
+
+        this.setState({
+            journalInput : "",
+            isUpdateToggled: false,
+            previousInput: ""
+        })
+    }
+
     handleChange = (e) => {
         this.setState({
             [e.target.name] : e.target.value
@@ -60,6 +87,8 @@ class HabitNotes extends Component {
     }
 
     render() {
+
+        const {isUpdateToggled} = this.state
 
         return (
             <motion.div 
@@ -84,9 +113,15 @@ class HabitNotes extends Component {
                     onChange={this.handleChange}
                     value={this.state.journalInput}
                 ></textarea>
-                <button className="HabitNotes__button" onClick={this.addEntry}>
-                    Add Entry
-                </button>
+                {isUpdateToggled ? (
+                    <button className="HabitNotes__button HabitNotes__button--yellow" onClick={this.updateEntry}>
+                        Update
+                    </button>
+                ) : (
+                    <button className="HabitNotes__button" onClick={this.addEntry}>
+                        Add Entry
+                    </button>
+                )}
                 <div className="HabitNotes__notes-container">
                     {this.displayEntries()}
                 </div>
