@@ -219,6 +219,24 @@ class HabitStats extends Component {
 
     }
 
+    changeHabitEntries = (updatedHabitEntries) => {
+
+        
+
+        const updatedHabit = {
+            ...this.state.selectedHabit,
+            habitJournalEntries : updatedHabitEntries
+        }
+
+        this.setState({
+            selectedHabit : updatedHabit
+        }, () => {
+            this.props.updateUserHabits(this.props.auth._id, this.state.selectedHabit._id, this.state.selectedHabit)
+        })
+
+    }
+
+
     
   
 
@@ -231,7 +249,8 @@ class HabitStats extends Component {
             totalHours, 
             habitDuration, 
             totalPoints,
-            habitAccomplishments
+            habitAccomplishments,
+            habitJournalEntries
         } = this.state.selectedHabit
 
         
@@ -251,7 +270,8 @@ class HabitStats extends Component {
                     <AnimatePresence>
                         {this.state.isNotesToggled && (
                             <HabitNotes
-                            
+                                habitJournalEntries={habitJournalEntries}
+                                changeHabitEntries = {this.changeHabitEntries}
                             />
                             )
                         }

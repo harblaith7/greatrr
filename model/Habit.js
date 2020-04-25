@@ -20,6 +20,7 @@ const habitsSchema = new Schema({
     level: {type : Number, default : 1},
     weekStatus: {type: [Boolean], default : [false, false, false, false, false, false, false]},
     habitAccomplishments: {type: [String], default: []},
+    habitJournalEntries: {type: [String], default: []},
     habitReason: {type: String, default: ""},
     habitVision: {type: String, default: ""}
 })
