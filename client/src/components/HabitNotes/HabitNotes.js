@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {motion} from "framer-motion"
 import "./HabitNotes.scss"
-import deleteIcon from "../../assets/svg/delete.svg"
-import editIcon from "../../assets/svg/edit.svg"
+import HabitNote from "../HabitNote/HabitNote"
 
 class HabitNotes extends Component {
 
@@ -11,6 +10,19 @@ class HabitNotes extends Component {
         this.state = {
             journalInput : ""
         }
+    }
+
+    // READ ENTRIES // 
+
+    displayEntries = () => {
+        return this.props.habitJournalEntries.map(entry => {
+            return (
+                <HabitNote 
+                    entry={entry}
+                    transferTextContent = {this.deleteEntry}
+                />
+            )
+        })
     }
 
     // ADDING ENTRIES //
@@ -25,7 +37,20 @@ class HabitNotes extends Component {
 
         if(this.state.journalInput){
             this.props.changeHabitEntries(updatedHabitList )
+            this.setState({
+                journalInput: ""
+            })
         }
+    }
+
+    // DELETING ENTRIES // 
+    deleteEntry = (textContent) => {
+        const index = this.props.habitJournalEntries.findIndex(entry => entry === textContent)
+        
+        const updatedEntries = this.props.habitJournalEntries
+        updatedEntries.splice(index, 1)
+
+        this.props.changeHabitEntries(updatedEntries)
     }
 
     handleChange = (e) => {
@@ -63,15 +88,7 @@ class HabitNotes extends Component {
                     Add Entry
                 </button>
                 <div className="HabitNotes__notes-container">
-                    <div className="HabitNotes__note-container">
-                        <p className="HabitNotes__note">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit, error aut! Molestiae aliquam neque repellendus, accusamus reprehenderit facilis dicta quasi laudantium possimus asperiores iste vitae cum omnis. Dicta labore laboriosam veniam voluptate voluptates voluptatibus placeat.
-                        </p>
-                        <div className="HabitNotes__icon-container">
-                            <img src={deleteIcon} alt="" className="HabitNotes__img"/>
-                            <img src={editIcon} alt="" className="HabitNotes__img"/>
-                        </div>
-                    </div>
+                    {this.displayEntries()}
                 </div>
             </motion.div>
         );

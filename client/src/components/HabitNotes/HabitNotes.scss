@@ -51,11 +51,11 @@
     &__notes-container {
         
         width: 100%;
-        height: 100rem;
         margin-top: 2.5rem;
     }
 
     &__note-container {
+        padding-top: 1.5rem;
         display: flex;
         border-bottom: 0.15rem solid $very-light-black;
     }

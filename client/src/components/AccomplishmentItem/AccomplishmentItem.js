@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import uuid from "uuid/v4"
 import deleteIcon from "../../assets/svg/delete.svg"
 import editIcon from "../../assets/svg/edit.svg"
 
@@ -24,8 +23,6 @@ class AccomplishmentItem extends Component {
         return (
             <div 
                 className="HabitAccomplishments__item-container" 
-                id={uuid()} 
-                key={uuid()} 
                 ref={this.accomplishmentRef}
             >
                 {this.props.accomplishment}

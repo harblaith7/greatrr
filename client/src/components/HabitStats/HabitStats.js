@@ -221,8 +221,6 @@ class HabitStats extends Component {
 
     changeHabitEntries = (updatedHabitEntries) => {
 
-        
-
         const updatedHabit = {
             ...this.state.selectedHabit,
             habitJournalEntries : updatedHabitEntries
