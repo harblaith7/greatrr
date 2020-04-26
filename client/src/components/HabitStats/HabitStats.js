@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./HabitStats.scss"
-import ModalNav from "../ModalNav/ModalNav"
+
 import WeekBox from "../WeekBox/WeekBox"
 import LinearProgressBar from "../ProgressBar/ProgressBar"
 import CircularProgessBar from "../CircularProgressBar/CircularProgressBar"
@@ -254,7 +254,7 @@ class HabitStats extends Component {
         
         return (
             <div className="HabitStats">
-                <ModalNav/>
+                
                 <div className="HabitStats__container">
                     <AnimatePresence>
                         {this.state.isAccomplishmentsToggled && (

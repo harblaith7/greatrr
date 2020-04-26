@@ -4,8 +4,9 @@ import {connect} from 'react-redux'
 import { v4 as uuidv4 } from 'uuid';
 import StatsHeader from "../../components/StatsHeader/StatsHeader";
 import CreateHabitsForm from "../../components/CreateHabitsForm/CreateHabitsForm";
-import HabitStats from "../../components/HabitStats/HabitStats"
 import {fetchUserHabits} from "../../actions"
+
+import HabitSections from "../../components/HabitSections/HabitSections"
 
 class UserPage extends Component {
 
@@ -63,7 +64,8 @@ class UserPage extends Component {
                             this.props.userHabits.length ? (
                                 <>
                                     <StatsHeader/>
-                                    <HabitStats/>
+                                    <HabitSections/>
+                                    
                                 </>
                             ) : (
                                 <CreateHabitsForm
