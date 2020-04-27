@@ -9,8 +9,14 @@ class HabitSections extends Component {
     constructor(props){
         super(props)
         this.state = {
-            currentSection: "TotalStats"
+            currentSection: "HabitStats"
         }
+    }
+
+    changeSection = (section) => {
+        this.setState({
+            currentSection: section
+        })
     }
 
     displaySection = () => {
@@ -26,7 +32,9 @@ class HabitSections extends Component {
     render() {
         return (
             <div className="HabitSections">
-                <ModalNav/>
+                <ModalNav
+                    switchSection = {this.changeSection}
+                />
                 {this.displaySection()}
             </div>
         );
