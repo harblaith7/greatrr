@@ -31,7 +31,7 @@ export default function CircularStatic(props) {
     <div className={classes.root} >
       <CircularProgress 
         variant="static" 
-        value={props.totalPoints/400 * 100} 
+        value={props.totalPoints/350 * 100} 
         size={225}
         thickness={1.5}
     />

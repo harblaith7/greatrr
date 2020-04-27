@@ -308,7 +308,7 @@ class HabitStats extends Component {
                                 totalPoints = {totalPoints}
                             />
                             <div className="HabitStats__circle-stats">
-                                {totalPoints}/400
+                                {totalPoints}/350
                             </div>
                         </div>
                     </div>  
