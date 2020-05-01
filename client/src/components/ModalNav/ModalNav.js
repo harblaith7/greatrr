@@ -44,7 +44,12 @@ class ModalNav extends Component {
                             </a>
                         </li>
                         <li className="ModalNav__list-item">
-                            <a href="/" className="ModalNav__link">
+                            <a 
+                                href="#" 
+                                className="ModalNav__link"
+                                name="Settings"
+                                onClick={this.handleClick}
+                            >
                                 Settings
                             </a>
                         </li>

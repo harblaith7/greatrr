@@ -1,0 +1,86 @@
+@import "../../sass/variables.scss";
+
+.SideNav {
+
+    height: 100vh;
+    width: 32.5rem;
+    background-color: $primary-color;
+
+    &__user-container {
+        border-bottom: 0.15rem solid $transparent-white;
+        width: 80%;
+        margin: 0 auto;
+        height: 25rem;
+        position: relative;
+    }
+
+    &__user-circle {
+        width: 17.5rem;
+        height: 17.5rem;
+        background-color: green;
+        border-radius: 100%;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: $primary-white;
+        border: 0.2rem solid $royal-red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    &__user-abbreviation {
+        font-size: 8rem;
+        font-weight: 400;
+        letter-spacing: 0.2rem;
+        color: $google-orange;
+        text-shadow: 0.15rem 0.15rem 1rem $transparent-black;
+    }
+
+    &__full-name {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 87.5%;
+        left: 50%;
+        font-size: 1.75rem;
+        color: $off-white
+    }
+
+    &__links-container {
+        height: 30rem;
+        width: 100%;
+        margin: 0 auto;
+        padding: 2.5rem 0;
+        
+    }
+
+    &__link-container {
+        height: 6rem;
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        cursor: pointer;
+        transition: 0.5s;
+        padding: 2rem 0;
+
+        &:hover {
+            background-color: $very-transparent-white;
+        }
+
+    }
+
+    &__icon {
+        width: 3rem;
+        margin-left: 5.5rem;
+        margin-right: 2rem;
+    }
+
+    &__link-title {
+        font-size: 2rem;
+        color: $off-white;
+        text-decoration: none;
+    }
+
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ModalNav from "../ModalNav/ModalNav"
 import HabitStats from "../HabitStats/HabitStats"
 import TotalStats from "../TotalStats/TotalStats"
+import Settings from "../Settings/Settings"
 
 
 class HabitSections extends Component {
@@ -9,7 +10,7 @@ class HabitSections extends Component {
     constructor(props){
         super(props)
         this.state = {
-            currentSection: "HabitStats"
+            currentSection: "Settings"
         }
     }
 
@@ -26,6 +27,8 @@ class HabitSections extends Component {
             return <HabitStats/>
         } else if (currentSection === "TotalStats"){
             return <TotalStats/>
+        } else if (currentSection === "Settings") {
+            return <Settings/>
         }
     }
 
