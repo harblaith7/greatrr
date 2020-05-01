@@ -3,13 +3,14 @@ import "./SideNav.scss"
 import clock from "../../assets/svg/square.svg"
 import goal from "../../assets/svg/business.svg";
 import {Link} from "react-router-dom"
+import {connect} from "react-redux"
 
 class SideNav extends Component {
 
     displayAbbreviation = () => {
 
-            if(this.props.authInfo){
-                const abbreviation = this.props.authInfo.fullName.split(" ").map(name => {
+            if(this.props.auth){
+                const abbreviation = this.props.auth.fullName.split(" ").map(name => {
                     return name[0]
                 }).join("")
     
@@ -31,7 +32,7 @@ class SideNav extends Component {
                             </h2>
                         </div>
                         <p className="SideNav__full-name">
-                            {this.props.authInfo.fullName}
+                            {this.props.auth.fullName}
                         </p>
                     </div>
                     <div className="SideNav__links-container">
@@ -54,6 +55,9 @@ class SideNav extends Component {
     }
 }
 
+const mapStateToProps = ({auth}) => ({
+    auth
+})
 
 
-export default SideNav;
+export default connect(mapStateToProps)(SideNav);

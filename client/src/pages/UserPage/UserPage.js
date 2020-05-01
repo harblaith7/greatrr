@@ -5,6 +5,8 @@ import { v4 as uuidv4 } from 'uuid';
 import StatsHeader from "../../components/StatsHeader/StatsHeader";
 import CreateHabitsForm from "../../components/CreateHabitsForm/CreateHabitsForm";
 import {fetchUserHabits} from "../../actions"
+import SideNav from "../../components/SideNav/SideNav"
+import "./UserPage.scss"
 
 import HabitSections from "../../components/HabitSections/HabitSections"
 
@@ -16,6 +18,10 @@ class UserPage extends Component {
             habits : null,
             habitInput: ""
         }
+    }
+
+    componentDidMount = () => {
+        
     }
 
     // FETCHES ALL OF THE USERS HABITS //
@@ -51,22 +57,31 @@ class UserPage extends Component {
         })
     }
 
+    displayItems = () => {
+        setTimeout(() => {
+
+        }, 10)
+    }
+
     // CHECKS IF USER ALREADY HAS HABITS REGISTERED
     // IF NOT WILL RENDER FORM PAGE 
     // IF SO WILL RENDER USER HABIT INFO
     render() {
-
+        console.log(this.props.userHabits)
         return (
-            <div>
+            <div className="UserPage">
                 {this.props.auth && (
                     <div className="UserPage__page">
                         {
                             this.props.userHabits.length ? (
-                                <>
-                                    <StatsHeader/>
-                                    <HabitSections/>
+                                <div className="UserPage__habit-page">
+                                    <SideNav/>
+                                    <div className="UserPage__habit-section">
+                                        <StatsHeader/>
+                                        <HabitSections/>
+                                    </div>
                                     
-                                </>
+                                </div>
                             ) : (
                                 <CreateHabitsForm
                                     userName = {this.props.auth.givenName}
