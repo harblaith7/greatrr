@@ -2,6 +2,12 @@
 
     &__habit-page {
         display: flex;
+        justify-content: space-between;
+        
+    }
+
+    &__habit-section {
+        width: 75%
     }
 
 }

@@ -2,17 +2,26 @@
 
 .SideNav {
 
-    height: 100vh;
-    width: 32.5rem;
+    
+    width: 25%;
     background-color: $primary-color;
-    position: fixed;
+    border-right: 0.15rem solid $primary-color-dark;
+    
+    &__container {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
 
     &__user-container {
         border-bottom: 0.15rem solid $transparent-white;
-        width: 80%;
-        margin: 0 auto;
+        width: 100%;
+        margin-left: 6rem;
         height: 25rem;
         position: relative;
+        
     }
 
     &__user-circle {
@@ -54,6 +63,8 @@
         width: 100%;
         margin: 0 auto;
         padding: 2.5rem 0;
+       
+        margin-left: 3rem;
         
     }
 
@@ -61,10 +72,11 @@
         height: 6rem;
         display: flex;
         align-items: center;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
         cursor: pointer;
         transition: 0.5s;
         padding: 2rem 0;
+        text-decoration: none;
 
         &:hover {
             background-color: $very-transparent-white;

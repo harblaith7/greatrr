@@ -2,14 +2,16 @@
 
 .StatsHeader {
     height: 85vh;
-    background-image: linear-gradient(to right bottom, $primary-color-light, $primary-color);
+    background-image: linear-gradient(to right bottom, $primary-color-light-transparent, $primary-color-transparent);
     position: relative;
     overflow: hidden;
+    width: 100%;
 
     &__background {
       position: absolute;
       right: -10%;
-      width: 85rem
+      z-index: -2;
+      width: 30rem
     }
 
     &__vector {
@@ -25,11 +27,8 @@
 
     &__habits-container {
       direction: rtl;
-      width: 35%;
-      position: absolute;
-      left: 2.5%;
-      top: 10%;
-      height: 75%;
+      width: 75%;
+      margin: 0 auto;
       overflow-y: auto;
     }
 }

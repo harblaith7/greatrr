@@ -25,8 +25,8 @@ class StatsHeader extends Component {
     render() {
         return (
             <div className="StatsHeader">
-                <img src={backgroundPath} alt="" className="StatsHeader__background"/>
-                <img src={statsVector} alt="" className="StatsHeader__vector"/>
+   
+                
                 <div className="StatsHeader__container">
                     <div className="StatsHeader__habits-container">
                         {this.displayHabits()}
