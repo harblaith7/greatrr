@@ -10,7 +10,7 @@ class HabitSections extends Component {
     constructor(props){
         super(props)
         this.state = {
-            currentSection: "Settings"
+            currentSection: "HabitStats"
         }
     }
 

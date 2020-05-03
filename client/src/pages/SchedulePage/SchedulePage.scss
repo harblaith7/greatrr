@@ -1,3 +1,9 @@
 .SchedulePage {
-    
+    display: flex;
+
+    &__content {
+        width: 75%;
+        padding: 7.5rem
+    }
+
 }
