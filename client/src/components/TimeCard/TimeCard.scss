@@ -1,4 +1,5 @@
 @import "../../sass/variables.scss";
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600&display=swap');
 
 .TimeCard {
 
@@ -38,6 +39,7 @@
         font-weight: 600;
         font-size: 1.5rem;
         color: $primary-color;
+        
     }
 
     &__text-container {
@@ -46,6 +48,7 @@
         justify-content: center;
         margin-bottom: 2rem;
         position: relative;
+        font-family: "Titillium Web";
     }
 
     &__save-btn {
@@ -58,7 +61,8 @@
         display: flex;
         align-items: center;
         outline: none;
-        font-weight: 700;
+        font-weight: 600;
+        font-family: "Titillium Web";
 
         &:hover .TimeCard__arrow-icon {
             opacity: 1;
@@ -105,6 +109,7 @@
         font-size: 1.5rem;
         margin-right: 1rem;
         margin-left: 2rem;
+        font-family: "Titillium Web";
     }
 
     

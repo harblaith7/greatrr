@@ -20,31 +20,31 @@ class HabitStats extends Component {
             selectedHabit : {},
             weekBoxInfo : [
                 {
-                    weekAbbreviation : "1",
+                    weekAbbreviation : "S",
                     weekId: 0
                 },
                 {
-                    weekAbbreviation : "2",
+                    weekAbbreviation : "S",
                     weekId: 1
                 },
                 {
-                    weekAbbreviation : "3",
+                    weekAbbreviation : "M",
                     weekId: 2
                 },
                 {
-                    weekAbbreviation : "4",
+                    weekAbbreviation : "T",
                     weekId: 3
                 },
                 {
-                    weekAbbreviation : "5",
+                    weekAbbreviation : "W",
                     weekId: 4
                 },
                 {
-                    weekAbbreviation : "6",
+                    weekAbbreviation : "Th",
                     weekId: 5
                 },
                 {
-                    weekAbbreviation : "7",
+                    weekAbbreviation : "F",
                     weekId: 6
                 },
             ],
