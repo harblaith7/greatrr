@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "./TimeCard.scss"
 import arrow from "../../assets/svg/right-arrow.svg"
-import {connect} from "react-redux"
+
 
 class TimeCard extends Component {
 
@@ -38,8 +38,8 @@ class TimeCard extends Component {
     }
 
     displayHabitsOptions = () => {
-        return this.props.habits.map(habit => {
-            return <option value={`${habit.habitName}`} id={`${habit.habitName}`}>{habit}</option>
+        return this.props.habits.habits.map(habit => {
+            return <option value={habit.habitName} id={habit.habitName}>{habit.habitName}</option>
         })
     }
 
@@ -57,9 +57,7 @@ class TimeCard extends Component {
                             <p className="TimeCard__efficient-time">
                                 2h 45min
                             </p>
-                            <p className="TimeCard__efficient-percentage">
-                                83% 
-                            </p>
+                            
                         </div>
                     </div>
                     <div className="TimeCard__stamps-container">
@@ -67,23 +65,29 @@ class TimeCard extends Component {
                     </div>
                     <div className="TimeCard__time-input-container">
                         <p className="TimeCard__time-input-text">
-                            From
+                            From:
                         </p>
-                        <select name="" id="" className="TimeCard__time-input-text">
-                            {this.displayFromTimeOptions()}
-                        </select>
+                        <label for="favcity">
+                            <select name="" className="TimeCard__time-select">
+                                {this.displayFromTimeOptions()}
+                            </select>
+                        </label>
                         <p className="TimeCard__time-input-text">
-                            To
+                            to:
                         </p>
-                        <select name="" id="" className="TimeCard__time-input-text">
-                            {this.displayToTimeOptions()}
-                        </select>
+                        <label for="favcity">
+                            <select name="" id="" className="TimeCard__time-select">
+                                {this.displayToTimeOptions()}
+                            </select>
+                        </label>
                         <p className="TimeCard__time-input-text">
-                            I did
+                            I did:
                         </p>
-                        <select name="" id="" className="TimeCard__time-input-text">
-                            {this.props.habits && this.displayHabitsOptions()}
-                        </select>
+                        <label for="favcity" className="TimeCard__label TimeCard__label--larger" id="larger">
+                            <select name="" id="" className="TimeCard__time-select TimeCard__time-select--larger">
+                                {this.displayHabitsOptions()}
+                            </select>
+                        </label>
                     </div>
                 </div>
             </div>
@@ -91,8 +95,6 @@ class TimeCard extends Component {
     }
 }
 
-const mapStateToProps = ({auth}) => ({
-    auth
-})
 
-export default connect(mapStateToProps)(TimeCard);
+
+export default TimeCard;

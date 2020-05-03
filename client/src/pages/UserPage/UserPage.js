@@ -29,9 +29,7 @@ class UserPage extends Component {
         if(prevProps.auth !== this.props.auth){
             await this.props.fetchUserHabits(this.props.auth._id)
         }
-        if(prevProps.userHabits !== this.props.userHabits) {
-            this.props.transferHabits(this.props.userHabits)
-        }
+        
     }
 
     handleSubmit = async (e) => {
