@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import "./SchedulePage.scss"
 import SideNav from "../../components/SideNav/SideNav"
 import TimeCard from "../../components/TimeCard/TimeCard"
-import {connect} from "react-redux"
+
 
 class SchedulePage extends Component {
     
     render() {
-        console.log(this.props.userHabits)
+        
         return (
             <div className="SchedulePage">
                 {this.props.auth && <SideNav authInfo = {this.props.auth}/>}
                 <div className="SchedulePage__content">
                     <TimeCard
-                        habits={this.props.userHabits}
+                        habits={this.props.habits}
                     />
                 </div>
             </div>
@@ -21,9 +21,5 @@ class SchedulePage extends Component {
     }
 }
 
-const mapStateToProps = ({auth, userHabits}) => ({
-    auth,
-    userHabits
-})
 
-export default connect(mapStateToProps)(SchedulePage);
+export default SchedulePage;

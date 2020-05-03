@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./TimeCard.scss"
 import arrow from "../../assets/svg/right-arrow.svg"
+import {connect} from "react-redux"
 
 class TimeCard extends Component {
 
@@ -43,7 +44,7 @@ class TimeCard extends Component {
     }
 
     render() {
-        console.log(this.props.habits)
+        console.log(this.props.auth)
         return (
             <div className="TimeCard">
                 <div className="TimeCard__container">
@@ -81,7 +82,7 @@ class TimeCard extends Component {
                             I did
                         </p>
                         <select name="" id="" className="TimeCard__time-input-text">
-                            {this.displayHabitsOptions()}
+                            {this.props.habits && this.displayHabitsOptions()}
                         </select>
                     </div>
                 </div>
@@ -90,4 +91,8 @@ class TimeCard extends Component {
     }
 }
 
-export default TimeCard;
+const mapStateToProps = ({auth}) => ({
+    auth
+})
+
+export default connect(mapStateToProps)(TimeCard);

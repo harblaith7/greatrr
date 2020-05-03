@@ -5,16 +5,39 @@ import LandingPage from './pages/LandingPage/LandingPage'
 import UserPage from "./pages/UserPage/UserPage"
 import SchedulePage from "./pages/SchedulePage/SchedulePage"
 import {connect} from 'react-redux'
-import * as actions from "./actions";
+import {fetchUserHabits} from "./actions/index";
 
 
 class App extends Component {
 
+  constructor(props){
+    super(props)
+    this.state = {
+      userHabits : []
+    }
+  }
+
   componentDidMount(){
-    this.props.fetchUser()
+    
+  }
+
+  componentDidUpdate(prevProps){
+    if(prevProps.auth !== this.props.auth){
+      if(this.props.auth){
+        console.log(this.props.auth)
+        console.log(this.props.fetchUserHabits(this.props.auth.id))
+      }
+    }
+  }
+
+  updateUserHabit = (habits) => {
+    this.setState({
+      userHabits: habits
+    })
   }
 
   render() {
+
     return (
       <div className="App">
         <BrowserRouter>
@@ -25,11 +48,16 @@ class App extends Component {
             </Route>
 
             <Route path="/logged">
-              <UserPage/>
+              <UserPage
+                transferHabits = {this.updateUserHabit}
+              />
             </Route>
 
             <Route path="/schedule">
-              <SchedulePage/>
+              <SchedulePage 
+                habits={this.props.userHabits}
+                auth={this.props.auth}
+              />
             </Route>
 
           </Switch>
@@ -39,8 +67,9 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({auth}) => ({
-  auth
+const mapStateToProps = ({auth, userHabits}) => ({
+  auth,
+  userHabits
 })
 
-export default connect(mapStateToProps, actions)(App);
+export default connect(mapStateToProps, {fetchUserHabits})(App);
