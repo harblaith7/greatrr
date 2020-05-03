@@ -5,20 +5,25 @@ import TimeCard from "../../components/TimeCard/TimeCard"
 import {connect} from "react-redux"
 
 class SchedulePage extends Component {
+    
     render() {
+        console.log(this.props.userHabits)
         return (
             <div className="SchedulePage">
                 {this.props.auth && <SideNav authInfo = {this.props.auth}/>}
                 <div className="SchedulePage__content">
-                    <TimeCard/>
+                    <TimeCard
+                        habits={this.props.userHabits}
+                    />
                 </div>
             </div>
         );
     }
 }
 
-const mapStateToProps = ({auth}) => ({
-    auth
+const mapStateToProps = ({auth, userHabits}) => ({
+    auth,
+    userHabits
 })
 
 export default connect(mapStateToProps)(SchedulePage);

@@ -8,19 +8,114 @@
     margin: 0 auto;
     height: 27.5rem;
     border-radius: 0.3rem;
+    font-family: "Roboto";
+    color: $off-black;
 
     &__stamps-container {
         display: flex;
         overflow-x: auto;
     }
 
+    &__text-container {
+        height: 5rem
+    }
+
     &__stamp {
-        background-color: $grey;
+        background-color: $whitish-grey;
         border-radius: 0.5rem;
         margin: 0 0.15rem;
         width: 10rem;
-        height: 3rem;
+        height: 5rem;
         flex-shrink: 0;
+        position: relative;
+        
+    }
+
+    &__time {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        font-size: 1.5rem;
+        color: $primary-color;
+    }
+
+    &__text-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+        position: relative;
+    }
+
+    &__save-btn {
+        background-color: transparent;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: $off-black;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        outline: none;
+        
+
+        &:hover .TimeCard__arrow-icon {
+            opacity: 1;
+            margin-left: 1rem;
+        }
+
+    }
+
+    &__arrow-icon {
+        width: 1.5rem;
+        margin-left: 0rem;
+        opacity: 0;
+        transition: 0.5s;
+    }
+
+    &__efficiency-container {
+        font-size: 1.75rem;
+        position: absolute;
+        left: 90%;
+        color: $primary-color;
+        font-weight: 700;
+        text-shadow: 0.2rem 0.2rem 1rem $primary-color-transparent ;
+    }
+
+    &__efficient-percentage {
+        margin-top: 1rem;
+    }
+
+    &__time-input-container {
+        background-color: green;
+        height: 3rem;
+        margin-top: 2rem;
     }
 
 }
+
+
+::-webkit-scrollbar {
+    direction: rtl;
+    width: 5px;
+    display: none;
+  }
+
+  /* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f14f;
+    border-radius: 1rem;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgba(4, 22, 122, 0.432);
+    border-radius: 1rem;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
