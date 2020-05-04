@@ -124,7 +124,18 @@
         }
     }
 
-    
+    &__add-btn {
+      height: 3.5rem;
+      margin-left: 4rem;
+      width: 10rem;
+      cursor: pointer;
+      border: 0.2rem solid #eeeeee;
+      background-color: transparent;
+      font-family: monospace;
+      font-weight: 900;
+      font-size: 2rem;
+      letter-spacing: 0.2rem;
+    }
 
 }
 

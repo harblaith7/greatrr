@@ -3,13 +3,19 @@ import "./TimeCard.scss"
 import arrow from "../../assets/svg/right-arrow.svg"
 
 
-class TimeCard extends Component {
+
+class TimeCard extends Component{
 
     constructor(props){
         super(props)
         this.state = {
             times : [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],
-            wantedTimeRange : []
+            wantedTimeRange : [],
+            timeAndHabit : [],
+            to: "1",
+            from: "1",
+            habit: this.props.habits.habits[0].habitName,
+            usedUpTime : {}
         }
     }
 
@@ -27,13 +33,13 @@ class TimeCard extends Component {
 
     displayFromTimeOptions = () => {
         return this.state.times.map(time => {
-            return <option value={`from-${time}:00`} id={`from-${time}`}>{time}:00</option>
+            return <option value={time} id={`from-${time}`}>{time}:00</option>
         })
     }
 
     displayToTimeOptions = () => {
         return this.state.times.map(time => {
-            return <option value={`to-${time}:00`} id={`to-${time}`}>{time}:00</option>
+            return <option value={time} id={`to-${time}`}>{time}:00</option>
         })
     }
 
@@ -43,8 +49,59 @@ class TimeCard extends Component {
         })
     }
 
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name] : e.target.value
+        })
+    }
+
+    handleClick = async () => {
+        const {from, to, habit , usedUpTime} = this.state
+
+        // CHECK IF VALID INPUT //
+        if(parseInt(from) > parseInt(to)){
+            alert("Unfortunately, you can't go back in time")
+            return
+        } else if (parseInt(from) === parseInt(to)) {
+            alert("You did nothing in no time")
+            return
+        }
+
+        let range = []
+
+        for(let i = parseInt(from); i < parseInt(to); i++){
+            if(i in usedUpTime){
+                alert("You already used up this time")
+                range = [];
+                return;
+            } else {
+                range.push(i)
+                await this.setState({
+                    usedUpTime : {
+                        ...this.state.usedUpTime,
+                        [i] : {
+                            color: "blue",
+                            habit
+                        }
+                    }
+                })
+            }
+        }
+
+
+        this.setState({
+            timeAndHabit : [
+                ...this.state.timeAndHabit,
+                {
+                    range: range,
+                    habit: habit
+                }
+            ]
+        })
+    }
+
     render() {
-        console.log(this.props.auth)
+        
         return (
             <div className="TimeCard">
                 <div className="TimeCard__container">
@@ -68,7 +125,7 @@ class TimeCard extends Component {
                             From:
                         </p>
                         <label for="favcity">
-                            <select name="" className="TimeCard__time-select">
+                            <select name="from" className="TimeCard__time-select" onChange={this.handleChange} value={this.state.from}>
                                 {this.displayFromTimeOptions()}
                             </select>
                         </label>
@@ -76,7 +133,7 @@ class TimeCard extends Component {
                             to:
                         </p>
                         <label for="favcity">
-                            <select name="" id="" className="TimeCard__time-select">
+                            <select name="to" id="" className="TimeCard__time-select" onChange={this.handleChange}>
                                 {this.displayToTimeOptions()}
                             </select>
                         </label>
@@ -84,10 +141,18 @@ class TimeCard extends Component {
                             I did:
                         </p>
                         <label for="favcity" className="TimeCard__label TimeCard__label--larger" id="larger">
-                            <select name="" id="" className="TimeCard__time-select TimeCard__time-select--larger">
+                            <select 
+                                name="habit" 
+                                id="" 
+                                className="TimeCard__time-select TimeCard__time-select--larger"
+                                onChange={this.handleChange}
+                            >
                                 {this.displayHabitsOptions()}
                             </select>
                         </label>
+                        <button className="TimeCard__add-btn" onClick={this.handleClick}>
+                            Add 
+                        </button>
                     </div>
                 </div>
             </div>
