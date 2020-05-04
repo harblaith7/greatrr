@@ -163,9 +163,16 @@ class TimeCard extends Component{
         }
 
         // MORE STATE UPDATES //
-        
+    }
 
+    displayTotalTime = () => {
+        let total = 0
 
+        for(let i in this.state.usedUpTime){
+            total++
+        }
+
+        return `${total}h 05min`
     }
 
     render() {
@@ -181,7 +188,7 @@ class TimeCard extends Component{
                         </button>
                         <div className="TimeCard__efficiency-container">
                             <p className="TimeCard__efficient-time">
-                                2h 45min
+                                {this.displayTotalTime()}
                             </p>
                             
                         </div>
