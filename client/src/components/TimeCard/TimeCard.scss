@@ -137,6 +137,30 @@
       letter-spacing: 0.2rem;
     }
 
+    &__habits-display-container {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &__habit-display-container {
+      display: flex;
+      align-items: center;
+      margin-left: 3rem;
+    }
+
+    &__habit-color {
+      width: 1.5rem;
+      height: 1.5rem;
+      background-color: blue;
+      border-radius: 100%;
+    }
+
+    &__habit-name {
+      font-size: 1.25rem;
+      margin-left: 0.5rem;
+    }
+
 }
 
 

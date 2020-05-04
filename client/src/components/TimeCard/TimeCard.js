@@ -14,20 +14,33 @@ class TimeCard extends Component{
             timeAndHabit : [],
             to: "1",
             from: "1",
-            habit: this.props.habits.habits[0].habitName,
+            currentHabit: this.props.habits.habits[0].habitName,
             usedUpTime : {}
         }
     }
 
     displayTimeStamps = () => {
+
+        const {usedUpTime} = this.state
+
         return this.state.times.map(time => {
-            return (
-                <div className="TimeCard__stamp">
-                    <p className="TimeCard__time">
-                        {time}:00
-                    </p>
-                </div>
-            )
+           if(time in usedUpTime){
+                return (
+                    <div className="TimeCard__stamp" style={{background: usedUpTime[time].color}}>
+                        <p className="TimeCard__time">
+                            {time}:00
+                        </p>
+                    </div>
+                )
+           } else {
+                return (
+                    <div className="TimeCard__stamp">
+                        <p className="TimeCard__time">
+                            {time}:00
+                        </p>
+                    </div>
+                )
+           }
         })
     }
 
@@ -49,16 +62,30 @@ class TimeCard extends Component{
         })
     }
 
+    displayHabitDisplay = () => {
+        return this.state.timeAndHabit.map(habit => {
+            return (
+                <div className="TimeCard__habit-display-container">
+                    <div className="TimeCard__habit-color" style={{background: habit.color}}></div>
+                    <h5 className="TimeCard__habit-name">{habit.currentHabit}</h5>
+                </div>
+            )
+        })
+    }
+
     handleChange = (e) => {
         this.setState({
             [e.target.name] : e.target.value
         })
     }
 
-    handleClick = async () => {
-        const {from, to, habit , usedUpTime} = this.state
+    determineColor = (currentHabit) => {
+        return this.props.habits.habits.find(habit => {
+            return habit.habitName === currentHabit
+        }).color
+    }
 
-        // CHECK IF VALID INPUT //
+    checkIfValidInput = (from, to) => {
         if(parseInt(from) > parseInt(to)){
             alert("Unfortunately, you can't go back in time")
             return
@@ -66,7 +93,17 @@ class TimeCard extends Component{
             alert("You did nothing in no time")
             return
         }
+    }
 
+    handleClick = async () => {
+        const {from, to, currentHabit, usedUpTime, timeAndHabit} = this.state
+
+        const color = this.determineColor(currentHabit)
+
+        // CHECK IF VALID INPUT //
+        this.checkIfValidInput(from, to)
+
+        // CHECKS IF VALID TIME RANGE AND UPDATES STATE //
         let range = []
 
         for(let i = parseInt(from); i < parseInt(to); i++){
@@ -80,24 +117,55 @@ class TimeCard extends Component{
                     usedUpTime : {
                         ...this.state.usedUpTime,
                         [i] : {
-                            color: "blue",
-                            habit
+                            color,
+                            currentHabit
                         }
                     }
                 })
             }
         }
 
-
-        this.setState({
-            timeAndHabit : [
-                ...this.state.timeAndHabit,
-                {
-                    range: range,
-                    habit: habit
-                }
-            ]
+        const habitExists = timeAndHabit.some(habit => {
+            return habit.currentHabit === currentHabit
         })
+
+        console.log(habitExists)
+
+        if(habitExists){
+            const updatedTimeAndHabit = timeAndHabit.map(habit => {
+                if(habit.currentHabit === currentHabit){
+                    return {
+                        ...habit,
+                        timeRange: [
+                            ...habit.timeRange,
+                            ...range
+                        ]
+                    }
+                } else {
+                    return habit
+                }
+            })
+
+            await this.setState({
+                timeAndHabit : updatedTimeAndHabit
+            })
+        } else {
+            await this.setState({
+                timeAndHabit : [
+                    ...this.state.timeAndHabit,
+                    {
+                        timeRange: range,
+                        currentHabit,
+                        color
+                    }
+                ]
+            })
+        }
+
+        // MORE STATE UPDATES //
+        
+
+
     }
 
     render() {
@@ -105,6 +173,7 @@ class TimeCard extends Component{
         return (
             <div className="TimeCard">
                 <div className="TimeCard__container">
+
                     <div className="TimeCard__text-container">
                         <button className="TimeCard__save-btn">
                             Save and Continue
@@ -117,9 +186,11 @@ class TimeCard extends Component{
                             
                         </div>
                     </div>
+
                     <div className="TimeCard__stamps-container">
                         {this.displayTimeStamps()}
                     </div>
+
                     <div className="TimeCard__time-input-container">
                         <p className="TimeCard__time-input-text">
                             From:
@@ -142,7 +213,7 @@ class TimeCard extends Component{
                         </p>
                         <label for="favcity" className="TimeCard__label TimeCard__label--larger" id="larger">
                             <select 
-                                name="habit" 
+                                name="currentHabit" 
                                 id="" 
                                 className="TimeCard__time-select TimeCard__time-select--larger"
                                 onChange={this.handleChange}
@@ -154,6 +225,11 @@ class TimeCard extends Component{
                             Add 
                         </button>
                     </div>
+
+                    <div className="TimeCard__habits-display-container">
+                       {this.displayHabitDisplay()} 
+                    </div>
+
                 </div>
             </div>
         );
