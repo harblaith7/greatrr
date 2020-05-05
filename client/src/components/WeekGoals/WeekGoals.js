@@ -29,6 +29,29 @@ class WeekGoals extends Component {
                             Add Goal
                         </button>
                     </form>
+                    <div className="WeekGoals__goals-container">
+                        <div className="WeekGoals__goal-container">
+                            <h4 className="WeekGoals__heading">
+                                Week
+                            </h4>
+                            <div className="WeekGoals__card">
+
+                            </div>
+                        </div>
+                        <div className="WeekGoals__goal-container">
+                            <h4 className="WeekGoals__heading">
+                                Day
+                            </h4>  
+                            <div className="WeekGoals__card">
+                                
+                            </div> 
+                        </div>
+                    </div>
+                    <div className="WeekGoals__btn-container">
+                        <button className="WeekGoals__remove-btn">
+                            X
+                        </button>
+                    </div>
                 </div>
             </div>
         );
