@@ -1,0 +1,64 @@
+@import "../../sass/variables.scss";
+
+.WeekGoals {
+
+    padding: 5rem 0;
+    
+    &__container {
+        width: 80%;
+        margin: 0 auto
+    }
+
+    &__heading {
+        font-size: 3rem;
+    }
+
+    &__form {
+        
+        margin-top: 3rem;
+        font-family: "monospace";
+    }
+
+    &__text-input {
+        padding: 1.5rem 1.5rem;
+        height: 4rem;
+        width: 30rem;
+        border-left: 0.2rem solid $light-border-grey;
+        border-top: 0.2rem solid $light-border-grey;
+        border-bottom: 0.2rem solid $light-border-grey;
+        border-right: none;
+        outline: none;
+        font-weight: 700;
+        color: $off-black;
+    }
+
+    &__select {
+        height: 4rem;
+        padding: 0 1.5rem;
+        border-radius: 0 0.25rem 0.25rem 0;
+        margin-right: 5rem;
+        cursor: pointer;
+        font-weight: 700;
+        border: none;
+        background-color: $primary-color-lighter;
+        color: $off-black;
+        text-align: center;
+        outline: none
+    }
+
+    &__option {
+        background-color: $off-white;
+    }
+
+    &__submit-btn {
+        height: 4rem;
+        width: 20rem;
+        font-weight: 700;
+        letter-spacing: 0.2rem;
+        background-color: transparent;
+        border: 0.2rem solid $light-border-grey;
+        cursor: pointer;
+        outline: none;
+    }
+
+}

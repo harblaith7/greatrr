@@ -25,6 +25,7 @@ class TimeCard extends Component{
 
         return this.state.times.map(time => {
            if(time in usedUpTime){
+               
                 return (
                     <div className="TimeCard__stamp" style={{background: usedUpTime[time].color}}>
                         <p className="TimeCard__time">
@@ -33,13 +34,15 @@ class TimeCard extends Component{
                     </div>
                 )
            } else {
-                return (
-                    <div className="TimeCard__stamp">
-                        <p className="TimeCard__time">
-                            {time}:00
-                        </p>
-                    </div>
-                )
+                    return (
+                        <div className="TimeCard__stamp">
+                            <p className="TimeCard__time">
+                                {time}:00
+                            </p>
+                        </div>
+                    )
+                
+                
            }
         })
     }
@@ -172,7 +175,7 @@ class TimeCard extends Component{
             total++
         }
 
-        return `${total}h 05min`
+        return `${total}h 00min`
     }
 
     render() {
