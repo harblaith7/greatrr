@@ -1,0 +1,16 @@
+@import "../../sass/variables.scss";
+
+.IndividualGoal{
+    width: 90%;
+    height: 5rem;
+    background-color: $inactive-blue;
+    margin: 1rem;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    overflow-y: auto;
+    padding: 0 2rem;
+    text-align: center;
+}

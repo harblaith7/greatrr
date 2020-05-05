@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./WeekGoals.scss"
-import arrowDown from "../../assets/svg/arrow-down.svg"
+import IndividualGoal from "../IndividualGoal/IndividualGoal"
+import {motion, AnimatePresence} from "framer-motion"
 
 class WeekGoals extends Component {
     render() {
@@ -34,9 +35,12 @@ class WeekGoals extends Component {
                             <h4 className="WeekGoals__heading">
                                 Week
                             </h4>
-                            <div className="WeekGoals__card">
 
-                            </div>
+                                <div className="WeekGoals__card" >
+                                    <IndividualGoal/>
+                                    <IndividualGoal/>
+                                </div>
+
                         </div>
                         <div className="WeekGoals__goal-container">
                             <h4 className="WeekGoals__heading">
@@ -47,11 +51,7 @@ class WeekGoals extends Component {
                             </div> 
                         </div>
                     </div>
-                    <div className="WeekGoals__btn-container">
-                        <button className="WeekGoals__remove-btn">
-                            X
-                        </button>
-                    </div>
+                    
                 </div>
             </div>
         );
