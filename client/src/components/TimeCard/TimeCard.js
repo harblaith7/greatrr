@@ -11,10 +11,10 @@ class TimeCard extends Component{
         this.state = {
             times : [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],
             wantedTimeRange : [],
-            timeAndHabit : [],
             to: "1",
             from: "1",
             currentHabit: this.props.habits.habits[0].habitName,
+            timeAndHabit : [],
             usedUpTime : {}
         }
     }

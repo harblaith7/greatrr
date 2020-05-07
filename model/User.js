@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const {Schema} = mongoose
 const HabitSchema = require("../model/Habit")
+const TimeStats = require("../model/TimeStats")
 
 
 const userSchema = new Schema({
@@ -9,7 +10,14 @@ const userSchema = new Schema({
     givenName: String,
     photo: String,
     email: String,
-    habits: {type : [HabitSchema], default: []}
+    habits: {type : [HabitSchema], default: []},
+    timeStats: {type: TimeStats, default: {
+        timeAndHabit: [],
+        usedUpTime: {0: "default"},
+        totalTimeAndHabit: [],
+        weekGoals: [],
+        dayGoals: []
+    }}
 })
 
 
