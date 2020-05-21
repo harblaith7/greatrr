@@ -36,18 +36,20 @@
     }
 
     &__sign-in-btn {
-        padding: 1.75rem 3.5rem;
         margin-right: 4rem;
         border: none;
         font-weight: 700;
         border-radius: 0.3rem;
         cursor: pointer;
         color: $primary-white;
-        width: 25rem;
+        padding: 1.5rem 4.5rem;
+        
 
         &--google {
             background-color: $google-orange;
-
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.35rem;
         }
 
         &--facebook {
