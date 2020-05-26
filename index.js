@@ -50,7 +50,7 @@ app.use("/api", userRoutes)
 
 ////////////     RAN IF IN PRODUCTION   //////////////////
 
-if (process.env.NODE_ENV === "production"){
+if (["production", "ci"].includes(process.env.NODE_ENV)){
     // Express will seeve up produciton assets
     app.use(express.static('client/build'))
 
