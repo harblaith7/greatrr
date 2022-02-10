@@ -10,7 +10,7 @@
     "axios": "^0.19.2",
     "framer-motion": "^1.10.3",
     "http-proxy-middleware": "^0.21.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-animate-on-scroll": "^2.1.5",
     "react-awesome-slider": "^4.1.0",
